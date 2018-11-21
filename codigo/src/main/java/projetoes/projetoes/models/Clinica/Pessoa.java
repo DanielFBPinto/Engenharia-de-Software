@@ -1,18 +1,10 @@
 package projetoes.projetoes.models.Clinica;
-
-
-
 import java.util.Date;
 
 public class Pessoa
 {
-
-  public String nome;
-
-  public Integer id;
-
-  public Date dataNascimento;
-
-  public Integer numCC;
-
+  private String nome;
+  private Integer id;
+  private Date dataNascimento;
+  private Integer numCC;
 }

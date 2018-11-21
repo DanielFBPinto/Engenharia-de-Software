@@ -1,7 +1,6 @@
 package projetoes.projetoes.models.Clinica;
 import java.util.Date;
 
-
 public class Consulta
 {
   private Date data;
@@ -9,7 +8,4 @@ public class Consulta
   private int idConsulta;
   private Paciente myPaciente;
   private Medico myMedico;
-
-
-
 }

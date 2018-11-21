@@ -1,23 +1,10 @@
 package projetoes.projetoes.models.Clinica;
+import java.util.ArrayList;
 
-import java.util.Vector;
-
-
-public class Medico extends Pessoa {
-
-  public Integer cedulaMedica;
-
-  public String especialidade;
-
-    /**
-   * 
-   * @element-type Consulta
-   */
-  public Vector  myConsulta;
-    /**
-   * 
-   * @element-type HorarioMedico
-   */
-  public Vector  myHorarioMedico;
-
+public class Medico extends Pessoa
+{
+  private Integer cedulaMedica;
+  private String especialidade;
+  private ArrayList<Consulta> myConsulta = new ArrayList<>();
+  private ArrayList<Horario> myHorarioMedico = new ArrayList<>();
 }
