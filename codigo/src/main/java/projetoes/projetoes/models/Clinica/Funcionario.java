@@ -1,5 +1,6 @@
 package projetoes.projetoes.models.Clinica;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 

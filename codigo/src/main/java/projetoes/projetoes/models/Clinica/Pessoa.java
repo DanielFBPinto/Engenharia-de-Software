@@ -4,7 +4,8 @@ package projetoes.projetoes.models.Clinica;
 
 import java.util.Date;
 
-public class Pessoa {
+public class Pessoa
+{
 
   public String nome;
 
