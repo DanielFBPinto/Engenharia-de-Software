@@ -1,12 +1,13 @@
-package Clinica;
+package projetoes.projetoes.models.Clinica;
 
-import String;
+
+import java.util.Date;
 
 public class Horario {
 
-  public Hour horaInicio;
+  public Date horaInicio;
 
-  public Hour horaFim;
+  public Date horaFim;
 
   public String diaSemana;
 

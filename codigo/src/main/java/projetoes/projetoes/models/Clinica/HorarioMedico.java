@@ -1,6 +1,6 @@
-package Clinica;
+package projetoes.projetoes.models.Clinica;
 
-import String;
+
 
 public class HorarioMedico extends Horario {
 

@@ -1,7 +1,8 @@
-package Clinica;
+package projetoes.projetoes.models.Clinica;
 
-import String;
-import Integer;
+
+
+import java.util.Date;
 
 public class Pessoa {
 
@@ -9,7 +10,7 @@ public class Pessoa {
 
   public Integer id;
 
-  public date dataNascimento;
+  public Date dataNascimento;
 
   public Integer numCC;
 

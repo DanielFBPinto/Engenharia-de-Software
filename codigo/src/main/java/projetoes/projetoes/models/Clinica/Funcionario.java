@@ -1,12 +1,11 @@
-package Clinica;
+package projetoes.projetoes.models.Clinica;
 
 import java.util.Vector;
-import String;
-import Integer;
+
 
 public class Funcionario extends Pessoa {
 
-  public Integer idFuncionario;
+  public int idFuncionario;
 
   public String cargo;
 

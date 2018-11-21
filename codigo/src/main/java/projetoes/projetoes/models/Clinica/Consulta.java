@@ -1,10 +1,8 @@
-package Clinica;
-
+package projetoes.projetoes.models.Clinica;
+import java.util.Date;
 public class Consulta {
 
   public Date data;
-
-  public Hour hora;
 
   public int precoConsulta;
 

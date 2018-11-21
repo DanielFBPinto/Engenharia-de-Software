@@ -1,8 +1,8 @@
-package Clinica;
+package projetoes.projetoes.models.Clinica;
 
 import java.util.Vector;
-
-public class Paciente extends Pessoa, Pessoa {
+import java.util.Date;
+public class Paciente extends Pessoa {
 
     /**
    * 
@@ -10,13 +10,13 @@ public class Paciente extends Pessoa, Pessoa {
    */
   public Vector  myConsulta;
 
-  public void marcarConsulta(Date data, Hour hora) {
+  public void marcarConsulta(Date data) {
   }
 
-  public void cancelarConsulta( data.Date, Hour hora) {
+  public void cancelarConsulta( Date date) {
   }
 
-  public void alterarCOnsulta(Date data,  Hour) {
+  public void alterarCOnsulta(Date data) {
   }
 
 }
