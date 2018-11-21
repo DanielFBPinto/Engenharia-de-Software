@@ -1,6 +1,17 @@
 package projetoes.projetoes.models.Clinica;
 import java.util.ArrayList;
+import lombok.*;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Medico extends Pessoa
 {
   private Integer cedulaMedica;
