@@ -1,0 +1,8 @@
+123456789,Clínica Geral
+12345678,Neurologia
+1234567,Traumatologia
+12345,Clínica Geral
+1234,Pediatria
+123,Cardiologia
+12,Medicina Dentária
+1,Genecologia

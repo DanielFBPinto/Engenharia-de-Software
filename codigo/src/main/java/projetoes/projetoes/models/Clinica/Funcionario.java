@@ -16,5 +16,6 @@ public class Funcionario extends Pessoa
 {
   private int idFuncionario;
   private String cargo;
-  private ArrayList<Horario> myHorario = new ArrayList<>();
+  @ManyToMany(cascade = CascadeType.ALL)
+  private Set<Horario> myHorario = new HashSet<>();
 }

@@ -1,4 +1,5 @@
 package projetoes.projetoes.models.Clinica;
+import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.*;
 
@@ -12,11 +13,18 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Consulta
+public class Consulta extends BaseModel
 {
-  private Date data;
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @ManyToOne
+  private Medico myMedico;
+  private LocalDateTime data;
   private int precoConsulta;
   private int idConsulta;
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @ManyToOne
   private Paciente myPaciente;
-  private Medico myMedico;
+
 }

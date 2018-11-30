@@ -12,10 +12,11 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Horario
+public class Horario extends BaseModel
 {
   private Date horaInicio;
   private Date horaFim;
   private String diaSemana;
-  private Funcionario myFuncionario;
+
+  //private Funcionario myFuncionario;
 }
