@@ -1,11 +1,9 @@
-package projetoes.projetoes.models.Clinica;
+package projetoes.projetoes.models;
 import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -21,10 +19,21 @@ public class Consulta extends BaseModel
   private Medico myMedico;
   private LocalDateTime data;
   private int precoConsulta;
-  private int idConsulta;
+
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
   @ManyToOne
   private Paciente myPaciente;
+//  @EqualsAndHashCode.Exclude
+//  @ManyToOne
+//  @ToString.Exclude
+//  private Paciente myPaciente;
+//  @EqualsAndHashCode.Exclude
+//  @ManyToOne
+//  @ToString.Exclude
+//  private Medico myMedico;
 
+  public Consulta(int precoConsulta) {
+    this.precoConsulta = precoConsulta;
+  }
 }

@@ -1,4 +1,4 @@
-package projetoes.projetoes.models.Clinica;
+package projetoes.projetoes.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

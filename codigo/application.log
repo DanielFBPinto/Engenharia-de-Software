@@ -26,7 +26,7 @@
 2018-11-30 17:01:00.673  INFO 13812 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
 2018-11-30 17:01:00.773  INFO 13812 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
 2018-11-30 17:01:00.873  INFO 13812 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2018-11-30 17:01:01.047  WARN 13812 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+2018-11-30 17:01:01.047  WARN 13812 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
 2018-11-30 17:01:01.049  INFO 13812 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
 2018-11-30 17:01:01.049  INFO 13812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2018-11-30 17:01:01.051  INFO 13812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
@@ -36,7 +36,7 @@
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2018-11-30 17:01:01.073 ERROR 13812 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
@@ -59,14 +59,14 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
 	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
-Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	... 21 common frames omitted
-Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
 	at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:486) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
 	at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:453) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
 	at org.hibernate.mapping.Property.isValid(Property.java:226) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
@@ -108,7 +108,7 @@ Caused by: org.hibernate.MappingException: Could not determine type for: projeto
 2018-11-30 17:20:04.937  INFO 2952 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
 2018-11-30 17:20:05.053  INFO 2952 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
 2018-11-30 17:20:05.137  INFO 2952 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2018-11-30 17:20:05.307  WARN 2952 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+2018-11-30 17:20:05.307  WARN 2952 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 2018-11-30 17:20:05.307  INFO 2952 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
 2018-11-30 17:20:05.307  INFO 2952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2018-11-30 17:20:05.307  INFO 2952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
@@ -118,7 +118,7 @@ Caused by: org.hibernate.MappingException: Could not determine type for: projeto
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2018-11-30 17:20:05.338 ERROR 2952 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
@@ -141,14 +141,14 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
 	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
-Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	... 21 common frames omitted
-Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 	at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:486) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
 	at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:453) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
 	at org.hibernate.mapping.Property.isValid(Property.java:226) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
@@ -190,7 +190,7 @@ Caused by: org.hibernate.MappingException: Could not determine type for: projeto
 2018-11-30 17:20:57.131  INFO 14740 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
 2018-11-30 17:20:57.231  INFO 14740 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
 2018-11-30 17:20:57.315  INFO 14740 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2018-11-30 17:20:57.485  WARN 14740 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+2018-11-30 17:20:57.485  WARN 14740 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 2018-11-30 17:20:57.485  INFO 14740 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
 2018-11-30 17:20:57.485  INFO 14740 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2018-11-30 17:20:57.485  INFO 14740 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
@@ -200,7 +200,7 @@ Caused by: org.hibernate.MappingException: Could not determine type for: projeto
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2018-11-30 17:20:57.500 ERROR 14740 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
@@ -223,14 +223,14 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
 	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
-Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	... 21 common frames omitted
-Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Clinica.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
+Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Medico, at table: horario, for columns: [org.hibernate.mapping.Column(my_medico)]
 	at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:486) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
 	at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:453) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
 	at org.hibernate.mapping.Property.isValid(Property.java:226) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
@@ -244,3 +244,563 @@ Caused by: org.hibernate.MappingException: Could not determine type for: projeto
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
 	... 25 common frames omitted
 
+2018-12-03 15:41:34.965  INFO 11132 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 11132 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 15:41:34.968  INFO 11132 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 15:41:35.207  INFO 11132 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 15:41:35.278  INFO 11132 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 15:41:38.495  INFO 11132 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 15:41:38.638  INFO 11132 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112ms. Found 2 repository interfaces.
+2018-12-03 15:41:39.378  INFO 11132 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$32a09e3a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 15:41:40.227  INFO 11132 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 15:41:40.280  INFO 11132 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 15:41:40.280  INFO 11132 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 15:41:40.280  INFO 11132 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 15:41:40.449  INFO 11132 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 15:41:40.449  INFO 11132 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5151 ms
+2018-12-03 15:41:40.543  INFO 11132 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 15:41:40.549  INFO 11132 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 15:41:40.549  INFO 11132 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 15:41:40.549  INFO 11132 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 15:41:40.549  INFO 11132 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 15:41:40.549  INFO 11132 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 15:41:40.827  INFO 11132 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 15:41:41.128  INFO 11132 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 15:41:41.367  INFO 11132 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 15:41:41.467  INFO 11132 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 15:41:41.467  INFO 11132 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 15:41:41.752  INFO 11132 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 15:41:42.015  INFO 11132 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 15:41:42.285  WARN 11132 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: projetoes.projetoes.models.Pessoa
+2018-12-03 15:41:42.285  INFO 11132 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
+2018-12-03 15:41:42.285  INFO 11132 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-03 15:41:42.301  INFO 11132 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-03 15:41:42.301  INFO 11132 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-03 15:41:42.316  INFO 11132 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-03 15:41:42.385 ERROR 11132 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: No identifier specified for entity: projetoes.projetoes.models.Pessoa
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1083) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:853) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at projetoes.projetoes.ProjetoesApplication.main(ProjetoesApplication.java:11) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+Caused by: org.hibernate.AnnotationException: No identifier specified for entity: projetoes.projetoes.models.Pessoa
+	at org.hibernate.cfg.InheritanceState.determineDefaultAccessType(InheritanceState.java:266) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.cfg.InheritanceState.getElementsToProcess(InheritanceState.java:211) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.cfg.AnnotationBinder.bindClass(AnnotationBinder.java:778) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.processEntityHierarchies(AnnotationMetadataSourceProcessorImpl.java:250) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.processEntityHierarchies(MetadataBuildingProcess.java:231) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:274) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:904) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:935) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 21 common frames omitted
+
+2018-12-03 17:20:21.786  INFO 6524 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 6524 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:20:21.812  INFO 6524 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:20:22.033  INFO 6524 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:20:22.047  INFO 6524 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:20:24.933  INFO 6524 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:20:25.051  INFO 6524 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94ms. Found 2 repository interfaces.
+2018-12-03 17:20:25.950  INFO 6524 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$27ad7ee9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:20:26.740  INFO 6524 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:20:26.781  INFO 6524 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:20:26.783  INFO 6524 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:20:26.793  INFO 6524 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:20:26.980  INFO 6524 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:20:26.981  INFO 6524 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4928 ms
+2018-12-03 17:20:27.047  INFO 6524 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:20:27.049  INFO 6524 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:20:27.054  INFO 6524 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:20:27.057  INFO 6524 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:20:27.057  INFO 6524 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:20:27.057  INFO 6524 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:20:27.373  INFO 6524 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:20:27.771  INFO 6524 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:20:28.047  INFO 6524 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:20:28.328  INFO 6524 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:20:28.329  INFO 6524 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:20:28.820  INFO 6524 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:20:29.417  INFO 6524 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:20:29.764  WARN 6524 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+2018-12-03 17:20:29.770  INFO 6524 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
+2018-12-03 17:20:29.772  INFO 6524 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-03 17:20:29.777  INFO 6524 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-03 17:20:29.781  INFO 6524 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-03 17:20:29.797  INFO 6524 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-03 17:20:29.875 ERROR 6524 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1083) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:853) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at projetoes.projetoes.ProjetoesApplication.main(ProjetoesApplication.java:11) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 21 common frames omitted
+Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:486) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:453) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.Property.isValid(Property.java:226) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:624) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:347) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:466) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:939) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 25 common frames omitted
+
+2018-12-03 17:21:03.241  INFO 9560 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 9560 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:21:03.246  INFO 9560 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:21:03.386  INFO 9560 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:21:03.387  INFO 9560 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:21:04.591  INFO 9560 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:21:04.758  INFO 9560 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 141ms. Found 2 repository interfaces.
+2018-12-03 17:21:05.629  INFO 9560 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$19d08045] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:21:06.120  INFO 9560 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:21:06.147  INFO 9560 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:21:06.149  INFO 9560 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:21:06.159  INFO 9560 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:21:06.401  INFO 9560 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:21:06.405  INFO 9560 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3018 ms
+2018-12-03 17:21:06.451  INFO 9560 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:21:06.452  INFO 9560 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:21:06.457  INFO 9560 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:21:06.459  INFO 9560 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:21:06.459  INFO 9560 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:21:06.459  INFO 9560 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:21:06.599  INFO 9560 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:21:06.807  INFO 9560 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:21:06.890  INFO 9560 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:21:06.969  INFO 9560 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:21:06.970  INFO 9560 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:21:07.114  INFO 9560 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:21:07.269  INFO 9560 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:21:07.499  WARN 9560 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+2018-12-03 17:21:07.502  INFO 9560 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
+2018-12-03 17:21:07.503  INFO 9560 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-03 17:21:07.507  INFO 9560 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-03 17:21:07.510  INFO 9560 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-03 17:21:07.527  INFO 9560 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-03 17:21:07.540 ERROR 9560 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1083) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:853) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at projetoes.projetoes.ProjetoesApplication.main(ProjetoesApplication.java:11) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 21 common frames omitted
+Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:486) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:453) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.Property.isValid(Property.java:226) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:624) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:347) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:466) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:939) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 25 common frames omitted
+
+2018-12-03 17:24:47.727  INFO 1632 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 1632 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:24:47.733  INFO 1632 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:24:47.830  INFO 1632 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:24:47.831  INFO 1632 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:24:49.173  INFO 1632 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:24:49.254  INFO 1632 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71ms. Found 2 repository interfaces.
+2018-12-03 17:24:49.660  INFO 1632 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a6f78598] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:24:50.178  INFO 1632 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:24:50.206  INFO 1632 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:24:50.206  INFO 1632 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:24:50.217  INFO 1632 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:24:50.361  INFO 1632 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:24:50.363  INFO 1632 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2532 ms
+2018-12-03 17:24:50.411  INFO 1632 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:24:50.413  INFO 1632 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:24:50.418  INFO 1632 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:24:50.420  INFO 1632 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:24:50.421  INFO 1632 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:24:50.421  INFO 1632 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:24:50.559  INFO 1632 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:24:50.776  INFO 1632 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:24:50.847  INFO 1632 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:24:50.918  INFO 1632 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:24:50.919  INFO 1632 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:24:51.071  INFO 1632 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:24:51.218  INFO 1632 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:24:51.491  WARN 1632 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+2018-12-03 17:24:51.493  INFO 1632 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
+2018-12-03 17:24:51.494  INFO 1632 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-03 17:24:51.499  INFO 1632 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-03 17:24:51.502  INFO 1632 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-03 17:24:51.517  INFO 1632 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-03 17:24:51.530 ERROR 1632 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1083) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:853) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at projetoes.projetoes.ProjetoesApplication.main(ProjetoesApplication.java:11) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 21 common frames omitted
+Caused by: org.hibernate.MappingException: Could not determine type for: projetoes.projetoes.models.Funcionario, at table: horario, for columns: [org.hibernate.mapping.Column(my_funcionario)]
+	at org.hibernate.mapping.SimpleValue.getType(SimpleValue.java:486) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.SimpleValue.isValid(SimpleValue.java:453) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.Property.isValid(Property.java:226) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:624) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:347) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:466) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:939) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 25 common frames omitted
+
+2018-12-03 17:25:45.474  INFO 1628 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 1628 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:25:45.480  INFO 1628 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:25:45.582  INFO 1628 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:25:45.583  INFO 1628 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:25:46.681  INFO 1628 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:25:46.767  INFO 1628 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76ms. Found 2 repository interfaces.
+2018-12-03 17:25:47.200  INFO 1628 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f400d58b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:25:47.691  INFO 1628 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:25:47.717  INFO 1628 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:25:47.718  INFO 1628 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:25:47.728  INFO 1628 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:25:47.906  INFO 1628 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:25:47.913  INFO 1628 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2329 ms
+2018-12-03 17:25:47.969  INFO 1628 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:25:47.971  INFO 1628 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:25:47.975  INFO 1628 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:25:47.980  INFO 1628 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:25:47.981  INFO 1628 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:25:47.981  INFO 1628 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:25:48.137  INFO 1628 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:25:48.359  INFO 1628 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:25:48.422  INFO 1628 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:25:48.497  INFO 1628 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:25:48.498  INFO 1628 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:25:48.652  INFO 1628 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:25:48.815  INFO 1628 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:25:50.127  INFO 1628 --- [restartedMain] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@2ef264d1'
+2018-12-03 17:25:50.156  INFO 1628 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-03 17:25:50.234  INFO 1628 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2018-12-03 17:25:51.112  INFO 1628 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-03 17:25:51.178  WARN 1628 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-03 17:25:51.663  INFO 1628 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-03 17:25:51.668  INFO 1628 --- [restartedMain] p.projetoes.ProjetoesApplication         : Started ProjetoesApplication in 7.088 seconds (JVM running for 8.763)
+2018-12-03 17:26:05.861  INFO 1628 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-03 17:26:05.865  INFO 1628 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2018-12-03 17:26:05.880  INFO 1628 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2018-12-03 17:34:13.560  INFO 12076 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 12076 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:34:13.565  INFO 12076 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:34:13.632  INFO 12076 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:34:13.633  INFO 12076 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:34:15.075  INFO 12076 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:34:15.217  INFO 12076 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115ms. Found 2 repository interfaces.
+2018-12-03 17:34:15.780  INFO 12076 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9eb9587e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:34:16.299  INFO 12076 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:34:16.319  INFO 12076 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:34:16.319  INFO 12076 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:34:16.329  INFO 12076 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:34:16.483  INFO 12076 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:34:16.485  INFO 12076 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2852 ms
+2018-12-03 17:34:16.530  INFO 12076 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:34:16.532  INFO 12076 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:34:16.536  INFO 12076 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:34:16.541  INFO 12076 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:34:16.541  INFO 12076 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:34:16.541  INFO 12076 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:34:16.692  INFO 12076 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:34:16.931  INFO 12076 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:34:16.992  INFO 12076 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:34:17.080  INFO 12076 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:34:17.081  INFO 12076 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:34:17.251  INFO 12076 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:34:17.403  INFO 12076 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:34:18.349  INFO 12076 --- [restartedMain] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@4c75a20b'
+2018-12-03 17:34:18.354  INFO 12076 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-03 17:34:18.401  INFO 12076 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2018-12-03 17:34:19.040  INFO 12076 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-03 17:34:19.082  WARN 12076 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-03 17:34:19.478  INFO 12076 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-03 17:34:19.483  INFO 12076 --- [restartedMain] p.projetoes.ProjetoesApplication         : Started ProjetoesApplication in 6.492 seconds (JVM running for 8.362)
+2018-12-03 17:44:37.799  INFO 13192 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 13192 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:44:37.805  INFO 13192 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:44:37.894  INFO 13192 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:44:37.895  INFO 13192 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:44:39.092  INFO 13192 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:44:39.176  INFO 13192 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75ms. Found 3 repository interfaces.
+2018-12-03 17:44:39.640  INFO 13192 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a173fb66] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:44:40.138  INFO 13192 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:44:40.157  INFO 13192 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:44:40.157  INFO 13192 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:44:40.166  INFO 13192 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:44:40.300  INFO 13192 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:44:40.302  INFO 13192 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2406 ms
+2018-12-03 17:44:40.349  INFO 13192 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:44:40.354  INFO 13192 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:44:40.359  INFO 13192 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:44:40.362  INFO 13192 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:44:40.362  INFO 13192 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:44:40.363  INFO 13192 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:44:40.523  INFO 13192 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:44:40.740  INFO 13192 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:44:40.801  INFO 13192 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:44:40.876  INFO 13192 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:44:40.878  INFO 13192 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:44:41.053  INFO 13192 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:44:41.222  INFO 13192 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:44:42.131  INFO 13192 --- [restartedMain] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@899f2b6'
+2018-12-03 17:44:42.135  INFO 13192 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-03 17:44:42.184  INFO 13192 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2018-12-03 17:44:42.850  INFO 13192 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-03 17:44:42.893  WARN 13192 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-03 17:44:42.918  WARN 13192 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'pacienteController' method 
+public java.lang.Iterable<projetoes.projetoes.models.Paciente> projetoes.projetoes.controller.PacienteController.getALLConsultas()
+to {[/consulta/],methods=[GET],produces=[application/json]}: There is already 'consultaController' bean method
+public java.lang.Iterable<projetoes.projetoes.models.Consulta> projetoes.projetoes.controller.ConsultaController.getALLConsultas() mapped.
+2018-12-03 17:44:42.921  INFO 13192 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2018-12-03 17:44:42.922  INFO 13192 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-12-03 17:44:42.923  INFO 13192 --- [restartedMain] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2018-12-03 17:44:42.940  INFO 13192 --- [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-197]
+2018-12-03 17:44:42.944  INFO 13192 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-03 17:44:42.949  INFO 13192 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-03 17:44:42.951  INFO 13192 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-03 17:44:42.966  INFO 13192 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-03 17:44:42.980 ERROR 13192 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'pacienteController' method 
+public java.lang.Iterable<projetoes.projetoes.models.Paciente> projetoes.projetoes.controller.PacienteController.getALLConsultas()
+to {[/consulta/],methods=[GET],produces=[application/json]}: There is already 'consultaController' bean method
+public java.lang.Iterable<projetoes.projetoes.models.Consulta> projetoes.projetoes.controller.ConsultaController.getALLConsultas() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:846) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:863) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) ~[spring-context-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) [spring-boot-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+	at projetoes.projetoes.ProjetoesApplication.main(ProjetoesApplication.java:11) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_161]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_161]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_161]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_161]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.1.0.RELEASE.jar:2.1.0.RELEASE]
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'pacienteController' method 
+public java.lang.Iterable<projetoes.projetoes.models.Paciente> projetoes.projetoes.controller.PacienteController.getALLConsultas()
+to {[/consulta/],methods=[GET],produces=[application/json]}: There is already 'consultaController' bean method
+public java.lang.Iterable<projetoes.projetoes.models.Consulta> projetoes.projetoes.controller.ConsultaController.getALLConsultas() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:599) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:567) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:294) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$1(AbstractHandlerMethodMapping.java:279) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at java.util.LinkedHashMap.forEach(LinkedHashMap.java:684) ~[na:1.8.0_161]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:277) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:249) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:208) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:196) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:164) ~[spring-webmvc-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.2.RELEASE.jar:5.1.2.RELEASE]
+	... 21 common frames omitted
+
+2018-12-03 17:45:16.757  INFO 12848 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 12848 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:45:16.761  INFO 12848 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:45:16.835  INFO 12848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:45:16.835  INFO 12848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:45:18.145  INFO 12848 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:45:18.282  INFO 12848 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117ms. Found 3 repository interfaces.
+2018-12-03 17:45:18.987  INFO 12848 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b8ac9b98] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:45:19.497  INFO 12848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:45:19.517  INFO 12848 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:45:19.519  INFO 12848 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:45:19.529  INFO 12848 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:45:19.667  INFO 12848 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:45:19.670  INFO 12848 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2829 ms
+2018-12-03 17:45:19.711  INFO 12848 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:45:19.712  INFO 12848 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:45:19.717  INFO 12848 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:45:19.719  INFO 12848 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:45:19.719  INFO 12848 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:45:19.719  INFO 12848 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:45:19.847  INFO 12848 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:45:20.098  INFO 12848 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:45:20.162  INFO 12848 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:45:20.231  INFO 12848 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:45:20.232  INFO 12848 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:45:20.413  INFO 12848 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:45:20.636  INFO 12848 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:45:21.539  INFO 12848 --- [restartedMain] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@69ec5529'
+2018-12-03 17:45:21.546  INFO 12848 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-03 17:45:21.609  INFO 12848 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2018-12-03 17:45:30.182  INFO 13284 --- [restartedMain] p.projetoes.ProjetoesApplication         : Starting ProjetoesApplication on DESKTOP-B1JL6IR with PID 13284 (started by danie in C:\Projeto de Engenharia de Software\Engenharia-de-Software\codigo)
+2018-12-03 17:45:30.186  INFO 13284 --- [restartedMain] p.projetoes.ProjetoesApplication         : No active profile set, falling back to default profiles: default
+2018-12-03 17:45:30.275  INFO 13284 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2018-12-03 17:45:30.278  INFO 13284 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2018-12-03 17:45:31.567  INFO 13284 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-03 17:45:31.662  INFO 13284 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 3 repository interfaces.
+2018-12-03 17:45:32.082  INFO 13284 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$82727282] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-03 17:45:32.568  INFO 13284 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-03 17:45:32.590  INFO 13284 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-03 17:45:32.590  INFO 13284 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2018-12-03 17:45:32.597  INFO 13284 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\PostgreSQL\10\bin;C:\laboratorio\HashiCorp\Vagrant\bin;C:\Users\danie\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;;.]
+2018-12-03 17:45:32.753  INFO 13284 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-03 17:45:32.756  INFO 13284 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2477 ms
+2018-12-03 17:45:32.798  INFO 13284 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-03 17:45:32.799  INFO 13284 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet webServlet mapped to [/h2-console/*]
+2018-12-03 17:45:32.802  INFO 13284 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-03 17:45:32.806  INFO 13284 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-03 17:45:32.806  INFO 13284 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2018-12-03 17:45:32.806  INFO 13284 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-03 17:45:32.940  INFO 13284 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-03 17:45:33.165  INFO 13284 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-03 17:45:33.227  INFO 13284 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-03 17:45:33.302  INFO 13284 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-03 17:45:33.303  INFO 13284 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-03 17:45:33.447  INFO 13284 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-03 17:45:33.588  INFO 13284 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-03 17:45:34.439  INFO 13284 --- [restartedMain] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@7f62376b'
+2018-12-03 17:45:34.444  INFO 13284 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-03 17:45:34.491  INFO 13284 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2018-12-03 17:45:35.125  INFO 13284 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-03 17:45:35.165  WARN 13284 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-03 17:45:35.548  INFO 13284 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2018-12-03 17:45:35.551  INFO 13284 --- [restartedMain] p.projetoes.ProjetoesApplication         : Started ProjetoesApplication in 6.16 seconds (JVM running for 8.001)
+2018-12-03 17:45:47.337  INFO 13284 --- [http-nio-8080-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2018-12-03 17:45:47.346  INFO 13284 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2018-12-03 17:45:47.383  INFO 13284 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 25 ms

@@ -1,13 +1,13 @@
-package projetoes.projetoes.models.Clinica;
+package projetoes.projetoes.models;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -17,12 +17,12 @@ import java.util.Set;
 @ToString
 public class Paciente extends Pessoa
 {
+
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
   @JsonIgnore
   @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
   private Set<Consulta> myConsulta = new HashSet<>();
-
   public void marcarConsulta(Date data)
   {
 
@@ -38,4 +38,7 @@ public class Paciente extends Pessoa
 
   }
 
+  public Paciente(String name) {
+    super(name);
+  }
 }

@@ -1,18 +1,20 @@
-package projetoes.projetoes.models.Clinica;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import javax.persistence.*;
+package projetoes.projetoes.models;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
+import javax.persistence.*;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-
-public class Medico extends Pessoa
-{
+public class Medico extends Funcionario {
   private Integer cedulaMedica;
   private String especialidade;
 
@@ -28,26 +30,11 @@ public class Medico extends Pessoa
   @OneToMany(cascade = CascadeType.ALL)
   private Set<Horario> myHorarioMedico = new HashSet<>();
 
-
-  public Medico(Integer cedulaMedica)
-  {
+  public Medico(Integer cedulaMedica, String especialidade, String name) {
+    super(name);
     this.cedulaMedica = cedulaMedica;
-  }
-
-  public Medico(String especialidade)
-  {
     this.especialidade = especialidade;
+
   }
 
-  public Medico(Integer cedulaMedica,String especialidade)
-  {
-    this.especialidade = especialidade;
-    this.cedulaMedica = cedulaMedica;
-  }
-
-  public void addConsulta(Consulta consulta)
-  {
-    this.myConsulta.add(consulta);
-  }
 }
-
