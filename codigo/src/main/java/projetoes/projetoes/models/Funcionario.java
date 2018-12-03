@@ -12,7 +12,11 @@ import javax.persistence.*;
 @ToString
 public class Funcionario extends Pessoa
 {
-  public Funcionario(String name) {
+  public Funcionario(String name)
+  {
     super(name);
+  }
+  public String getName(){
+    return super.getName();
   }
 }

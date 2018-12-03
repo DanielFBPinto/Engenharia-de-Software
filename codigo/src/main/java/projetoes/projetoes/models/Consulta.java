@@ -36,4 +36,12 @@ public class Consulta extends BaseModel
   public Consulta(int precoConsulta) {
     this.precoConsulta = precoConsulta;
   }
+  public void addMedico(Medico medico){
+    this.myMedico= medico;
+    //medico.addConsulta(this);
+  }
+  public void addPaciente(Paciente paciente){
+    this.myPaciente= paciente;
+    paciente.addConsulta(this);
+  }
 }

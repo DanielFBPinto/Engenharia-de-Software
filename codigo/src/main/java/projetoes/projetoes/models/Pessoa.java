@@ -18,6 +18,9 @@ public class Pessoa extends BaseModel
   private LocalDateTime dataNascimento;
   private Integer numCC;
 
+  public String getName() {
+    return name;
+  }
 
   public Pessoa(String name) {
     this.name = name;

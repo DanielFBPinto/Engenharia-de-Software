@@ -37,7 +37,11 @@ public class Paciente extends Pessoa
   {
 
   }
+  public void addConsulta(Consulta consulta){
+    this.myConsulta.add(consulta);
+    //consulta.addPaciente(this);
 
+  }
   public Paciente(String name) {
     super(name);
   }

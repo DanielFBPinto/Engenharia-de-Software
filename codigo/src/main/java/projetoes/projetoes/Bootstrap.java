@@ -10,6 +10,7 @@ import projetoes.projetoes.models.*;
 import projetoes.projetoes.repositories.*;
 
 
+import javax.validation.constraints.Null;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,8 +40,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
     {
         Set<Medico> medicos = createMedicosFromFile();
-        Set<Consulta> consultas= createConsultasFromFile();
-        Set<Paciente> pacientes= createPacienteFromFile();
+        Set<Consulta> consultas= createConsultasFromFile(medicos);
+        Set<Paciente> pacientes= createPacienteFromFile(consultas);
+        for (Medico medico:medicos
+             ) {
+            medicoService.save(medico);
+        }
+
         logger.debug(medicos.toString());
     }
 
@@ -67,7 +73,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return medicos;
     }
-    private Set<Consulta> createConsultasFromFile()
+    private Set<Consulta> createConsultasFromFile(Set<Medico> medicos)
     {
         Set<Consulta> consultas = new HashSet<>();
         String line;
@@ -81,6 +87,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
                 String attributes[]=line.split(",");
 
                 Consulta consulta = new Consulta(Integer.parseInt(attributes[0]));
+               Medico medico= getMById(Integer.parseInt(attributes[1]),medicos);
+                if(medico!= null)
+                    medico.addConsulta(consulta);
                 consultas.add(consulta);
                 consultaService.save(consulta);
             }
@@ -90,7 +99,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return consultas;
     }
-    private Set<Paciente> createPacienteFromFile()
+    private Set<Paciente> createPacienteFromFile(Set<Consulta> consultas)
     {
         Set<Paciente> pacientes = new HashSet<>();
         String line;
@@ -104,6 +113,15 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
                 String attributes[]=line.split(",");
 
                 Paciente paciente = new Paciente(attributes[0]);
+                Consulta consulta;
+
+                if(attributes.length>2) {
+                    consulta = getCById(Integer.parseInt(attributes[1]), consultas);
+                    if(consulta!=null)
+                        consulta.addPaciente(paciente);
+                }
+
+
                 pacientes.add(paciente);
                 pacienteService.save(paciente);
             }
@@ -113,7 +131,21 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return pacientes;
     }
+    private Medico getMById(int id,Set<Medico>medicos){
+        for(Medico medico: medicos){
+            if(medico.getId()==(id))
+                return medico;
+        }
+        return null;
+    }
+    private Consulta getCById(int id, Set<Consulta>consultas){
+        for(Consulta consulta: consultas){
+            if(consulta.getId()==id)
+                return consulta;
+        }
 
+        return null;
+    }
 
 }
 
