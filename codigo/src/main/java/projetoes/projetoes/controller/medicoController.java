@@ -9,7 +9,7 @@ import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.repositories.MedicoRepoI;
 
 @Controller
-@RequestMapping("/Clinica")
+@RequestMapping("/medico")
 public class medicoController
 {
      @Autowired
@@ -21,16 +21,24 @@ public class medicoController
           return medicoRepo.findAll();
      }
 
-     @RequestMapping(value = "/{cedulaMedica}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+     @RequestMapping(value = "/id/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+     public @ResponseBody Medico getMedicoById(@PathVariable("id")Long id){
+          return medicoRepo.findById(id).get();
+     }
+     @RequestMapping(value = "/cedula/{cedulaMedica}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
      public @ResponseBody Medico getMedico(@PathVariable("cedulaMedica") Integer cedulaMedica)
      {
           return medicoRepo.findByCedulaMedica(cedulaMedica).get();
      }
 
-     @RequestMapping(value = "/{especialidade",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+     @RequestMapping(value = "/especialidade/{especialidade}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
      public @ResponseBody Medico getMedico(@PathVariable("especialidade") String especialidade)
      {
           return medicoRepo.findByEspecialidade(especialidade).get();
      }
+//     @RequestMapping(value = "/nome/{nome}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+//     public @ResponseBody Medico getMedicoBynome(@PathVariable("nome")String nome){
+//          return medicoRepo.findByNome(nome).get();
+//     }
 
 }

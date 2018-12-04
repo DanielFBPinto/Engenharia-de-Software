@@ -1,11 +1,11 @@
 Alexandro
 Aléxia
-Alexina,4
+Alexina
 Aléxio
 Aléxis
 Alfeu
 Alfreda
-Ália,1
+Ália
 Aliana
 Aliça
 Alice
@@ -15,7 +15,7 @@ Alina
 Aline
 Alípio
 Alírio
-Elodia,2
+Elodia
 Elódia
 Elói
 Eloisa
@@ -35,10 +35,10 @@ Elzo
 Ema
 Emanuel
 Emanuela
-Emaús,8
+Emaús
 Emídia
 Emídio
 Emília
 Emiliana
 Emo
-Encarnação,10
+Encarnação

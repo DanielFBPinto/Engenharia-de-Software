@@ -3,6 +3,7 @@ package projetoes.projetoes.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +18,12 @@ public class ConsultaController {
 
     @RequestMapping(value = "/",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Iterable<Consulta> getALLConsultas(){
+    Iterable<Consulta> getALLConsultas()
+    {
         return consultaRepo.findAll();
+    }
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Consulta getConsultaById(@PathVariable("id")Long id) {
+            return consultaRepo.findById(id).get();
     }
 }

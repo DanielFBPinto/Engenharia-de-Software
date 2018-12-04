@@ -42,6 +42,6 @@ public class Consulta extends BaseModel
   }
   public void addPaciente(Paciente paciente){
     this.myPaciente= paciente;
-    paciente.addConsulta(this);
+    //paciente.addConsulta(this);
   }
 }

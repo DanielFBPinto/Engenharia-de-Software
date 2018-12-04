@@ -40,8 +40,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
     {
         Set<Medico> medicos = createMedicosFromFile();
-        Set<Consulta> consultas= createConsultasFromFile(medicos);
-        Set<Paciente> pacientes= createPacienteFromFile(consultas);
+        Set<Paciente> pacientes= createPacienteFromFile();
+        Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
+
         for (Medico medico:medicos
              ) {
             medicoService.save(medico);
@@ -65,7 +66,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
 
                 Medico medico = new Medico(Integer.parseInt(attributes[0]), attributes[1],attributes[2]);
                 medicos.add(medico);
-                medicoService.save(medico);
+               medicoService.save(medico);
             }
 
         } catch (IOException e) {
@@ -73,7 +74,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return medicos;
     }
-    private Set<Consulta> createConsultasFromFile(Set<Medico> medicos)
+    private Set<Consulta> createConsultasFromFile(Set<Medico> medicos, Set<Paciente> pacientes)
     {
         Set<Consulta> consultas = new HashSet<>();
         String line;
@@ -90,8 +91,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
                Medico medico= getMById(Integer.parseInt(attributes[1]),medicos);
                 if(medico!= null)
                     medico.addConsulta(consulta);
+                Paciente paciente= getPById(Integer.parseInt(attributes[2]),pacientes);
+                if(paciente!=null)
+                    paciente.addConsulta(consulta);
                 consultas.add(consulta);
-                consultaService.save(consulta);
+               consultaService.save(consulta);
             }
 
         } catch (IOException e) {
@@ -99,7 +103,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return consultas;
     }
-    private Set<Paciente> createPacienteFromFile(Set<Consulta> consultas)
+    private Set<Paciente> createPacienteFromFile()
     {
         Set<Paciente> pacientes = new HashSet<>();
         String line;
@@ -113,13 +117,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
                 String attributes[]=line.split(",");
 
                 Paciente paciente = new Paciente(attributes[0]);
-                Consulta consulta;
-
-                if(attributes.length>2) {
-                    consulta = getCById(Integer.parseInt(attributes[1]), consultas);
-                    if(consulta!=null)
-                        consulta.addPaciente(paciente);
-                }
+//                Consulta consulta;
+//
+//                if(attributes.length>2) {
+//                    consulta = getCById(Integer.parseInt(attributes[1]), consultas);
+//                    if(consulta!=null)
+//                        consulta.addPaciente(paciente);
+//                }
 
 
                 pacientes.add(paciente);
@@ -138,10 +142,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return null;
     }
-    private Consulta getCById(int id, Set<Consulta>consultas){
-        for(Consulta consulta: consultas){
-            if(consulta.getId()==id)
-                return consulta;
+    private Paciente getPById(int id, Set<Paciente>pacientes){
+        for(Paciente paciente: pacientes){
+            if(paciente.getId()==id)
+                return paciente;
         }
 
         return null;
