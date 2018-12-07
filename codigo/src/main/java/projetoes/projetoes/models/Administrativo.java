@@ -15,4 +15,13 @@ public class Administrativo extends Funcionario
 {
 
     public String cargo;
+
+    public Administrativo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public Administrativo(String name, String cargo) {
+        super(name);
+        this.cargo = cargo;
+    }
 }

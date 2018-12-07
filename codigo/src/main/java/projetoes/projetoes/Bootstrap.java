@@ -27,13 +27,15 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
     private MedicoRepoI medicoService;
     private ConsultaRepo consultaService;
     private PacienteRepo pacienteService;
+    private AdministrativoRepo administrativoRepo;
 
-    public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService)
+    public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService,AdministrativoRepo administrativoRepo)
 
     {
         this.medicoService = medicoService;
         this.consultaService= consultaService;
         this.pacienteService= pacienteService;
+        this.administrativoRepo= administrativoRepo;
     }
 
     @Override
@@ -42,10 +44,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         Set<Medico> medicos = createMedicosFromFile();
         Set<Paciente> pacientes= createPacienteFromFile();
         Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
-
-        for (Medico medico:medicos
-             ) {
-            medicoService.save(medico);
+        Administrativo administrativo = new Administrativo("Zequinha","chefe");
+        administrativoRepo.save(administrativo);
+        for (Medico medico :medicos)
+        {
+           medicoService.save(medico);
         }
 
         logger.debug(medicos.toString());
