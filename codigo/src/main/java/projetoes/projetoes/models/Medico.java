@@ -1,20 +1,19 @@
 package projetoes.projetoes.models;
-import java.util.ArrayList;
+
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.*;
-
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-public class Medico extends Funcionario {
+public class Medico extends Funcionario
+{
   private Integer cedulaMedica;
   private String especialidade;
 
@@ -30,19 +29,97 @@ public class Medico extends Funcionario {
   @OneToMany(cascade = CascadeType.ALL)
   private Set<Horario> myHorarioMedico = new HashSet<>();
 
-  public String getName(){
+  public String getName()
+  {
     return super.getName();
   }
-  public Medico(Integer cedulaMedica, String especialidade, String name) {
+
+  public Medico(Integer cedulaMedica, String especialidade, String name)
+  {
     super(name);
     this.cedulaMedica = cedulaMedica;
     this.especialidade = especialidade;
-
   }
 
-  public void addConsulta(Consulta consulta){
+  public void addConsulta(Consulta consulta)
+  {
     this.myConsulta.add(consulta);
     consulta.addMedico(this);
   }
 
+  public boolean isWorking(LocalDateTime data)
+  {
+      for(Horario horario : this.myHorarioMedico)
+      {
+        if(!(horario.getDiaSemana().equals(data.getDayOfWeek()) && horario.getHoraInicio().isBefore(data)))
+        {
+          return false;
+        }
+      }
+      return true;
+  }
+
+  public boolean temConsulta(LocalDateTime data)
+  {
+    for(Consulta consulta : this.myConsulta)
+    {
+      if(consulta.getData().equals(data))
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean isPossible(LocalDateTime data)
+  {
+    if(this.isWorking(data))
+    {
+      if(this.temConsulta(data))
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public void marcarConsulta(Paciente paciente,LocalDateTime dataConsulta)
+  {
+      if(paciente.isFree(dataConsulta))
+      {
+          if(this.isPossible(dataConsulta))
+          {
+              Consulta consulta = new Consulta();
+              paciente.addConsulta(consulta);
+              //consulta.addMedico(this);
+              this.myConsulta.add(consulta);
+          }
+      }
+  }
+
+  public void cancelarConsulta(LocalDateTime dataConsulta,Paciente paciente)
+  {
+      for(Consulta consulta : this.myConsulta)
+      {
+          if(consulta.getData().equals(dataConsulta) && consulta.getMyPaciente().getId().equals(paciente.getId()))
+          {
+              paciente.getMyConsulta().remove(consulta);
+              this.myConsulta.remove(consulta);
+          }
+      }
+  }
+
+  public void alterarConsulta(Paciente paciente,LocalDateTime dataAnterior,LocalDateTime novaData)
+  {
+      for(Consulta consulta : this.myConsulta)
+      {
+          if(consulta.getData().equals(dataAnterior))
+          {
+              paciente.getMyConsulta().remove(consulta);
+              this.myConsulta.remove(consulta);
+              this.marcarConsulta(paciente,novaData);
+          }
+      }
+  }
 }
+

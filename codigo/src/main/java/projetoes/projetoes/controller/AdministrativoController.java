@@ -2,27 +2,41 @@ package projetoes.projetoes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import projetoes.projetoes.models.Administrativo;
 import projetoes.projetoes.repositories.AdministrativoRepo;
+import projetoes.projetoes.service.AdministrativoService;
 
-@Controller
+@RestController
 @RequestMapping(value = "/Administrativo")
-public class AdministrativoController {
+public class AdministrativoController
+{
     @Autowired
-    AdministrativoRepo administrativoRepo;
+    private AdministrativoService administrativoService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Iterable<Administrativo> getAllAdministrativo(){
-        return administrativoRepo.findAll();
+    public ResponseEntity<Iterable<Administrativo>> getAllAdministrativo()
+    {
+        Iterable<Administrativo> allAdministrativo = administrativoService.getAllAdministrativo();
+        if(allAdministrativo == null)
+        {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(allAdministrativo);
+
     }
+
     @RequestMapping(value = "/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    Administrativo getAdministrativoById(@PathVariable("id")Long id) {
-        return administrativoRepo.findById(id).get();
+    public ResponseEntity<Administrativo> getAdministrativoById(@PathVariable("id")Long id)
+    {
+        Administrativo administrativo = administrativoService.findById(id);
+        if(administrativo == null)
+        {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(administrativo);
     }
+
 }

@@ -19,6 +19,13 @@ public class Horario extends BaseModel
   private LocalDateTime horaInicio;
   private LocalDateTime horaFim;
   private String diaSemana;
- // @ManyToMany(cascade = CascadeType.ALL)
+  //@ManyToMany(cascade = CascadeType.ALL)
   //private Set<Horario> myHorario = new HashSet<>();
+
+  public Horario(LocalDateTime horaInicio,LocalDateTime horaFim,String diaSemana)
+  {
+    this.horaInicio = horaInicio;
+    this.horaFim = horaFim;
+    this.diaSemana = diaSemana;
+  }
 }

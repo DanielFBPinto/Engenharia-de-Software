@@ -1,4 +1,5 @@
 package projetoes.projetoes.models;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -17,32 +18,32 @@ import javax.persistence.*;
 @ToString
 public class Paciente extends Pessoa
 {
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Consulta> myConsulta = new HashSet<>();
 
-  @EqualsAndHashCode.Exclude
-  @ToString.Exclude
-  @JsonIgnore
-  @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
-  private Set<Consulta> myConsulta = new HashSet<>();
-  public void marcarConsulta(Date data)
+  public Paciente(String name)
   {
-
+      super(name);
   }
 
-  public void cancelarConsulta(Date date)
+  public boolean isFree(LocalDateTime dataConsulta)
   {
-
+      for(Consulta consulta : this.myConsulta)
+      {
+          if(consulta.getData().equals(dataConsulta))
+          {
+              return false;
+          }
+      }
+      return true;
   }
 
-  public void alterarCOnsulta(Date data)
+  public void addConsulta(Consulta consulta)
   {
-
-  }
-  public void addConsulta(Consulta consulta){
-    this.myConsulta.add(consulta);
-    consulta.addPaciente(this);
-
-  }
-  public Paciente(String name) {
-    super(name);
+      this.myConsulta.add(consulta);
+      consulta.addPaciente(this);
   }
 }

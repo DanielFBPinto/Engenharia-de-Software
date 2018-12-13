@@ -16,7 +16,8 @@ public class Funcionario extends Pessoa
   {
     super(name);
   }
-  public String getName(){
+  public String getName()
+  {
     return super.getName();
   }
 }

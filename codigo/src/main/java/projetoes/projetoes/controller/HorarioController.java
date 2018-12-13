@@ -1,30 +1,40 @@
 package projetoes.projetoes.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.repositories.HorarioRepo;
+import projetoes.projetoes.service.HorarioService;
 
-@Controller
+@RestController
 @RequestMapping("/horario")
-public class HorarioController {
+public class HorarioController
+{
     @Autowired
-    private HorarioRepo horarioRepo;
+    private HorarioService horarioService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody
-    Iterable<Horario> getALLHorarios()
+    public ResponseEntity<Iterable<Horario>> getAllHorarios()
     {
-        return horarioRepo.findAll();
+        Iterable<Horario> allHorarios = horarioService.getAllHorarios();
+        if(allHorarios == null)
+        {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(allHorarios);
     }
+
     @RequestMapping(value = "/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Horario getHorarioById(@PathVariable("id")Long id) {
-        return horarioRepo.findById(id).get();
+    public ResponseEntity<Horario> getById(@PathVariable("id")Long id)
+    {
+        Horario horario = horarioService.findById(id);
+        if(horario == null)
+        {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(horario);
     }
 }
