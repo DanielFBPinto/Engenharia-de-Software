@@ -2,6 +2,7 @@ package projetoes.projetoes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import projetoes.projetoes.jsonfiles.ConsultaJSON;
 import projetoes.projetoes.models.Consulta;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.models.Paciente;
@@ -14,7 +15,6 @@ import java.util.Optional;
 @Service
 public class ConsultaService
 {
-    //oioioi
     @Autowired
     private ConsultaRepo consultaRepo;
     @Autowired
@@ -32,17 +32,17 @@ public class ConsultaService
         return consultaRepo.findById(id).orElse(null);
     }
 
-    public Consulta alterarConsulta(Consulta consulta)
+    public Consulta alterarConsulta(ConsultaJSON consultaJSON)
     {
-        Paciente paciente = pacienteRepo.findByName(consulta.getMyPaciente().getName()).orElse(null);
-        Medico medico = medicoRepo.findByNome(consulta.getMyMedico().getName()).orElse(null);
+        Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).orElse(null);
+        Medico medico = medicoRepo.findByNome(consultaJSON.getNomeMedico()).orElse(null);
 
-        Consulta fetch = medico.existeConsulta(paciente,consulta.getData());
-        if(fetch == null || !medico.isPossible(consulta.getData()))
+        Consulta fetch = medico.existeConsulta(paciente,consultaJSON.getDataAntiga());
+        if(fetch == null || !medico.isPossible(consultaJSON.getDataAntiga()))
         {
             return null;
         }
-        fetch.setData(consulta.getData());
+        fetch.setData(consultaJSON.getNovaData());
         return consultaRepo.save(fetch);
     }
 }

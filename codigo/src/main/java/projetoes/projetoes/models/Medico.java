@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import projetoes.projetoes.jsonfiles.ConsultaJSON;
+
 import javax.persistence.*;
 
 @Entity
@@ -51,7 +53,7 @@ public class Medico extends Funcionario
   {
       for(Horario horario : this.myHorarioMedico)
       {
-        if(!(horario.getDiaSemana().equals(data.getDayOfWeek()) && horario.getHoraInicio().isBefore(data)))
+        if(!(horario.getDiaSemana().equals(data.getDayOfWeek()) && horario.getHoraInicio().isBefore(data)) && horario.getHoraFim().isAfter(data))
         {
           return false;
         }
@@ -91,8 +93,7 @@ public class Medico extends Funcionario
           {
               Consulta consulta = new Consulta();
               paciente.addConsulta(consulta);
-              //consulta.addMedico(this);
-              this.myConsulta.add(consulta);
+              this.addConsulta(consulta);
           }
       }
   }
@@ -120,6 +121,18 @@ public class Medico extends Funcionario
               this.marcarConsulta(paciente,novaData);
           }
       }
+  }
+
+  public Consulta existeConsulta(Paciente paciente,LocalDateTime data)
+  {
+      for(Consulta consulta : this.myConsulta)
+      {
+          if(consulta.getData().equals(data) && consulta.getMyPaciente().getId().equals(paciente.getId()))
+          {
+              return consulta;
+          }
+      }
+      return null;
   }
 }
 
