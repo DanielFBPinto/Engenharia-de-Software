@@ -34,7 +34,7 @@ public class ConsultaController {
     }
 
     @RequestMapping(value = "/marcarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Consulta> marcarConsulta(@ModelAttribute ConsultaJSON consultaJSON) {
+    public ResponseEntity<Consulta> marcarConsulta(@RequestBody ConsultaJSON consultaJSON) {
         Consulta consulta = consultaService.marcarConsulta(consultaJSON);
         if (consulta == null) {
             return ResponseEntity.notFound().build();

@@ -31,4 +31,13 @@ public class ConsultaJSON
         this.nomePaciente = nomePaciente;
     }
 
+    public ConsultaJSON(String nomePaciente,String nomeMedico,LocalDateTime data)
+    {
+        this.nomePaciente = nomePaciente;
+        this.nomeMedico = nomeMedico;
+        this.novaData = data;
+
+    }
+
+
 }
