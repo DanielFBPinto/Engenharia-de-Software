@@ -16,6 +16,10 @@ import javax.persistence.*;
 @ToString
 public class Horario extends BaseModel
 {
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @ManyToOne
+  private Medico myMedico;
   private LocalDateTime horaInicio;
   private LocalDateTime horaFim;
   private String diaSemana;
