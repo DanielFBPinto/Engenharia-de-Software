@@ -41,7 +41,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
     {
-        Set<Medico> medicos = createMedicosFromFile();
+        /*Set<Medico> medicos = createMedicosFromFile();
         Set<Paciente> pacientes= createPacienteFromFile();
         Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
         Administrativo administrativo = new Administrativo("Zequinha","chefe");
@@ -51,7 +51,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
            medicoService.save(medico);
         }
 
-        logger.debug(medicos.toString());
+        logger.debug(medicos.toString());*/
     }
 
     private Set<Medico> createMedicosFromFile()

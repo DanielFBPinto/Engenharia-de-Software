@@ -1,9 +1,11 @@
 package projetoes.projetoes.controller;
 
+import com.sun.tracing.dtrace.ModuleAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import projetoes.projetoes.jsonfiles.ConsultaJSON;
 import projetoes.projetoes.models.Consulta;
 import projetoes.projetoes.service.ConsultaService;
 
@@ -35,4 +37,17 @@ public class ConsultaController
         }
         return ResponseEntity.ok(consulta);
     }
+
+    @RequestMapping(value = "/marcarconsulta",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Consulta> marcarConsulta(@ModelAttribute ConsultaJSON consultaJSON)
+    {
+        Consulta consulta = consultaService.marcarConsulta(consultaJSON);
+        if(consulta == null)
+        {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
+    }
+
+
 }
