@@ -34,15 +34,44 @@ public class ConsultaService
 
     public Consulta alterarConsulta(ConsultaJSON consultaJSON)
     {
-        Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).orElse(null);
-        Medico medico = medicoRepo.findByNome(consultaJSON.getNomeMedico()).orElse(null);
-
-        Consulta fetch = medico.existeConsulta(paciente,consultaJSON.getDataAntiga());
-        if(fetch == null || !medico.isPossible(consultaJSON.getDataAntiga()))
+        if(pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findByNome(consultaJSON.getNomeMedico()).isPresent())
         {
-            return null;
+            Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).get();
+            Medico medico = medicoRepo.findByNome(consultaJSON.getNomeMedico()).get();
+
+            Consulta fetch = medico.existeConsulta(paciente,consultaJSON.getDataAntiga());
+            if(fetch == null || !medico.isPossible(consultaJSON.getDataAntiga()))
+            {
+                return null;
+            }
+            fetch.setData(consultaJSON.getNovaData());
+            return consultaRepo.save(fetch);
         }
-        fetch.setData(consultaJSON.getNovaData());
-        return consultaRepo.save(fetch);
+        return null;
+    }
+
+    public Consulta marcarConsulta(ConsultaJSON consultaJSON)
+    {
+
+        if(pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findByNome(consultaJSON.getNomeMedico()).isPresent())
+        {
+            Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).get();
+            Medico medico = medicoRepo.findByNome(consultaJSON.getNomeMedico()).get();
+
+            if(medico.isPossible(consultaJSON.getNovaData()))
+            {
+                Consulta consulta = new Consulta(consultaJSON.getNovaData(),medico,paciente);
+                return consultaRepo.save(consulta);
+            }
+        }
+        return null;
+    }
+
+    public Consulta cancelarConsulta(ConsultaJSON consultaJSON)
+    {
+        if(pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findByNome(consultaJSON.getNomeMedico()).isPresent())
+        {
+            
+        }
     }
 }

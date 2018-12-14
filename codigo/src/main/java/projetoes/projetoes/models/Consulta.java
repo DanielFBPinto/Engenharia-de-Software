@@ -30,6 +30,13 @@ public class Consulta extends BaseModel
     this.data = data;
   }
 
+  public Consulta(LocalDateTime data,Medico medico,Paciente paciente)
+  {
+    this.data = data;
+    this.myMedico = medico;
+    this.myPaciente = paciente;
+  }
+
   public Consulta(int precoConsulta)
   {
     this.precoConsulta = precoConsulta;
@@ -37,12 +44,10 @@ public class Consulta extends BaseModel
   public void addMedico(Medico medico)
   {
     this.myMedico = medico;
-    //medico.addConsulta(this);
   }
 
   public void addPaciente(Paciente paciente)
   {
     this.myPaciente = paciente;
-    //paciente.addConsulta(this);
   }
 }
