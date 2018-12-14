@@ -23,7 +23,7 @@ import java.util.Set;
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
 {
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
-
+    private HorarioRepo horarioService;
     private MedicoRepoI medicoService;
     private ConsultaRepo consultaService;
     private PacienteRepo pacienteService;
@@ -41,17 +41,17 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
     {
-        /*Set<Medico> medicos = createMedicosFromFile();
-        Set<Paciente> pacientes= createPacienteFromFile();
+        Set<Medico> medicos = createMedicosFromFile();
+       /**Set<Paciente> pacientes= createPacienteFromFile();
         Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
         Administrativo administrativo = new Administrativo("Zequinha","chefe");
         administrativoRepo.save(administrativo);
         for (Medico medico :medicos)
         {
            medicoService.save(medico);
-        }
+        }**/
 
-        logger.debug(medicos.toString());*/
+        logger.debug(medicos.toString());
     }
 
     private Set<Medico> createMedicosFromFile()

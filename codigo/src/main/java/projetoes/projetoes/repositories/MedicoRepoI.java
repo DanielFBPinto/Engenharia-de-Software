@@ -12,5 +12,5 @@ public interface MedicoRepoI extends CrudRepository<Medico,String>
     Optional<Medico> findById(Long id);
     Optional<Medico> findByEspecialidade(String especialidade);
     Optional<Medico> findByCedulaMedica(Integer cedulaMedica);
-    Optional<Medico> findByNome(String nome);
+    Optional<Medico> findByName(String name);
 }
