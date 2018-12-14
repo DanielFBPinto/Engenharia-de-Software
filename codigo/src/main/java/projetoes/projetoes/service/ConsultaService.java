@@ -71,7 +71,13 @@ public class ConsultaService
     {
         if(pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findByNome(consultaJSON.getNomeMedico()).isPresent())
         {
-            
+            Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).get();
+            Medico medico = medicoRepo.findByNome(consultaJSON.getNomeMedico()).get();
+
+            Consulta fetch = medico.existeConsulta(paciente,consultaJSON.getDataAntiga());
+            medico.getMyConsulta().remove(fetch);
+            consultaRepo.delete(fetch);
         }
+        return null;
     }
 }
