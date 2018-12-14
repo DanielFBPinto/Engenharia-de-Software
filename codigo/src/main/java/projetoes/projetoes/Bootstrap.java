@@ -90,8 +90,8 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                 LocalDateTime horafim = LocalDateTime.of(Integer.parseInt(attributes[5]), Integer.parseInt(attributes[6]),
                         Integer.parseInt(attributes[7]), Integer.parseInt(attributes[8]), Integer.parseInt(attributes[9]));
 
-                Horario horario = new Horario(horainicio, horafim, attributes[10]);
-                Medico medico = getMById(Integer.parseInt(attributes[11]), medicos);
+                Horario horario = new Horario(horainicio, horafim);
+                Medico medico = getMById(Integer.parseInt(attributes[10]), medicos);
                 if (medico != null)
                     medico.addHorario(horario);
                 horarios.add(horario);
@@ -115,14 +115,22 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                 String attributes[] = line.split(",");
                 LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]), Integer.parseInt(attributes[4]));
                 Consulta consulta = new Consulta(localDateTime);
-                Medico medico = getMById(Integer.parseInt(attributes[1]), medicos);
-                if (medico != null)
-                    medico.addConsulta(consulta);
-                Paciente paciente = getPById(Integer.parseInt(attributes[2]), pacientes);
-                if (paciente != null)
-                    paciente.addConsulta(consulta);
-                consultas.add(consulta);
-                consultaService.save(consulta);
+                Medico medico = getMById(Integer.parseInt(attributes[5]), medicos);
+//                if (medico != null)
+//                    medico.addConsulta(consulta);
+                Paciente paciente = getPById(Integer.parseInt(attributes[6]), pacientes);
+//                if (paciente != null)
+//                    paciente.addConsulta(consulta);
+                if(medico!=null && paciente!=null) {
+
+                   if( medico.marcarConsulta(paciente, consulta)){
+                       System.out.println("oiehehehheheh");
+                       consultas.add(consulta);
+                       consultaService.save(consulta);
+                   }
+
+                }
+
             }
 
         } catch (IOException e) {

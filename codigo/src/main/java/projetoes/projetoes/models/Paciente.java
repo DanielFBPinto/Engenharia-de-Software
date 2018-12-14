@@ -37,9 +37,9 @@ public class Paciente extends Pessoa {
     }
 
     public void addConsulta(Consulta consulta) {
-        if (isFree(consulta.getData())) {
+       // if (isFree(consulta.getData())) {
             this.myConsulta.add(consulta);
             consulta.addPaciente(this);
-        }
+        //}
     }
 }
