@@ -16,9 +16,9 @@ public class horarioMedicoFilter implements horarioFilter {
 
     @Override
     public Set<Horario> filter(Set<Horario> horarios) {
-        if (medicoToFilter == null)
+        if (medicoToFilter == null) {
             return horarios;
+        }
         return horarios.stream().filter(horario -> horario.getMyMedico() == this.medicoToFilter).collect(Collectors.toSet());
     }
-
 }

@@ -31,5 +31,4 @@ public class Pessoa extends BaseModel {
         this.dataNascimento = dataNascimento;
         this.numCC = numCC;
     }
-
 }

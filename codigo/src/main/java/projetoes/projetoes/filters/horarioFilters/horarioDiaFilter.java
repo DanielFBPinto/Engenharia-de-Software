@@ -17,7 +17,6 @@ public class horarioDiaFilter implements horarioFilter {
         if (diaDaSemanaToFilter == null) {
             return horarios;
         }
-        //return medicos.stream().filter(medico -> medico.getEspecialidade().compareTo(this.especialidadeToFilter) == 0).collect(Collectors.toSet());
         return horarios.stream().filter(horario -> horario.getDiaSemana().compareTo(this.diaDaSemanaToFilter) == 0).collect(Collectors.toSet());
     }
 }

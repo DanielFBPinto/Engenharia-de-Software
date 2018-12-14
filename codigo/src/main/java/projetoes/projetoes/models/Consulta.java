@@ -25,7 +25,6 @@ public class Consulta extends BaseModel {
     @ManyToOne
     private Paciente myPaciente;
 
-
     public Consulta(LocalDateTime data) {
         this.data = data;
     }
@@ -43,6 +42,7 @@ public class Consulta extends BaseModel {
     public void addMedico(Medico medico) {
         this.myMedico = medico;
     }
+
 
     public void addPaciente(Paciente paciente) {
         this.myPaciente = paciente;

@@ -8,6 +8,4 @@ public class medicoObjectFilter {
     private Integer cedulaMedica;
     private String especialidade;
     private Horario horario;
-
-
 }

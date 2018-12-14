@@ -42,5 +42,21 @@ public class ConsultaController {
         return ResponseEntity.ok(consulta);
     }
 
+    @RequestMapping(value = "/alterarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Consulta> alterarConsulta(@ModelAttribute ConsultaJSON consultaJSON) {
+        Consulta consulta = consultaService.alterarConsulta(consultaJSON);
+        if (consulta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
+    }
 
+    @RequestMapping(value = "/cancelarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Consulta> cancelarConsulta(@ModelAttribute ConsultaJSON consultaJSON) {
+        Consulta consulta = consultaService.cancelarConsulta(consultaJSON);
+        if (consulta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
+    }
 }

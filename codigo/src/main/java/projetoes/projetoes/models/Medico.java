@@ -45,7 +45,8 @@ public class Medico extends Funcionario {
         this.myConsulta.add(consulta);
         consulta.addMedico(this);
     }
-    public void addHorario(Horario horario){
+
+    public void addHorario(Horario horario) {
         this.myHorarioMedico.add(horario);
         horario.addMedico(this);
     }

@@ -9,7 +9,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-
 @Entity
 @Getter
 @Setter
@@ -28,9 +27,9 @@ public class Horario extends BaseModel {
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.diaSemana = diaSemana;
-
     }
-    public void addMedico(Medico medico){
+
+    public void addMedico(Medico medico) {
         this.setMyMedico(medico);
     }
 }

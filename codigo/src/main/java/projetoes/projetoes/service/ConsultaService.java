@@ -26,7 +26,10 @@ public class ConsultaService {
     }
 
     public Consulta findById(Long id) {
-        return consultaRepo.findById(id).orElse(null);
+        if (consultaRepo.findById(id).isPresent()) {
+            return consultaRepo.findById(id).get();
+        }
+        return null;
     }
 
     public Consulta alterarConsulta(ConsultaJSON consultaJSON) {

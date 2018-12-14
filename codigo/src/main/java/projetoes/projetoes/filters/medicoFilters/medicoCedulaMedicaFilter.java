@@ -17,8 +17,7 @@ public class medicoCedulaMedicaFilter implements medicoFilter {
         if (cedulaMedicaToFilter == 0) {
             return medicos;
         }
-        return medicos.stream().filter(medico -> medico.getCedulaMedica().equals(this.cedulaMedicaToFilter))
-                .collect(Collectors.toSet());
+        return medicos.stream().filter(medico -> medico.getCedulaMedica().equals(this.cedulaMedicaToFilter)).collect(Collectors.toSet());
     }
 }
 

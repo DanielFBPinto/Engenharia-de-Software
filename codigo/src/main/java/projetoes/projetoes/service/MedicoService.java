@@ -15,14 +15,23 @@ public class MedicoService {
     }
 
     public Medico findById(Long id) {
-        return medicoRepo.findById(id).orElse(null);
+        if (medicoRepo.findById(id).isPresent()) {
+            return medicoRepo.findById(id).get();
+        }
+        return null;
     }
 
     public Medico findByEspecialidade(String especialidade) {
-        return medicoRepo.findByEspecialidade(especialidade).orElse(null);
+        if (medicoRepo.findByEspecialidade(especialidade).isPresent()) {
+            return medicoRepo.findByEspecialidade(especialidade).get();
+        }
+        return null;
     }
 
     public Medico findByCedulaMedica(Integer cedulaMedica) {
-        return medicoRepo.findByCedulaMedica(cedulaMedica).orElse(null);
+        if (medicoRepo.findByCedulaMedica(cedulaMedica).isPresent()) {
+            return medicoRepo.findByCedulaMedica(cedulaMedica).get();
+        }
+        return null;
     }
 }
