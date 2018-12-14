@@ -18,6 +18,10 @@ public class AdministrativoService
 
     public Administrativo findById(Long id)
     {
-        return administrativoRepo.findById(id).orElse(null);
+        if(administrativoRepo.findById(id).isPresent())
+        {
+            return administrativoRepo.findById(id).get();
+        }
+        return null;
     }
 }

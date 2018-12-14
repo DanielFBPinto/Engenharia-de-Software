@@ -18,6 +18,10 @@ public class HorarioService
 
     public Horario findById(long id)
     {
-        return horarioRepo.findById(id).orElse(null);
+        if(horarioRepo.findById(id).isPresent())
+        {
+            return horarioRepo.findById(id).get();
+        }
+        return null;
     }
 }
