@@ -10,58 +10,39 @@ import projetoes.projetoes.service.MedicoService;
 
 @RestController
 @RequestMapping("/medico")
-public class medicoController
-{
+public class medicoController {
     @Autowired
     private MedicoService medicoService;
 
- /*   @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Medico>> getAllMedicos()
-    {
-        Iterable<Medico> allMedicos = medicoService.getAllMedicos();
-        if(allMedicos == null)
-        {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(allMedicos);
-    }
-*/
-
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Medico>> getAllMedicos(medicoObjectFilter medicoObjectFilter)
-    {
-        return medicoService.getFilteredMedicos(medicoObjectFilter);
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Iterable<Medico>> getAllMedicos(@ModelAttribute medicoObjectFilter medicoObjectFilter) {
+        Iterable<Medico> medicos = medicoService.getFilteredMedicos(medicoObjectFilter);
+        return (medicos == null) ? ResponseEntity.notFound().build() : ResponseEntity.ok(medicos);
     }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico> getMedicoById(@PathVariable("id")Long id)
-    {
+    public ResponseEntity<Medico> getMedicoById(@PathVariable("id") Long id) {
         Medico medico = medicoService.findById(id);
-        if(medico == null)
-        {
+        if (medico == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(medico);
     }
 
     @RequestMapping(value = "/cedula/{cedulaMedica}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico> getMedicoCedula(@PathVariable("cedulaMedica") Integer cedulaMedica)
-    {
+    public ResponseEntity<Medico> getMedicoCedula(@PathVariable("cedulaMedica") Integer cedulaMedica) {
         Medico medico = medicoService.findByCedulaMedica(cedulaMedica);
-        if(medico == null)
-        {
+        if (medico == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(medico);
     }
 
     @RequestMapping(value = "/especialidade/{especialidade}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico> getMedicoEspecialidade(@PathVariable("especialidade") String especialidade)
-    {
+    public ResponseEntity<Medico> getMedicoEspecialidade(@PathVariable("especialidade") String especialidade) {
         Medico medico = medicoService.findByEspecialidade(especialidade);
-        if(medico == null)
-        {
+        if (medico == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(medico);

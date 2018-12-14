@@ -12,17 +12,14 @@ import projetoes.projetoes.service.PacienteService;
 
 @RestController
 @RequestMapping("/paciente")
-public class PacienteController
-{
+public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable <Paciente>> getAllPacientes()
-    {
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Iterable<Paciente>> getAllPacientes() {
         Iterable<Paciente> allPacientes = pacienteService.getAllPacientes();
-        if(allPacientes ==  null)
-        {
+        if (allPacientes == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(allPacientes);

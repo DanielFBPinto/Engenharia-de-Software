@@ -11,29 +11,24 @@ import projetoes.projetoes.service.AdministrativoService;
 
 @RestController
 @RequestMapping(value = "/Administrativo")
-public class AdministrativoController
-{
+public class AdministrativoController {
     @Autowired
     private AdministrativoService administrativoService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Administrativo>> getAllAdministrativo()
-    {
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Iterable<Administrativo>> getAllAdministrativo() {
         Iterable<Administrativo> allAdministrativo = administrativoService.getAllAdministrativo();
-        if(allAdministrativo == null)
-        {
+        if (allAdministrativo == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(allAdministrativo);
 
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Administrativo> getAdministrativoById(@PathVariable("id")Long id)
-    {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Administrativo> getAdministrativoById(@PathVariable("id") Long id) {
         Administrativo administrativo = administrativoService.findById(id);
-        if(administrativo == null)
-        {
+        if (administrativo == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(administrativo);

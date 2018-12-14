@@ -6,20 +6,16 @@ import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.repositories.HorarioRepo;
 
 @Service
-public class HorarioService
-{
+public class HorarioService {
     @Autowired
     private HorarioRepo horarioRepo;
 
-    public Iterable<Horario> getAllHorarios()
-    {
+    public Iterable<Horario> getAllHorarios() {
         return horarioRepo.findAll();
     }
 
-    public Horario findById(long id)
-    {
-        if(horarioRepo.findById(id).isPresent())
-        {
+    public Horario findById(long id) {
+        if (horarioRepo.findById(id).isPresent()) {
             return horarioRepo.findById(id).get();
         }
         return null;

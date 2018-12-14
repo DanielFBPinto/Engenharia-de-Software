@@ -7,10 +7,12 @@ import projetoes.projetoes.models.Medico;
 import java.util.Optional;
 
 @Repository
-public interface MedicoRepoI extends CrudRepository<Medico,String>
-{
+public interface MedicoRepoI extends CrudRepository<Medico, String> {
     Optional<Medico> findById(Long id);
+
     Optional<Medico> findByEspecialidade(String especialidade);
+
     Optional<Medico> findByCedulaMedica(Integer cedulaMedica);
+
     Optional<Medico> findByName(String name);
 }

@@ -11,28 +11,23 @@ import projetoes.projetoes.service.HorarioService;
 
 @RestController
 @RequestMapping("/horario")
-public class HorarioController
-{
+public class HorarioController {
     @Autowired
     private HorarioService horarioService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Horario>> getAllHorarios()
-    {
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Iterable<Horario>> getAllHorarios() {
         Iterable<Horario> allHorarios = horarioService.getAllHorarios();
-        if(allHorarios == null)
-        {
+        if (allHorarios == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(allHorarios);
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Horario> getById(@PathVariable("id")Long id)
-    {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Horario> getById(@PathVariable("id") Long id) {
         Horario horario = horarioService.findById(id);
-        if(horario == null)
-        {
+        if (horario == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(horario);

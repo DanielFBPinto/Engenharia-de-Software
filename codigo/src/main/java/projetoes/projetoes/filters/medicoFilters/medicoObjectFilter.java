@@ -8,18 +8,19 @@ import projetoes.projetoes.filters.horarioFilters.horarioMedicoFilter;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
 
+import java.util.Set;
+import java.util.logging.Filter;
+
 @Data
-public class medicoObjectFilter
-{
+public class medicoObjectFilter {
     private Integer cedulaMedica;
     private String especialidade;
     private Horario horario;
 
-    public ResponseEntity<Iterable<Medico>> filterMedicos(Iterable<Medico> allMedicos, medicoObjectFilter medicoObjectFilter)
-    {
+    public Set<Medico> filterMedicos(Set<Medico> medicos, medicoObjectFilter medicoObjectFilter) {
         FilterI<Medico> medicoEspecialidadeFilter = new medicoEspecialidadeFilter(medicoObjectFilter.getEspecialidade());
-        FilterI<Medico> medicoHorarioFilter = new horarioMedicoFilter(medicoObjectFilter.getHorario());
-        FilterI<Medico> especialidadeEhorarioFilter = new AndFilter<>(medicoEspecialidadeFilter,medicoHorarioFilter);
-        return especialidadeEhorarioFilter.filter(allMedicos);
+        FilterI<Medico> medicoCedulaMedica = new medicoCedulaMedicaFilter(medicoObjectFilter.getCedulaMedica());
+        FilterI<Medico> especialidadeHorarioANDCedulaMedica = new AndFilter<>(medicoEspecialidadeFilter, medicoCedulaMedica);
+        return especialidadeHorarioANDCedulaMedica.filter(medicos);
     }
 }

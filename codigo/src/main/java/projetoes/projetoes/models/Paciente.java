@@ -16,34 +16,28 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Paciente extends Pessoa
-{
+public class Paciente extends Pessoa {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Consulta> myConsulta = new HashSet<>();
 
-  public Paciente(String name)
-  {
-      super(name);
-  }
+    public Paciente(String name) {
+        super(name);
+    }
 
-  public boolean isFree(LocalDateTime dataConsulta)
-  {
-      for(Consulta consulta : this.myConsulta)
-      {
-          if(consulta.getData().equals(dataConsulta))
-          {
-              return false;
-          }
-      }
-      return true;
-  }
+    public boolean isFree(LocalDateTime dataConsulta) {
+        for (Consulta consulta : this.myConsulta) {
+            if (consulta.getData().equals(dataConsulta)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-  public void addConsulta(Consulta consulta)
-  {
-      this.myConsulta.add(consulta);
-      consulta.addPaciente(this);
-  }
+    public void addConsulta(Consulta consulta) {
+        this.myConsulta.add(consulta);
+        consulta.addPaciente(this);
+    }
 }
