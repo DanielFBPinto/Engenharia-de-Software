@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,24 +29,28 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private PacienteRepo pacienteService;
     private AdministrativoRepo administrativoRepo;
 
-    public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService, AdministrativoRepo administrativoRepo) {
+    public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService,
+                     AdministrativoRepo administrativoRepo, HorarioRepo horarioRepo)
+
+    {
         this.medicoService = medicoService;
         this.consultaService = consultaService;
         this.pacienteService = pacienteService;
         this.administrativoRepo = administrativoRepo;
+        this.horarioService = horarioRepo;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Set<Medico> medicos = createMedicosFromFile();
-        /**Set<Paciente> pacientes= createPacienteFromFile();
-         Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
-         Administrativo administrativo = new Administrativo("Zequinha","chefe");
-         administrativoRepo.save(administrativo);
-         for (Medico medico :medicos)
-         {
-         medicoService.save(medico);
-         }**/
+        Set<Horario> horarios = createHorarioFromFile(medicos);
+        Set<Paciente> pacientes = createPacienteFromFile();
+        Set<Consulta> consultas = createConsultasFromFile(medicos, pacientes);
+
+        Administrativo administrativo = new Administrativo("Zequinha", "chefe");
+        administrativoRepo.save(administrativo);
+        //  for (Medico medico :medicos)
+        // medicoService.save(medico);
 
         logger.debug(medicos.toString());
     }
@@ -71,6 +76,34 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         return medicos;
     }
 
+    private Set<Horario> createHorarioFromFile(Set<Medico> medicos) {
+        Set<Horario> horarios = new HashSet<>();
+        String line;
+
+        InputStream is = this.getClass().getResourceAsStream("/horarios.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String attributes[] = line.split(",");
+                LocalDateTime horainicio = LocalDateTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1])
+                        , Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]), Integer.parseInt(attributes[4]));
+                LocalDateTime horafim = LocalDateTime.of(Integer.parseInt(attributes[5]), Integer.parseInt(attributes[6]),
+                        Integer.parseInt(attributes[7]), Integer.parseInt(attributes[8]), Integer.parseInt(attributes[9]));
+
+                Horario horario = new Horario(horainicio, horafim);
+                Medico medico = getMById(Integer.parseInt(attributes[10]), medicos);
+                if (medico != null)
+                    medico.addHorario(horario);
+                horarios.add(horario);
+                horarioService.save(horario);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return horarios;
+    }
+
     private Set<Consulta> createConsultasFromFile(Set<Medico> medicos, Set<Paciente> pacientes) {
         Set<Consulta> consultas = new HashSet<>();
         String line;
@@ -80,16 +113,24 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
                 String attributes[] = line.split(",");
+                LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]), Integer.parseInt(attributes[4]));
+                Consulta consulta = new Consulta(localDateTime);
+                Medico medico = getMById(Integer.parseInt(attributes[5]), medicos);
+//                if (medico != null)
+//                    medico.addConsulta(consulta);
+                Paciente paciente = getPById(Integer.parseInt(attributes[6]), pacientes);
+//                if (paciente != null)
+//                    paciente.addConsulta(consulta);
+                if(medico!=null && paciente!=null) {
 
-                Consulta consulta = new Consulta(Integer.parseInt(attributes[0]));
-                Medico medico = getMById(Integer.parseInt(attributes[1]), medicos);
-                if (medico != null)
-                    medico.addConsulta(consulta);
-                Paciente paciente = getPById(Integer.parseInt(attributes[2]), pacientes);
-                if (paciente != null)
-                    paciente.addConsulta(consulta);
-                consultas.add(consulta);
-                consultaService.save(consulta);
+                   if( medico.marcarConsulta(paciente, consulta)){
+                       System.out.println("oiehehehheheh");
+                       consultas.add(consulta);
+                       consultaService.save(consulta);
+                   }
+
+                }
+
             }
 
         } catch (IOException e) {

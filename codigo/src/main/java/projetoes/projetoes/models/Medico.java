@@ -46,13 +46,20 @@ public class Medico extends Funcionario {
         consulta.addMedico(this);
     }
 
+    public void addHorario(Horario horario) {
+        this.myHorarioMedico.add(horario);
+        horario.addMedico(this);
+    }
+
     public boolean isWorking(LocalDateTime data) {
         for (Horario horario : this.myHorarioMedico) {
-            if (!(horario.getDiaSemana().equals(data.getDayOfWeek()) && horario.getHoraInicio().isBefore(data)) && horario.getHoraFim().isAfter(data)) {
-                return false;
+            if ((horario.getDiaSemana().equals(data.getDayOfWeek().name())
+                    && horario.getHoraInicio().isBefore(data)) &&
+                    horario.getHoraFim().isAfter(data)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean temConsulta(LocalDateTime data) {
@@ -66,7 +73,10 @@ public class Medico extends Funcionario {
 
     public boolean isPossible(LocalDateTime data) {
         if (this.isWorking(data)) {
-            if (this.temConsulta(data)) {
+            System.out.println("medicos is working");
+            if (!this.temConsulta(data)) {
+                System.out.println("medicos does not have an appointment");
+
                 return true;
             }
         }
@@ -81,6 +91,18 @@ public class Medico extends Funcionario {
                 this.addConsulta(consulta);
             }
         }
+    }
+    public boolean marcarConsulta(Paciente paciente, Consulta consulta) {
+        if (paciente.isFree(consulta.getData())) {
+            System.out.println("paciente is free");
+            if (this.isPossible(consulta.getData())) {
+
+                paciente.addConsulta(consulta);
+                this.addConsulta(consulta);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void cancelarConsulta(LocalDateTime dataConsulta, Paciente paciente) {
