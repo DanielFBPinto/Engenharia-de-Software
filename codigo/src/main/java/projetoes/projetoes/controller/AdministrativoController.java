@@ -38,5 +38,4 @@ public class AdministrativoController
         }
         return ResponseEntity.ok(administrativo);
     }
-
 }

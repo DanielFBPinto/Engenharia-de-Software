@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.service.MedicoService;
 
-
 @RestController
 @RequestMapping("/medico")
 public class medicoController
@@ -47,7 +46,6 @@ public class medicoController
         }
         return ResponseEntity.ok(medico);
     }
-
 
     @RequestMapping(value = "/especialidade/{especialidade}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Medico> getMedicoEspecialidade(@PathVariable("especialidade") String especialidade)

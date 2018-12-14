@@ -1,4 +1,5 @@
 package projetoes.projetoes.models;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
@@ -7,7 +8,6 @@ import java.util.Set;
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @Entity
 @Getter
@@ -29,6 +29,6 @@ public class Horario extends BaseModel
     this.horaInicio = horaInicio;
     this.horaFim = horaFim;
     this.diaSemana = diaSemana;
-    this.myMedico=medico;
+    this.myMedico = medico;
   }
 }

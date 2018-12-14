@@ -1,4 +1,5 @@
 package projetoes.projetoes.models;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @Entity
 @Getter
