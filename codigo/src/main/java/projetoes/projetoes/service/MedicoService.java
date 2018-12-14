@@ -1,7 +1,9 @@
 package projetoes.projetoes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import projetoes.projetoes.filters.medicoFilters.medicoObjectFilter;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.repositories.MedicoRepoI;
 
@@ -41,5 +43,10 @@ public class MedicoService
             return medicoRepo.findByCedulaMedica(cedulaMedica).get();
         }
         return null;
+    }
+
+    public ResponseEntity<Iterable<Medico>> getFilteredMedicos(medicoObjectFilter medicoObjectFilter)
+    {
+        return medicoObjectFilter.filterMedicos(getAllMedicos(),medicoObjectFilter);
     }
 }
