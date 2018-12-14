@@ -6,13 +6,11 @@ import projetoes.projetoes.models.Paciente;
 import projetoes.projetoes.repositories.PacienteRepo;
 
 @Service
-public class PacienteService
-{
+public class PacienteService {
     @Autowired
     private PacienteRepo pacienteRepo;
 
-    public Iterable<Paciente> getAllPacientes()
-    {
+    public Iterable<Paciente> getAllPacientes() {
         return pacienteRepo.findAll();
     }
 }

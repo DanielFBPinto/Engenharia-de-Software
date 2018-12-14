@@ -16,12 +16,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
-{
+public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
     private HorarioRepo horarioService;
     private MedicoRepoI medicoService;
@@ -29,47 +29,45 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
     private PacienteRepo pacienteService;
     private AdministrativoRepo administrativoRepo;
 
-    public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService,AdministrativoRepo administrativoRepo)
+    public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService,
+                     AdministrativoRepo administrativoRepo,HorarioRepo horarioRepo)
 
     {
         this.medicoService = medicoService;
-        this.consultaService= consultaService;
-        this.pacienteService= pacienteService;
-        this.administrativoRepo= administrativoRepo;
+        this.consultaService = consultaService;
+        this.pacienteService = pacienteService;
+        this.administrativoRepo = administrativoRepo;
+        this.horarioService = horarioRepo;
     }
 
     @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
-    {
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Set<Medico> medicos = createMedicosFromFile();
-       /**Set<Paciente> pacientes= createPacienteFromFile();
-        Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
-        Administrativo administrativo = new Administrativo("Zequinha","chefe");
+        Set<Horario> horarios=createHorarioFromFile(medicos);
+        Set<Paciente> pacientes = createPacienteFromFile();
+         Set<Consulta> consultas= createConsultasFromFile(medicos,pacientes);
+
+        Administrativo administrativo = new Administrativo("Zequinha", "chefe");
         administrativoRepo.save(administrativo);
-        for (Medico medico :medicos)
-        {
-           medicoService.save(medico);
-        }**/
+        //  for (Medico medico :medicos)
+        // medicoService.save(medico);
 
         logger.debug(medicos.toString());
     }
 
-    private Set<Medico> createMedicosFromFile()
-    {
+    private Set<Medico> createMedicosFromFile() {
         Set<Medico> medicos = new HashSet<>();
         String line;
 
         InputStream is = this.getClass().getResourceAsStream("/medicos.txt");
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)))
-        {
-            while((line = br.readLine()) != null)
-            {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            while ((line = br.readLine()) != null) {
                 System.out.println(line);
-                String attributes[]=line.split(",");
+                String attributes[] = line.split(",");
 
-                Medico medico = new Medico(Integer.parseInt(attributes[0]), attributes[1],attributes[2]);
+                Medico medico = new Medico(Integer.parseInt(attributes[0]), attributes[1], attributes[2]);
                 medicos.add(medico);
-               medicoService.save(medico);
+                medicoService.save(medico);
             }
 
         } catch (IOException e) {
@@ -77,28 +75,52 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return medicos;
     }
-    private Set<Consulta> createConsultasFromFile(Set<Medico> medicos, Set<Paciente> pacientes)
-    {
+    private Set<Horario> createHorarioFromFile(Set<Medico> medicos) {
+        Set<Horario> horarios = new HashSet<>();
+        String line;
+
+        InputStream is = this.getClass().getResourceAsStream("/horarios.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String attributes[] = line.split(",");
+                LocalDateTime horainicio= LocalDateTime.of(Integer.parseInt(attributes[0]),Integer.parseInt(attributes[1])
+                        ,Integer.parseInt(attributes[2]),Integer.parseInt(attributes[3]),Integer.parseInt(attributes[4]));
+                LocalDateTime horafim= LocalDateTime.of(Integer.parseInt(attributes[5]),Integer.parseInt(attributes[6]),
+                        Integer.parseInt(attributes[7]),Integer.parseInt(attributes[8]),Integer.parseInt(attributes[9]));
+
+                Horario horario = new Horario(horainicio,horafim,attributes[10]);
+                Medico medico = getMById(Integer.parseInt(attributes[11]), medicos);
+                if (medico != null)
+                    medico.addHorario(horario);
+                horarios.add(horario);
+                horarioService.save(horario);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return horarios;
+    }
+    private Set<Consulta> createConsultasFromFile(Set<Medico> medicos, Set<Paciente> pacientes) {
         Set<Consulta> consultas = new HashSet<>();
         String line;
 
         InputStream is = this.getClass().getResourceAsStream("/consultas.txt");
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)))
-        {
-            while((line = br.readLine()) != null)
-            {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            while ((line = br.readLine()) != null) {
                 System.out.println(line);
-                String attributes[]=line.split(",");
-
-                Consulta consulta = new Consulta(Integer.parseInt(attributes[0]));
-               Medico medico= getMById(Integer.parseInt(attributes[1]),medicos);
-                if(medico!= null)
+                String attributes[] = line.split(",");
+                LocalDateTime localDateTime= LocalDateTime.of(Integer.parseInt(attributes[0]),Integer.parseInt(attributes[1]),Integer.parseInt(attributes[2]),Integer.parseInt(attributes[3]),Integer.parseInt(attributes[4]));
+                Consulta consulta = new Consulta(localDateTime);
+                Medico medico = getMById(Integer.parseInt(attributes[1]), medicos);
+                if (medico != null)
                     medico.addConsulta(consulta);
-                Paciente paciente= getPById(Integer.parseInt(attributes[2]),pacientes);
-                if(paciente!=null)
+                Paciente paciente = getPById(Integer.parseInt(attributes[2]), pacientes);
+                if (paciente != null)
                     paciente.addConsulta(consulta);
                 consultas.add(consulta);
-               consultaService.save(consulta);
+                consultaService.save(consulta);
             }
 
         } catch (IOException e) {
@@ -106,18 +128,16 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return consultas;
     }
-    private Set<Paciente> createPacienteFromFile()
-    {
+
+    private Set<Paciente> createPacienteFromFile() {
         Set<Paciente> pacientes = new HashSet<>();
         String line;
 
         InputStream is = this.getClass().getResourceAsStream("/pacientes.txt");
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)))
-        {
-            while((line = br.readLine()) != null)
-            {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            while ((line = br.readLine()) != null) {
                 System.out.println(line);
-                String attributes[]=line.split(",");
+                String attributes[] = line.split(",");
 
                 Paciente paciente = new Paciente(attributes[0]);
 //                Consulta consulta;
@@ -138,16 +158,18 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
         }
         return pacientes;
     }
-    private Medico getMById(int id,Set<Medico>medicos){
-        for(Medico medico: medicos){
-            if(medico.getId()==(id))
+
+    private Medico getMById(int id, Set<Medico> medicos) {
+        for (Medico medico : medicos) {
+            if (medico.getId() == (id))
                 return medico;
         }
         return null;
     }
-    private Paciente getPById(int id, Set<Paciente>pacientes){
-        for(Paciente paciente: pacientes){
-            if(paciente.getId()==id)
+
+    private Paciente getPById(int id, Set<Paciente> pacientes) {
+        for (Paciente paciente : pacientes) {
+            if (paciente.getId() == id)
                 return paciente;
         }
 

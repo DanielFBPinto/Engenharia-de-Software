@@ -6,28 +6,23 @@ import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.repositories.MedicoRepoI;
 
 @Service
-public class MedicoService
-{
+public class MedicoService {
     @Autowired
     private MedicoRepoI medicoRepo;
 
-    public Iterable<Medico> getAllMedicos()
-    {
+    public Iterable<Medico> getAllMedicos() {
         return medicoRepo.findAll();
     }
 
-    public Medico findById(Long id)
-    {
+    public Medico findById(Long id) {
         return medicoRepo.findById(id).orElse(null);
     }
 
-    public Medico findByEspecialidade(String especialidade)
-    {
+    public Medico findByEspecialidade(String especialidade) {
         return medicoRepo.findByEspecialidade(especialidade).orElse(null);
     }
 
-    public Medico findByCedulaMedica(Integer cedulaMedica)
-    {
+    public Medico findByCedulaMedica(Integer cedulaMedica) {
         return medicoRepo.findByCedulaMedica(cedulaMedica).orElse(null);
     }
 }

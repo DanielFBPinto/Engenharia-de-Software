@@ -14,8 +14,7 @@ import javax.persistence.MappedSuperclass;
 @Setter
 @NoArgsConstructor
 
-public class BaseModel
-{
+public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

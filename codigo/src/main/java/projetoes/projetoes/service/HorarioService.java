@@ -6,18 +6,15 @@ import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.repositories.HorarioRepo;
 
 @Service
-public class HorarioService
-{
+public class HorarioService {
     @Autowired
     private HorarioRepo horarioRepo;
 
-    public Iterable<Horario> getAllHorarios()
-    {
+    public Iterable<Horario> getAllHorarios() {
         return horarioRepo.findAll();
     }
 
-    public Horario findById(long id)
-    {
+    public Horario findById(long id) {
         return horarioRepo.findById(id).orElse(null);
     }
 }

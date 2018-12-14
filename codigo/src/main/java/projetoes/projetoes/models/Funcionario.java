@@ -1,5 +1,7 @@
 package projetoes.projetoes.models;
+
 import java.util.ArrayList;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,14 +12,12 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Funcionario extends Pessoa
-{
-  public Funcionario(String name)
-  {
-    super(name);
-  }
-  public String getName()
-  {
-    return super.getName();
-  }
+public class Funcionario extends Pessoa {
+    public Funcionario(String name) {
+        super(name);
+    }
+
+    public String getName() {
+        return super.getName();
+    }
 }

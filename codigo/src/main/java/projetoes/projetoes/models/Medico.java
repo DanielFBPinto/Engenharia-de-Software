@@ -45,6 +45,10 @@ public class Medico extends Funcionario {
         this.myConsulta.add(consulta);
         consulta.addMedico(this);
     }
+    public void addHorario(Horario horario){
+        this.myHorarioMedico.add(horario);
+        horario.addMedico(this);
+    }
 
     public boolean isWorking(LocalDateTime data) {
         for (Horario horario : this.myHorarioMedico) {
