@@ -5,7 +5,7 @@ import projetoes.projetoes.models.Medico;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class medicoCedulaMedicaFilter extends medicoObjectFilter
+public class medicoCedulaMedicaFilter implements medicoFilter
 {
     private Integer cedulaMedicaToFilter;
 
@@ -21,8 +21,7 @@ public class medicoCedulaMedicaFilter extends medicoObjectFilter
         {
             return medicos;
         }
-        return medicos.stream().filter(medico -> medico.getCedulaMedica() == this.cedulaMedicaToFilter)
-                .collect(Collectors.toSet());
+        return medicos.stream().filter(medico -> medico.getCedulaMedica().equals(this.cedulaMedicaToFilter)).collect(Collectors.toSet());
     }
 }
 
