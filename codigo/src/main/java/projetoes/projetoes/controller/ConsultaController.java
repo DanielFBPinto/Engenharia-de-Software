@@ -34,7 +34,7 @@ public class ConsultaController {
     }
 
     @RequestMapping(value = "/marcarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Consulta> marcarConsulta(@ModelAttribute ConsultaJSON consultaJSON) {
+    public ResponseEntity<Consulta> marcarConsulta(@RequestBody ConsultaJSON consultaJSON) {
         Consulta consulta = consultaService.marcarConsulta(consultaJSON);
         if (consulta == null) {
             return ResponseEntity.notFound().build();
@@ -43,7 +43,7 @@ public class ConsultaController {
     }
 
     @RequestMapping(value = "/alterarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Consulta> alterarConsulta(@ModelAttribute ConsultaJSON consultaJSON) {
+    public ResponseEntity<Consulta> alterarConsulta(@RequestBody ConsultaJSON consultaJSON) {
         Consulta consulta = consultaService.alterarConsulta(consultaJSON);
         if (consulta == null) {
             return ResponseEntity.notFound().build();
@@ -52,7 +52,7 @@ public class ConsultaController {
     }
 
     @RequestMapping(value = "/cancelarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Consulta> cancelarConsulta(@ModelAttribute ConsultaJSON consultaJSON) {
+    public ResponseEntity<Consulta> cancelarConsulta(@RequestBody ConsultaJSON consultaJSON) {
         Consulta consulta = consultaService.cancelarConsulta(consultaJSON);
         if (consulta == null) {
             return ResponseEntity.notFound().build();
