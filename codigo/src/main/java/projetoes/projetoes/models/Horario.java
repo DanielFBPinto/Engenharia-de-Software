@@ -24,10 +24,11 @@ public class Horario extends BaseModel
   private LocalDateTime horaFim;
   private String diaSemana;
 
-  public Horario(LocalDateTime horaInicio,LocalDateTime horaFim,String diaSemana)
+  public Horario(LocalDateTime horaInicio,LocalDateTime horaFim,String diaSemana, Medico medico)
   {
     this.horaInicio = horaInicio;
     this.horaFim = horaFim;
     this.diaSemana = diaSemana;
+    this.myMedico=medico;
   }
 }
