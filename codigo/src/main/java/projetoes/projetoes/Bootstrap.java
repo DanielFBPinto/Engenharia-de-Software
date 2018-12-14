@@ -124,7 +124,6 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                 if(medico!=null && paciente!=null) {
 
                    if( medico.marcarConsulta(paciente, consulta)){
-                       System.out.println("oiehehehheheh");
                        consultas.add(consulta);
                        consultaService.save(consulta);
                    }

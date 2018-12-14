@@ -73,10 +73,7 @@ public class Medico extends Funcionario {
 
     public boolean isPossible(LocalDateTime data) {
         if (this.isWorking(data)) {
-            System.out.println("medicos is working");
             if (!this.temConsulta(data)) {
-                System.out.println("medicos does not have an appointment");
-
                 return true;
             }
         }
@@ -94,7 +91,6 @@ public class Medico extends Funcionario {
     }
     public boolean marcarConsulta(Paciente paciente, Consulta consulta) {
         if (paciente.isFree(consulta.getData())) {
-            System.out.println("paciente is free");
             if (this.isPossible(consulta.getData())) {
 
                 paciente.addConsulta(consulta);
