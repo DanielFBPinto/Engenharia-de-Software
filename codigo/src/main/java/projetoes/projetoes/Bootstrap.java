@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -85,13 +87,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
                 String attributes[] = line.split(",");
-                LocalDateTime horainicio = LocalDateTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1])
-                        , Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]), Integer.parseInt(attributes[4]));
-                LocalDateTime horafim = LocalDateTime.of(Integer.parseInt(attributes[5]), Integer.parseInt(attributes[6]),
-                        Integer.parseInt(attributes[7]), Integer.parseInt(attributes[8]), Integer.parseInt(attributes[9]));
-
-                Horario horario = new Horario(horainicio, horafim);
-                Medico medico = getMById(Integer.parseInt(attributes[10]), medicos);
+                LocalTime horainicio = LocalTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1])
+                        );
+                LocalTime horafim = LocalTime.of(Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3])
+                        );
+                DayOfWeek dayOfWeek= DayOfWeek.of(Integer.parseInt(attributes[4]));
+                Horario horario = new Horario(horainicio, horafim,dayOfWeek);
+                Medico medico = getMById(Integer.parseInt(attributes[5]), medicos);
                 if (medico != null)
                     medico.addHorario(horario);
                 horarios.add(horario);

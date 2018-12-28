@@ -24,9 +24,9 @@ public class MedicoHorarioFilter implements FilterI<Medico>
     public Set<Medico> filter(Set<Medico> medicos)
     {
         if(horaInicioFilter == null || horaFimFilter == null)
-        {
-            return medicos;
-        }
+    {
+        return medicos;
+    }
         Set<Medico> medicosFiltered = new HashSet<>();
         for(Medico m : medicos)
         {
@@ -34,7 +34,7 @@ public class MedicoHorarioFilter implements FilterI<Medico>
             for(Horario horario : m.getMyHorarioMedico())
             {
                 if((horario.getHoraInicio().isAfter(LocalTime.from(horaInicioFilter)) || horario.getHoraInicio().equals(horaInicioFilter))
-                && (horario.getHoraFim().isBefore(LocalTime.from(horaFimFilter)) || horario.getHoraFim().equals(horaFimFilter)))
+                        && (horario.getHoraFim().isBefore(LocalTime.from(horaFimFilter)) || horario.getHoraFim().equals(horaFimFilter)))
                 {
                     novoMedico.addHorario(new Horario(horario));
                     medicosFiltered.add(novoMedico);
