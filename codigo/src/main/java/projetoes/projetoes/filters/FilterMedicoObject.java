@@ -13,19 +13,19 @@ public class FilterMedicoObject
     private LocalDate horaInicio;
     private LocalDate horaFim;
 
-    public FilterMedicoObject(String especialidade)
-    {
-        this.especialidade = especialidade;
-    }
-
-    public FilterMedicoObject(LocalDate horaFim,LocalDate horaInicio)
-    {
-        this.horaInicio = horaInicio;
-        this.horaFim = horaFim;
-    }
-
-    public FilterMedicoObject(DayOfWeek diaSemana)
-    {
-        this.diaSemana = diaSemana;
-    }
+//    public FilterMedicoObject(String especialidade)
+//    {
+//        this.especialidade = especialidade;
+//    }
+//
+//    public FilterMedicoObject(LocalDate horaFim,LocalDate horaInicio)
+//    {
+//        this.horaInicio = horaInicio;
+//        this.horaFim = horaFim;
+//    }
+//
+//    public FilterMedicoObject(DayOfWeek diaSemana)
+//    {
+//        this.diaSemana = diaSemana;
+//    }
 }

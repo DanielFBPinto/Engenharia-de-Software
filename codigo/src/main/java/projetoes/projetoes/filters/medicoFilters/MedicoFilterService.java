@@ -1,6 +1,7 @@
 package projetoes.projetoes.filters.medicoFilters;
 
 import lombok.Data;
+import org.springframework.stereotype.Service;
 import projetoes.projetoes.filters.AndFilter;
 import projetoes.projetoes.filters.FilterI;
 import projetoes.projetoes.filters.FilterMedicoObject;
@@ -10,6 +11,7 @@ import projetoes.projetoes.models.Medico;
 import java.util.Set;
 
 @Data
+@Service
 public class MedicoFilterService {
     private Integer cedulaMedica;
     private String especialidade;

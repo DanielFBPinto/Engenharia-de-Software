@@ -1,8 +1,8 @@
-123456789,Clínica Geral,Rodrigo
-12345678,Neurologia,Joao
-1234567,Traumatologia,Alberto
-12345,Clínica Geral,Joaquim
-1234,Pediatria,Carlos
-123,Cardiologia,Rafael
-12,Medicina Dentária,Daniel
-1,Genecologia,Fábio
+123456789,Clínica Geral,Rodrigo,19/03/1990
+12345678,Neurologia,Joao,19/03/1990
+1234567,Traumatologia,Alberto,19/03/1990
+12345,Clínica Geral,Joaquim,19/03/1990
+1234,Pediatria,Carlos,19/03/1990
+123,Cardiologia,Rafael,19/03/1990
+12,Medicina Dentária,Daniel,19/03/1990
+1,Genecologia,Fábio,19/03/1990

@@ -12,11 +12,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+
 public class MedicoService {
     @Autowired
     private MedicoRepoI medicoRepo;
 
-  
+    @Autowired
     private MedicoFilterService medicoFilterService;
 
     public Set<Medico> getAllMedicos() {

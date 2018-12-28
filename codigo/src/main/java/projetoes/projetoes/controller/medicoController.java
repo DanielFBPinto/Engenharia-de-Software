@@ -16,7 +16,7 @@ public class medicoController {
     @Autowired
     private MedicoService medicoService;
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/" ,method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Medico>> getAllMedicos(@ModelAttribute FilterMedicoObject filterMedicoObject) {
         Iterable<Medico> medicos = medicoService.getFilteredMedicos(filterMedicoObject);
         return (medicos == null) ? ResponseEntity.notFound().build() : ResponseEntity.ok(medicos);

@@ -66,6 +66,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
                 String attributes[] = line.split(",");
+               // LocalDateTime diadenascimento = LocalDateTime.of((attributes[3]);
 
                 Medico medico = new Medico(Integer.parseInt(attributes[0]), attributes[1], attributes[2]);
                 medicos.add(medico);
