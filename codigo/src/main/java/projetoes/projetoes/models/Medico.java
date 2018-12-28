@@ -32,6 +32,12 @@ public class Medico extends Funcionario {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Horario> myHorarioMedico = new HashSet<>();
 
+    public Medico(Medico medico)
+    {
+        super(medico.getName(),medico.getDataNascimento(),medico.getDataNascimento();
+        this.especialidade = medico.getEspecialidade();
+    }
+
     public String getName() {
         return super.getName();
     }

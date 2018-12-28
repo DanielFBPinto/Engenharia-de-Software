@@ -30,6 +30,12 @@ public class Horario extends BaseModel {
         this.horaFim = horaFim;
         this.diaSemana = diaSemana;
     }
+
+    public Horario(Horario horario)
+    {
+
+    }
+
     public void addMedico(Medico medico)
     {
         this.setMyMedico(medico);

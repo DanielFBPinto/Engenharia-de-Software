@@ -4,6 +4,8 @@ import projetoes.projetoes.filters.FilterI;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,12 +21,26 @@ public class MedicoHorarioFilter implements FilterI<Medico>
     }
 
     @Override
-    public Set<Medico> filter(Set<Medico>medicos)
+    public Set<Medico> filter(Set<Medico> medicos)
     {
-        if(horaInicioFilter == null)
+        if(horaInicioFilter == null || horaFimFilter == null)
         {
             return medicos;
         }
-        return medicos.stream().filter(medico -> horaInicioFilter.equals(this.horaInicioFilter)).collect(Collectors.toSet());
+        Set<Medico> medicosFiltered = new HashSet<>();
+        for(Medico m : medicos)
+        {
+            Medico novoMedico = new Medico(m);
+            for(Horario horario : m.getMyHorarioMedico())
+            {
+                if((horario.getHoraInicio().isBefore(LocalTime.from(horaInicioFilter)) || horario.getHoraInicio().equals(horaInicioFilter))
+                && (horario.getHoraFim().isAfter(LocalTime.from(horaFimFilter)) || horario.getHoraFim().equals(horaFimFilter)))
+                {
+                    novoMedico.addHorario(new Horario(horario));
+                    medicosFiltered.add(novoMedico);
+                }
+            }
+        }
+        return medicosFiltered;
     }
 }
