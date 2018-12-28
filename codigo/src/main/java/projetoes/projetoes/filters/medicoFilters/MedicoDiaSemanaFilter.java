@@ -4,10 +4,8 @@ import projetoes.projetoes.filters.FilterI;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
 import java.time.DayOfWeek;
-import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class MedicoDiaSemanaFilter implements FilterI<Medico>
 {
@@ -35,7 +33,7 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
                     novoMedico.addHorario(new Horario(horario));
                     medicosFiltered.add(novoMedico);
                 }
-                }
+            }
         }
         return medicosFiltered;
     }

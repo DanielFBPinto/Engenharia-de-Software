@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import projetoes.projetoes.filters.FilterMedicoObject;
 import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
 import projetoes.projetoes.models.Medico;

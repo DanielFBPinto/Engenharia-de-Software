@@ -14,18 +14,25 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 public class Funcionario extends Pessoa {
-    public Funcionario(String name) {
+
+    public Funcionario(String name)
+    {
         super(name);
     }
-    public Funcionario(String name, LocalDateTime date) {
 
+    public Funcionario(String name, LocalDateTime date)
+    {
         super(name,date);
     }
-    public Funcionario(String name, LocalDateTime date,Integer numCC) {
+
+    public Funcionario(String name, LocalDateTime date,Integer numCC)
+    {
 
         super(name,date,numCC);
     }
-    public String getName() {
+
+    public String getName()
+    {
         return super.getName();
     }
 }

@@ -13,7 +13,7 @@ public class FilterMedicoObject
     private LocalDate horaInicio;
     private LocalDate horaFim;
 
-    public FilterMedicoObject(String especialidade)
+  /* // public FilterMedicoObject(String especialidade)
     {
         this.especialidade = especialidade;
     }
@@ -27,5 +27,5 @@ public class FilterMedicoObject
     public FilterMedicoObject(DayOfWeek diaSemana)
     {
         this.diaSemana = diaSemana;
-    }
+    }*/
 }

@@ -15,8 +15,7 @@ import java.util.Set;
 public class MedicoService {
     @Autowired
     private MedicoRepoI medicoRepo;
-
-  
+    @Autowired
     private MedicoFilterService medicoFilterService;
 
     public Set<Medico> getAllMedicos() {
