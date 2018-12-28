@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+
 public class MedicoService {
     @Autowired
     private MedicoRepoI medicoRepo;
