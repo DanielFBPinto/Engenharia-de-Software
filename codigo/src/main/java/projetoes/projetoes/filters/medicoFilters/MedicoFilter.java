@@ -5,6 +5,7 @@ import projetoes.projetoes.models.Medico;
 
 import java.util.Set;
 
-public interface medicoFilter extends FilterI<Medico> {
+public interface MedicoFilter extends FilterI<Medico>
+{
     Set<Medico> filter(Set<Medico> entities);
 }

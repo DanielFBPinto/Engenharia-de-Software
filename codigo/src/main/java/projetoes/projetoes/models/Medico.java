@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 @ToString
 public class Medico extends Funcionario {
@@ -51,18 +52,19 @@ public class Medico extends Funcionario {
         horario.addMedico(this);
     }
 
-    public boolean isWorking(LocalDateTime data) {
+    private boolean isWorking(LocalDateTime data) {
         for (Horario horario : this.myHorarioMedico) {
-            if ((horario.getDiaSemana().equals(data.getDayOfWeek().name())
-                    && horario.getHoraInicio().isBefore(data)) &&
-                    horario.getHoraFim().isAfter(data)) {
+            if(horario.getDiaSemana().equals(data.getDayOfWeek().name())
+               && horario.getHoraInicio().isBefore(data.toLocalTime())
+               && horario.getHoraFim().isAfter(data.toLocalTime()))
+            {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean temConsulta(LocalDateTime data) {
+    private boolean temConsulta(LocalDateTime data) {
         for (Consulta consulta : this.myConsulta) {
             if (consulta.getData().equals(data)) {
                 return true;
@@ -80,14 +82,15 @@ public class Medico extends Funcionario {
         return false;
     }
 
-    public void marcarConsulta(Paciente paciente, LocalDateTime dataConsulta) {
-        if (paciente.isFree(dataConsulta)) {
+    public boolean marcarConsulta(Paciente paciente, LocalDateTime dataConsulta) {
+        return this.marcarConsulta(paciente,new Consulta(dataConsulta));
+        /*if (paciente.isFree(dataConsulta)) {
             if (this.isPossible(dataConsulta)) {
-                Consulta consulta = new Consulta();
+                Consulta consulta = new Consulta(dataConsulta);
                 paciente.addConsulta(consulta);
                 this.addConsulta(consulta);
             }
-        }
+        }*/
     }
     public boolean marcarConsulta(Paciente paciente, Consulta consulta) {
         if (paciente.isFree(consulta.getData())) {

@@ -1,5 +1,6 @@
 package projetoes.projetoes.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@EqualsAndHashCode
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

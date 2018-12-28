@@ -10,6 +10,7 @@ import javax.persistence.*;
 @MappedSuperclass
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 @ToString
 public class Pessoa extends BaseModel {

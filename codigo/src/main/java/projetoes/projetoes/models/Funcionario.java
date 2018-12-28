@@ -9,6 +9,7 @@ import javax.persistence.*;
 @MappedSuperclass
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 @ToString
 public class Funcionario extends Pessoa {

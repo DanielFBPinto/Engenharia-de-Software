@@ -5,10 +5,10 @@ import projetoes.projetoes.models.Medico;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class medicoEspecialidadeFilter implements medicoFilter {
+public class MedicoEspecialidadeFilter implements MedicoFilter {
     private String especialidadeToFilter;
 
-    public medicoEspecialidadeFilter(String especialidadeToFilter) {
+    public MedicoEspecialidadeFilter(String especialidadeToFilter) {
         this.especialidadeToFilter = especialidadeToFilter;
     }
 
@@ -17,6 +17,8 @@ public class medicoEspecialidadeFilter implements medicoFilter {
         if (especialidadeToFilter == null) {
             return medicos;
         }
-        return medicos.stream().filter(medico -> medico.getEspecialidade().compareTo(this.especialidadeToFilter) == 0).collect(Collectors.toSet());
+        return medicos.stream()
+                .filter(medico -> medico.getEspecialidade().compareTo(this.especialidadeToFilter) == 0)
+                .collect(Collectors.toSet());
     }
 }
