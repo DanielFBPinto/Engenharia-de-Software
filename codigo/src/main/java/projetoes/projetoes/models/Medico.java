@@ -34,7 +34,7 @@ public class Medico extends Funcionario {
 
     public Medico(Medico medico)
     {
-        super(medico.getName(),medico.getDataNascimento(),medico.getDataNascimento();
+        super(medico.getName(),medico.getDataNascimento(),medico.getDataNascimento());
         this.especialidade = medico.getEspecialidade();
     }
 
