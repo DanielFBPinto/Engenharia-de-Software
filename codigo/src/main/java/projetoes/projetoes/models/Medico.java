@@ -34,12 +34,9 @@ public class Medico extends Funcionario {
 
     public Medico(Medico medico)
     {
-<<<<<<< HEAD
-        super(medico.getName(),medico.getDataNascimento(),medico.getDataNascimento());
-=======
-        super(medico.getName(),medico.getDataNascimento());
->>>>>>> master
+        super(medico.getName(),medico.getDataNascimento(),medico.getNumCC());
         this.especialidade = medico.getEspecialidade();
+        this.cedulaMedica=medico.getCedulaMedica();
     }
 
     public String getName() {

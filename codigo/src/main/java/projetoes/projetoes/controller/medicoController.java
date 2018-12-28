@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import projetoes.projetoes.filters.FilterMedicoObject;
 import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.service.MedicoService;
@@ -15,8 +17,8 @@ public class medicoController {
     private MedicoService medicoService;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Iterable<Medico>> getAllMedicos(@ModelAttribute MedicoFilterService medicoFilterService) {
-        Iterable<Medico> medicos = medicoService.getFilteredMedicos(medicoFilterService);
+    public ResponseEntity<Iterable<Medico>> getAllMedicos(@ModelAttribute FilterMedicoObject filterMedicoObject) {
+        Iterable<Medico> medicos = medicoService.getFilteredMedicos(filterMedicoObject);
         return (medicos == null) ? ResponseEntity.notFound().build() : ResponseEntity.ok(medicos);
     }
 

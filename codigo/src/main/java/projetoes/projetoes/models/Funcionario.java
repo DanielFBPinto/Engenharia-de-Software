@@ -21,6 +21,10 @@ public class Funcionario extends Pessoa {
 
         super(name,date);
     }
+    public Funcionario(String name, LocalDateTime date,Integer numCC) {
+
+        super(name,date,numCC);
+    }
     public String getName() {
         return super.getName();
     }
