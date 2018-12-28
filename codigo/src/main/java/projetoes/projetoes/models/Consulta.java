@@ -1,5 +1,6 @@
 package projetoes.projetoes.models;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -18,6 +19,8 @@ public class Consulta extends BaseModel {
     @ManyToOne
     private Medico myMedico;
     private LocalDateTime data;
+    private LocalDateTime datafim;
+    private DayOfWeek dia;
     private int precoConsulta;
 
     @EqualsAndHashCode.Exclude
@@ -27,10 +30,14 @@ public class Consulta extends BaseModel {
 
     public Consulta(LocalDateTime data) {
         this.data = data;
+        this.datafim=data.plusMinutes(15);
+        this.dia=data.getDayOfWeek();
     }
 
     public Consulta(LocalDateTime data, Medico medico, Paciente paciente) {
         this.data = data;
+        this.datafim=data.plusMinutes(15);
+        this.dia=data.getDayOfWeek();
         this.myMedico = medico;
         this.myPaciente = paciente;
     }

@@ -29,6 +29,7 @@ public class Horario extends BaseModel {
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.diaSemana = diaSemana;
+
     }
 
     public Horario(Horario horario)

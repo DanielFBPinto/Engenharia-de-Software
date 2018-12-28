@@ -93,6 +93,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                 LocalTime horafim = LocalTime.of(Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3])
                         );
                 DayOfWeek dayOfWeek= DayOfWeek.of(Integer.parseInt(attributes[4]));
+              //  System.out.println("Day of week="+dayOfWeek);
                 Horario horario = new Horario(horainicio, horafim,dayOfWeek);
                 Medico medico = getMById(Integer.parseInt(attributes[5]), medicos);
                 if (medico != null)

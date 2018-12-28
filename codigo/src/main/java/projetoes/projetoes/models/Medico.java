@@ -61,19 +61,26 @@ public class Medico extends Funcionario {
 
     private boolean isWorking(LocalDateTime data) {
         for (Horario horario : this.myHorarioMedico) {
-            if(horario.getDiaSemana().equals(data.getDayOfWeek().name())
+           // System.out.println("H="+horario.getDiaSemana().getValue()+"  D="+data.getDayOfWeek().getValue());
+            System.out.println("d "+horario.getDiaSemana()+"  d2 "+data.getDayOfWeek());
+            if(horario.getDiaSemana().getValue()== data.getDayOfWeek().getValue()
                && horario.getHoraInicio().isBefore(data.toLocalTime())
                && horario.getHoraFim().isAfter(data.toLocalTime()))
             {
+               // System.out.println("tem horario");
                 return true;
             }
         }
+        //System.out.println("nao tem horario");
         return false;
     }
 
     private boolean temConsulta(LocalDateTime data) {
         for (Consulta consulta : this.myConsulta) {
-            if (consulta.getData().equals(data)) {
+
+            if (consulta.getDia().getValue()==data.getDayOfWeek().getValue()
+                    && consulta.getData().isAfter(data)
+                    && consulta.getDatafim().isBefore(data)) {
                 return true;
             }
         }
@@ -83,9 +90,11 @@ public class Medico extends Funcionario {
     public boolean isPossible(LocalDateTime data) {
         if (this.isWorking(data)) {
             if (!this.temConsulta(data)) {
+               // System.out.println("true");
                 return true;
             }
         }
+        //System.out.println("falso");
         return false;
     }
 
