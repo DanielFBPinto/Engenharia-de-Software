@@ -28,7 +28,7 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
             Medico novoMedico = new Medico(m);
             for(Horario horario : m.getMyHorarioMedico())
             {
-                if(horario.getDiaSemana().getValue()==DayOfWeek.from(dayOfWeekFilter).getValue()) {
+                if(horario.getDiaSemana().equals(dayOfWeekFilter)) {
                     novoMedico.addHorario(new Horario(horario));
                     medicosFiltered.add(novoMedico);
                 }
