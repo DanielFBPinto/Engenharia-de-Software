@@ -1,5 +1,6 @@
 package projetoes.projetoes.models;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import lombok.*;
@@ -16,7 +17,10 @@ public class Funcionario extends Pessoa {
     public Funcionario(String name) {
         super(name);
     }
+    public Funcionario(String name, LocalDateTime date) {
 
+        super(name,date);
+    }
     public String getName() {
         return super.getName();
     }

@@ -32,4 +32,9 @@ public class Pessoa extends BaseModel {
         this.dataNascimento = dataNascimento;
         this.numCC = numCC;
     }
+    public Pessoa(String name, LocalDateTime dataNascimento) {
+        this.name = name;
+        this.dataNascimento = dataNascimento;
+    }
+
 }
