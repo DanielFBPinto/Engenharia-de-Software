@@ -22,7 +22,6 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
         {
             return medicos;
         }
-
         Set<Medico> medicosFiltered = new HashSet<>();
         for(Medico m : medicos)
         {
