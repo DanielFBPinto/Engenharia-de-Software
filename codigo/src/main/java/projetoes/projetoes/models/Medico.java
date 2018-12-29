@@ -61,7 +61,7 @@ public class Medico extends Funcionario {
     private boolean isWorking(LocalDateTime data) {
         for (Horario horario : this.horarios) {
            // System.out.println("H="+horario.getDiaSemana().getValue()+"  D="+data.getDayOfWeek().getValue());
-            System.out.println("d "+horario.getDiaSemana()+"  d2 "+data.getDayOfWeek());
+           // System.out.println("d "+horario.getDiaSemana()+"  d2 "+data.getDayOfWeek());
             if(horario.getDiaSemana().getValue()== data.getDayOfWeek().getValue()
                && horario.getHoraInicio().isBefore(data.toLocalTime())
                && horario.getHoraFim().isAfter(data.toLocalTime()))
