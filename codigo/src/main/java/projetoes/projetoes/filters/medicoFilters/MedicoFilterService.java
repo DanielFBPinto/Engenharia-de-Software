@@ -8,6 +8,7 @@ import projetoes.projetoes.filters.FilterMedicoObject;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
 
+import java.nio.file.DirectoryStream;
 import java.util.Set;
 
 
@@ -15,10 +16,11 @@ import java.util.Set;
 public class MedicoFilterService {
     public Set<Medico> filterMedicos(Set<Medico> medicos, FilterMedicoObject filterMedicoObject) {
         FilterI<Medico> medicoDiaSemanaFilter = new MedicoDiaSemanaFilter(filterMedicoObject.getDiaSemana());
-        FilterI<Medico> medicoHorarioFilter = new MedicoHorarioFilter(filterMedicoObject.getHoraInicio(),filterMedicoObject.getHoraFim());
-        FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter,medicoHorarioFilter);
+        FilterI<Medico> medicoHorarioFilter = new MedicoHorarioFilter(filterMedicoObject.getHoraInicio(), filterMedicoObject.getHoraFim());
+        FilterI<Medico> medicoHoraInicioFilter = new MedicoHoraInicioFilter(filterMedicoObject.getHoraInicio());
+        FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter, medicoHorarioFilter);
         FilterI<Medico> medicoEspecialidadeFilter = new MedicoEspecialidadeFilter(filterMedicoObject.getEspecialidade());
-        FilterI<Medico> especialidadeoHorarioFilter = new AndFilter<>(medicoEspecialidadeFilter,diaSemanaHorarioFilter);
+        FilterI<Medico> especialidadeoHorarioFilter = new AndFilter<>(medicoEspecialidadeFilter, diaSemanaHorarioFilter);
         return especialidadeoHorarioFilter.filter(medicos);
     }
 }
