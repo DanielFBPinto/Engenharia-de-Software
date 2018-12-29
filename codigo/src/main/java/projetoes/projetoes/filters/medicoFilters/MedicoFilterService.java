@@ -10,15 +10,10 @@ import projetoes.projetoes.models.Medico;
 
 import java.util.Set;
 
-@Data
+
 @Service
 public class MedicoFilterService {
-    private Integer cedulaMedica;
-    private String especialidade;
-    private Horario horario;
-
     public Set<Medico> filterMedicos(Set<Medico> medicos, FilterMedicoObject filterMedicoObject) {
-
         FilterI<Medico> medicoDiaSemanaFilter = new MedicoDiaSemanaFilter(filterMedicoObject.getDiaSemana());
         FilterI<Medico> medicoHorarioFilter = new MedicoHorarioFilter(filterMedicoObject.getHoraInicio(),filterMedicoObject.getHoraFim());
         FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter,medicoHorarioFilter);

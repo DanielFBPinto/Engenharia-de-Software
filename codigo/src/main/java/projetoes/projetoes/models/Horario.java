@@ -1,11 +1,7 @@
 package projetoes.projetoes.models;
 
 import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import lombok.*;
 
@@ -17,10 +13,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 public class Horario extends BaseModel {
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne
-    private Medico myMedico;
+    private Medico medico;
     private LocalTime horaInicio;
     private LocalTime horaFim;
     private DayOfWeek diaSemana;
@@ -39,6 +36,6 @@ public class Horario extends BaseModel {
 
     public void addMedico(Medico medico)
     {
-        this.setMyMedico(medico);
+        this.setMedico(medico);
     }
 }

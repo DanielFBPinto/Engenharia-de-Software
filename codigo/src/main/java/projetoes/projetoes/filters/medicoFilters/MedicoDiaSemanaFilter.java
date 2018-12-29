@@ -16,6 +16,7 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
         this.dayOfWeekFilter = dayOfWeek;
     }
 
+    @Override
     public Set<Medico> filter(Set<Medico> medicos)
     {
         if(dayOfWeekFilter == null)
@@ -26,7 +27,7 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
         for(Medico m : medicos)
         {
             Medico novoMedico = new Medico(m);
-            for(Horario horario : m.getMyHorarioMedico())
+            for(Horario horario : m.getHorarios())
             {
                 if(horario.getDiaSemana().equals(dayOfWeekFilter)) {
                     novoMedico.addHorario(new Horario(horario));

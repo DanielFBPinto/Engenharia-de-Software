@@ -6,7 +6,6 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import projetoes.projetoes.jsonfiles.ConsultaJSON;
 
 import javax.persistence.*;
 
@@ -23,14 +22,14 @@ public class Medico extends Funcionario {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Consulta> myConsulta = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "medico")
+    private Set<Consulta> consultas = new HashSet<>();
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Horario> myHorarioMedico = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "medico")
+    private Set<Horario> horarios = new HashSet<>();
 
     public Medico(Medico medico)
     {
@@ -50,17 +49,17 @@ public class Medico extends Funcionario {
     }
 
     public void addConsulta(Consulta consulta) {
-        this.myConsulta.add(consulta);
+        this.consultas.add(consulta);
         consulta.addMedico(this);
     }
 
     public void addHorario(Horario horario) {
-        this.myHorarioMedico.add(horario);
+        this.horarios.add(horario);
         horario.addMedico(this);
     }
 
     private boolean isWorking(LocalDateTime data) {
-        for (Horario horario : this.myHorarioMedico) {
+        for (Horario horario : this.horarios) {
            // System.out.println("H="+horario.getDiaSemana().getValue()+"  D="+data.getDayOfWeek().getValue());
             System.out.println("d "+horario.getDiaSemana()+"  d2 "+data.getDayOfWeek());
             if(horario.getDiaSemana().getValue()== data.getDayOfWeek().getValue()
@@ -76,7 +75,7 @@ public class Medico extends Funcionario {
     }
 
     private boolean temConsulta(LocalDateTime data) {
-        for (Consulta consulta : this.myConsulta) {
+        for (Consulta consulta : this.consultas) {
 
             if (consulta.getDia().getValue()==data.getDayOfWeek().getValue()
                     && consulta.getData().isAfter(data)
@@ -121,27 +120,27 @@ public class Medico extends Funcionario {
     }
 
     public void cancelarConsulta(LocalDateTime dataConsulta, Paciente paciente) {
-        for (Consulta consulta : this.myConsulta) {
-            if (consulta.getData().equals(dataConsulta) && consulta.getMyPaciente().getId().equals(paciente.getId())) {
-                paciente.getMyConsulta().remove(consulta);
-                this.myConsulta.remove(consulta);
+        for (Consulta consulta : this.consultas) {
+            if (consulta.getData().equals(dataConsulta) && consulta.getPaciente().getId().equals(paciente.getId())) {
+                paciente.getConsultas().remove(consulta);
+                this.consultas.remove(consulta);
             }
         }
     }
 
     public void alterarConsulta(Paciente paciente, LocalDateTime dataAnterior, LocalDateTime novaData) {
-        for (Consulta consulta : this.myConsulta) {
+        for (Consulta consulta : this.consultas) {
             if (consulta.getData().equals(dataAnterior)) {
-                paciente.getMyConsulta().remove(consulta);
-                this.myConsulta.remove(consulta);
+                paciente.getConsultas().remove(consulta);
+                this.consultas.remove(consulta);
                 this.marcarConsulta(paciente, novaData);
             }
         }
     }
 
     public Consulta existeConsulta(Paciente paciente, LocalDateTime data) {
-        for (Consulta consulta : this.myConsulta) {
-            if (consulta.getData().equals(data) && consulta.getMyPaciente().getId().equals(paciente.getId())) {
+        for (Consulta consulta : this.consultas) {
+            if (consulta.getData().equals(data) && consulta.getPaciente().getId().equals(paciente.getId())) {
                 return consulta;
             }
         }

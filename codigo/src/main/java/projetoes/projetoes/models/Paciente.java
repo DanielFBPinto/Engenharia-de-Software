@@ -1,8 +1,6 @@
 package projetoes.projetoes.models;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,15 +18,15 @@ public class Paciente extends Pessoa {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Consulta> myConsulta = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente", orphanRemoval = true)
+    private Set<Consulta> consultas = new HashSet<>();
 
     public Paciente(String name) {
         super(name);
     }
 
     public boolean isFree(LocalDateTime dataConsulta) {
-        for (Consulta consulta : this.myConsulta) {
+        for (Consulta consulta : this.consultas) {
             if (consulta.getData().equals(dataConsulta)) {
                 return false;
             }
@@ -37,7 +35,7 @@ public class Paciente extends Pessoa {
     }
 
     public void addConsulta(Consulta consulta) {
-        this.myConsulta.add(consulta);
+        this.consultas.add(consulta);
         consulta.addPaciente(this);
     }
 }

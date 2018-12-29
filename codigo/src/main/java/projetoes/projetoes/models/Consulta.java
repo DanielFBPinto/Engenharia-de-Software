@@ -2,7 +2,6 @@ package projetoes.projetoes.models;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import lombok.*;
 
@@ -17,7 +16,7 @@ public class Consulta extends BaseModel {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne
-    private Medico myMedico;
+    private Medico medico;
     private LocalDateTime data;
     private LocalDateTime datafim;
     private DayOfWeek dia;
@@ -26,7 +25,7 @@ public class Consulta extends BaseModel {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne
-    private Paciente myPaciente;
+    private Paciente paciente;
 
     public Consulta(LocalDateTime data) {
         this.data = data;
@@ -38,8 +37,8 @@ public class Consulta extends BaseModel {
         this.data = data;
         this.datafim=data.plusMinutes(15);
         this.dia=data.getDayOfWeek();
-        this.myMedico = medico;
-        this.myPaciente = paciente;
+        this.medico = medico;
+        this.paciente = paciente;
     }
 
     public Consulta(int precoConsulta) {
@@ -47,10 +46,10 @@ public class Consulta extends BaseModel {
     }
 
     public void addMedico(Medico medico) {
-        this.myMedico = medico;
+        this.medico = medico;
     }
 
     public void addPaciente(Paciente paciente) {
-        this.myPaciente = paciente;
+        this.paciente = paciente;
     }
 }

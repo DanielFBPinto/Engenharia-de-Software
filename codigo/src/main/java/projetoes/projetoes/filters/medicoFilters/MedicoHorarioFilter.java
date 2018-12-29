@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class MedicoHorarioFilter implements FilterI<Medico>
 {
@@ -31,7 +30,7 @@ public class MedicoHorarioFilter implements FilterI<Medico>
         for(Medico m : medicos)
         {
             Medico novoMedico = new Medico(m);
-            for(Horario horario : m.getMyHorarioMedico())
+            for(Horario horario : m.getHorarios())
             {
                 if((horario.getHoraInicio().isAfter(LocalTime.from(horaInicioFilter)) || horario.getHoraInicio().equals(horaInicioFilter))
                         && (horario.getHoraFim().isBefore(LocalTime.from(horaFimFilter)) || horario.getHoraFim().equals(horaFimFilter)))

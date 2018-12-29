@@ -10,8 +10,6 @@ import projetoes.projetoes.repositories.ConsultaRepo;
 import projetoes.projetoes.repositories.MedicoRepoI;
 import projetoes.projetoes.repositories.PacienteRepo;
 
-import java.util.Optional;
-
 @Service
 public class ConsultaService {
     @Autowired
@@ -67,7 +65,7 @@ public class ConsultaService {
             Medico medico = medicoRepo.findByName(consultaJSON.getNomeMedico()).get();
 
             Consulta fetch = medico.existeConsulta(paciente, consultaJSON.getDataAntiga());
-            medico.getMyConsulta().remove(fetch);
+            medico.getConsultas().remove(fetch);
             consultaRepo.delete(fetch);
         }
         return null;
