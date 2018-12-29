@@ -3,23 +3,26 @@ package projetoes.projetoes.filters.medicoFilters;
 import projetoes.projetoes.filters.FilterI;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
-import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MedicoDiaSemanaFilter implements FilterI<Medico>
+public class MedicoHoraFimFilter implements FilterI<Medico>
 {
-    private DayOfWeek dayOfWeekFilter;
 
-    public MedicoDiaSemanaFilter(DayOfWeek dayOfWeek)
+    private LocalDate horaFimFilter;
+
+    public MedicoHoraFimFilter (LocalDate horaFim)
     {
-        this.dayOfWeekFilter = dayOfWeek;
+
+        this.horaFimFilter = horaFim;
     }
 
     @Override
     public Set<Medico> filter(Set<Medico> medicos)
     {
-        if(dayOfWeekFilter == null)
+        if( horaFimFilter == null)
         {
             return medicos;
         }
@@ -29,9 +32,10 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
             Medico novoMedico = new Medico(m);
             for(Horario horario : m.getHorarios())
             {
-                if(horario.getDiaSemana().equals(dayOfWeekFilter)) {
+                if((horario.getHoraFim().isBefore(LocalTime.from(horaFimFilter)) || horario.getHoraFim().equals(horaFimFilter)))
+                {
                     //novoMedico.addHorario(new Horario(horario));
-                    //medicosFiltered.add(novoMedico);
+                   // medicosFiltered.add(novoMedico);
                     medicosFiltered.add(m);
                 }
             }

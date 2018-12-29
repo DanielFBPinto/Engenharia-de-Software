@@ -33,10 +33,10 @@ public class MedicoEspecialidadeFilter implements MedicoFilter {
         Set<Medico> medicosFiltered = new HashSet<>();
         for(Medico m : medicos)
         {
-            Medico novoMedico = new Medico(m);
+           // Medico novoMedico = new Medico(m);
             if(m.getEspecialidade().equals(especialidadeToFilter))
             {
-                medicosFiltered.add(novoMedico);
+                medicosFiltered.add(m);
             }
         }
         return medicosFiltered;
