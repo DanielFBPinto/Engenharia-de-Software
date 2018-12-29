@@ -15,7 +15,7 @@ public class HorarioController {
     @Autowired
     private HorarioService horarioService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Horario>> getAllHorarios() {
         Iterable<Horario> allHorarios = horarioService.getAllHorarios();
         if (allHorarios == null) {

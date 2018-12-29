@@ -15,7 +15,7 @@ public class ConsultaController {
     @Autowired
     private ConsultaService consultaService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Consulta>> getAllConsultas() {
         Iterable<Consulta> allConsultas = consultaService.getAllConsultas();
         if (allConsultas == null) {

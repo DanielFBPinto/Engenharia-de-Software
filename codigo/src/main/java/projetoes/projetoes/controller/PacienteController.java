@@ -16,7 +16,7 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Paciente>> getAllPacientes() {
         Iterable<Paciente> allPacientes = pacienteService.getAllPacientes();
         if (allPacientes == null) {

@@ -15,7 +15,7 @@ public class AdministrativoController {
     @Autowired
     private AdministrativoService administrativoService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Administrativo>> getAllAdministrativo() {
         Iterable<Administrativo> allAdministrativo = administrativoService.getAllAdministrativo();
         if (allAdministrativo == null) {
