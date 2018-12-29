@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,10 @@ import javax.persistence.*;
 @ToString
 public class Medico extends Funcionario {
     private Integer cedulaMedica;
-    private String especialidade;
+
+    @ManyToOne
+    @JsonInclude
+    private Especialidade especialidade;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
@@ -38,11 +42,12 @@ public class Medico extends Funcionario {
         this.cedulaMedica=medico.getCedulaMedica();
     }
 
-    public String getName() {
+    public String getName()
+    {
         return super.getName ();
     }
 
-    public Medico(Integer cedulaMedica, String especialidade, String name) {
+    public Medico(Integer cedulaMedica,Especialidade especialidade,String name) {
         super(name);
         this.cedulaMedica = cedulaMedica;
         this.especialidade = especialidade;

@@ -19,7 +19,8 @@ public class ConsultaService {
     @Autowired
     private MedicoRepoI medicoRepo;
 
-    public Iterable<Consulta> getAllConsultas() {
+    public Iterable<Consulta> getAllConsultas()
+    {
         return consultaRepo.findAll();
     }
 

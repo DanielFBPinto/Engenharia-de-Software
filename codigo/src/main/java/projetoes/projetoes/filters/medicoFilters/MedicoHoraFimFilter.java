@@ -11,9 +11,9 @@ import java.util.Set;
 public class MedicoHoraFimFilter implements FilterI<Medico>
 {
 
-    private LocalDate horaFimFilter;
+    private LocalTime horaFimFilter;
 
-    public MedicoHoraFimFilter (LocalDate horaFim)
+    public MedicoHoraFimFilter (LocalTime horaFim)
     {
 
         this.horaFimFilter = horaFim;
