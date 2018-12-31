@@ -3,7 +3,6 @@ package projetoes.projetoes.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +10,7 @@ import projetoes.projetoes.models.Especialidade;
 import projetoes.projetoes.service.EspecialidadeService;
 
 @RestController
-@RequestMapping(value = "/Especialidade")
+@RequestMapping(value = "/especialidade.txt")
 public class EspecialidadeController
 {
     @Autowired

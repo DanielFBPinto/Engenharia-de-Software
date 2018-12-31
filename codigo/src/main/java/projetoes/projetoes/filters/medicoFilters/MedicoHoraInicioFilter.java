@@ -14,6 +14,7 @@ public class MedicoHoraInicioFilter implements FilterI<Medico>
 
     public MedicoHoraInicioFilter (LocalTime horaInicio)
     {
+
         this.horaInicioFilter = horaInicio;
     }
     @Override

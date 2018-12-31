@@ -34,7 +34,7 @@ public class MedicoEspecialidadeFilter implements MedicoFilter {
         for(Medico m : medicos)
         {
            // Medico novoMedico = new Medico(m);
-            if(m.getEspecialidade().equals(especialidadeToFilter))
+            if(m.getEspecialidade().getNomeEspecialidade().equals(especialidadeToFilter))
             {
                 medicosFiltered.add(m);
             }

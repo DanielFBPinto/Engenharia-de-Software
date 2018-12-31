@@ -52,6 +52,10 @@ public class Medico extends Funcionario {
         this.cedulaMedica = cedulaMedica;
         this.especialidade = especialidade;
     }
+    public Medico(Integer cedulaMedica,String name) {
+        super(name);
+        this.cedulaMedica = cedulaMedica;
+    }
 
     public void addConsulta(Consulta consulta) {
         this.consultas.add(consulta);

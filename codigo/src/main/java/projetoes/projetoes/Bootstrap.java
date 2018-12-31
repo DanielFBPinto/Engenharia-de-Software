@@ -26,13 +26,14 @@ import java.util.Set;
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
     private HorarioRepo horarioService;
+    private EspecialidadeRepo especialidadeService;
     private MedicoRepoI medicoService;
     private ConsultaRepo consultaService;
     private PacienteRepo pacienteService;
     private AdministrativoRepo administrativoRepo;
 
     public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService,
-                     AdministrativoRepo administrativoRepo, HorarioRepo horarioRepo)
+                     AdministrativoRepo administrativoRepo, HorarioRepo horarioRepo,EspecialidadeRepo especialidadeService)
 
     {
         this.medicoService = medicoService;
@@ -40,11 +41,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         this.pacienteService = pacienteService;
         this.administrativoRepo = administrativoRepo;
         this.horarioService = horarioRepo;
+        this.especialidadeService= especialidadeService;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        Set<Medico> medicos = createMedicosFromFile();
+        Set<Especialidade> especialidades= createEspacialidadesFromFile();
+        Set<Medico> medicos = createMedicosFromFile(especialidades);
         Set<Horario> horarios = createHorarioFromFile(medicos);
         Set<Paciente> pacientes = createPacienteFromFile();
         Set<Consulta> consultas = createConsultasFromFile(medicos, pacientes);
@@ -56,8 +59,28 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         logger.debug(medicos.toString());
     }
+    private Set<Especialidade> createEspacialidadesFromFile() {
+        Set<Especialidade> especialidades = new HashSet<>();
+        String line;
 
-    private Set<Medico> createMedicosFromFile() {
+        InputStream is = this.getClass().getResourceAsStream("/especialidade.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String attributes[] = line.split(",");
+                // LocalDateTime diadenascimento = LocalDateTime.of((attributes[3]);
+                Especialidade especialidade = new Especialidade(attributes[0]);
+              //  Medico medico = new Medico(Integer.parseInt(attributes[0]), especialidade, attributes[2]);
+                especialidades.add(especialidade);
+                especialidadeService.save(especialidade);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return especialidades;
+    }
+    private Set<Medico> createMedicosFromFile(Set<Especialidade> especialidades) {
         Set<Medico> medicos = new HashSet<>();
         String line;
 
@@ -67,8 +90,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                 System.out.println(line);
                 String attributes[] = line.split(",");
                // LocalDateTime diadenascimento = LocalDateTime.of((attributes[3]);
-
-                Medico medico = new Medico(Integer.parseInt(attributes[0]), attributes[1], attributes[2]);
+                Medico medico = new Medico(Integer.parseInt(attributes[0]),attributes[2]);
+                Especialidade especialidade = getEByname(attributes[1],especialidades);
+                if(especialidade!=null)
+                    medico.setEspecialidade(especialidade);
                 medicos.add(medico);
                 medicoService.save(medico);
             }
@@ -184,6 +209,14 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         for (Paciente paciente : pacientes) {
             if (paciente.getId() == id)
                 return paciente;
+        }
+
+        return null;
+    }
+    private Especialidade getEByname(String name, Set<Especialidade> especialidades) {
+        for (Especialidade especialidade : especialidades) {
+            if (especialidade.getNomeEspecialidade().compareTo(name)==0)
+                return especialidade;
         }
 
         return null;

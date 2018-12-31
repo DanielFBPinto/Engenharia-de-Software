@@ -40,12 +40,12 @@ public class MedicoController {
         return ResponseEntity.ok(medico);
     }
 
-    @RequestMapping(value = "/especialidade/{especialidade}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico> getMedicoEspecialidade(@PathVariable("especialidade") String especialidade) {
-        Medico medico = medicoService.findByEspecialidade(especialidade);
-        if (medico == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(medico);
-    }
+//    @RequestMapping(value = "/especialidade/{especialidade}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Medico> getMedicoEspecialidade(@PathVariable("especialidade") String especialidade) {
+//        Medico medico = medicoService.findByEspecialidade(especialidade);
+//        if (medico == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(medico);
+//    }
 }
