@@ -11,7 +11,7 @@ import projetoes.projetoes.service.MedicoService;
 
 @RestController
 @RequestMapping("/medico")
-public class medicoController {
+public class MedicoController {
     @Autowired
     private MedicoService medicoService;
 

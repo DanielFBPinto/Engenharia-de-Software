@@ -3,7 +3,6 @@ package projetoes.projetoes.filters;
 import lombok.Data;
 
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Data
