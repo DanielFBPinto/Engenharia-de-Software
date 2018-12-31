@@ -30,7 +30,7 @@ public class MedicoHoraInicioFilter implements FilterI<Medico>
             Medico novoMedico = new Medico(m);
             for(Horario horario : m.getHorarios())
             {
-                if((horario.getHoraInicio().isAfter(LocalTime.from(horaInicioFilter)) || horario.getHoraInicio().equals(horaInicioFilter)))
+                if((horario.getHoraInicio().isBefore(LocalTime.from(horaInicioFilter)) || horario.getHoraInicio().equals(horaInicioFilter)))
                 {
                  //   novoMedico.addHorario(new Horario(horario));
                 //    medicosFiltered.add(novoMedico);
