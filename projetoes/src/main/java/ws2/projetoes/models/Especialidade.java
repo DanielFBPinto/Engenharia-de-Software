@@ -1,11 +1,9 @@
-package projetoes.projetoes.models;
+package ws2.projetoes.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @Getter
@@ -18,11 +16,11 @@ public class Especialidade
     @Id
     private String nomeEspecialidade;
 
-    @EqualsAndHashCode.Exclude
+    /*@EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "especialidade")
-    private Set<Medico> medicos = new HashSet<>();
+    private Set<Medico> medicos = new HashSet<>();*/
 
     public Especialidade(String especialidade)
     {

@@ -92,8 +92,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                // LocalDateTime diadenascimento = LocalDateTime.of((attributes[3]);
                 Medico medico = new Medico(Integer.parseInt(attributes[0]),attributes[2]);
                 Especialidade especialidade = getEByname(attributes[1],especialidades);
-                if(especialidade!=null)
+                if(especialidade!=null){
                     medico.setEspecialidade(especialidade);
+                    especialidade.getMedicos().add(medico);
+                }
+
                 medicos.add(medico);
                 medicoService.save(medico);
             }
