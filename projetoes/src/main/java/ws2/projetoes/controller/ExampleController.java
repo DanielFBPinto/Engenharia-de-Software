@@ -1,18 +1,20 @@
-package ws2.projetoes.Controllers;
+package ws2.projetoes.controller;
 
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-@Controller
+@RestController
+@RequestMapping(value = "/especialidade")
 public class ExampleController{
     @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     Iterable getAll(){
-        String path="http://localhost:8080/course";
+        String path="http://localhost:8090/especialidade";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> nullBodyRequest=new HttpEntity<>(null,headers);
         ResponseEntity<Iterable> responseEntity=makeRequest(path,HttpMethod.GET,nullBodyRequest,Iterable.class);

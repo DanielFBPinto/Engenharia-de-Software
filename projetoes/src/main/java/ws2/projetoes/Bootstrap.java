@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import ws2.projetoes.models.Especialidade;
+import ws2.projetoes.repositories.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,25 +23,25 @@ import java.util.Set;
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 //    private HorarioRepo horarioService;
-//    private EspecialidadeRepo especialidadeService;
+  private EspecialidadeRepo especialidadeService;
 //    private MedicoRepoI medicoService;
 //    private ConsultaRepo consultaService;
 //    private PacienteRepo pacienteService;
 //    private AdministrativoRepo administrativoRepo;
 
-    public Bootstrap()
+    public Bootstrap(EspecialidadeRepo especialidadeService)
     {
 //        this.medicoService = medicoService;
 //        this.consultaService = consultaService;
 //        this.pacienteService = pacienteService;
 //        this.administrativoRepo = administrativoRepo;
 //        this.horarioService = horarioRepo;
-//        this.especialidadeService= especialidadeService;
+      this.especialidadeService= especialidadeService;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-//        Set<Especialidade> especialidades= createEspacialidadesFromFile();
+          //Set<Especialidade> especialidades= ;
 //        Set<Medico> medicos = createMedicosFromFile(especialidades);
 //        Set<Horario> horarios = createHorarioFromFile(medicos);
 //        Set<Paciente> pacientes = createPacienteFromFile();

@@ -32,25 +32,10 @@ public class ConsultaService {
     }
 
     public Consulta alterarConsulta(ConsultaJSON consultaJSON) {
-      //  if (pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent()
-         //       && medicoRepo.findByName(consultaJSON.getNomeMedico()).isPresent()) {
-          //  Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).get();
-           // Medico medico = medicoRepo.findByName(consultaJSON.getNomeMedico()).get();
 
-         //   Consulta fetch = medico.existeConsulta(paciente, consultaJSON.getDataAntiga());
-            //if (fetch != null || medico.isPossible(consultaJSON.getNovaData())) {
-//                medico.cancelarConsulta(fetch,paciente);
-//                consultaRepo.delete(fetch);
-//                Consulta nova=new Consulta(consultaJSON.getNovaData(),medico,paciente);
-                //medico.addConsulta(Consulta new );
-                //fetch.setData(consultaJSON.getNovaData());
-                //this.cancelarConsulta(consultaJSON);
                 if( this.cancelarConsulta(consultaJSON)!=null)
                     return this.marcarConsulta(consultaJSON);
-               // return consultaRepo.save(nova);
-           // }
-           // return null;
-      //  }
+
         return null;
     }
 
