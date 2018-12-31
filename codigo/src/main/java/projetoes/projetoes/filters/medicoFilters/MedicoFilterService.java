@@ -16,14 +16,14 @@ import java.util.Set;
 public class MedicoFilterService {
     public Set<Medico> filterMedicos(Set<Medico> medicos, FilterMedicoObject filterMedicoObject) {
         FilterI<Medico> medicoDiaSemanaFilter = new MedicoDiaSemanaFilter(filterMedicoObject.getDiaSemana());
-        FilterI<Medico> medicoHorarioFilter = new MedicoHorarioFilter(filterMedicoObject.getHoraInicio(), filterMedicoObject.getHoraFim());
         FilterI<Medico> medicoHoraInicioFilter = new MedicoHoraInicioFilter(filterMedicoObject.getHoraInicio());
-        FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter, medicoHorarioFilter);
-        FilterI<Medico> medicoHorarioFilter = new MedicoHorarioFilter(filterMedicoObject.getHoraInicio(),filterMedicoObject.getHoraFim());
         FilterI<Medico> medicoHoraFimFilter = new MedicoHoraFimFilter(filterMedicoObject.getHoraFim());
-        FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter,medicoHorarioFilter);
+        FilterI<Medico> medicoHorarioFilter = new AndFilter<>(medicoHoraInicioFilter,medicoHoraFimFilter);
+        FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter, medicoHorarioFilter);
         FilterI<Medico> medicoEspecialidadeFilter = new MedicoEspecialidadeFilter(filterMedicoObject.getEspecialidade());
         FilterI<Medico> especialidadeoHorarioFilter = new AndFilter<>(medicoEspecialidadeFilter, diaSemanaHorarioFilter);
         return especialidadeoHorarioFilter.filter(medicos);
+        // FilterI<Medico> medicoHorarioFilter = new MedicoHorarioFilter(filterMedicoObject.getHoraInicio(),filterMedicoObject.getHoraFim());
+        // FilterI<Medico> diaSemanaHorarioFilter = new AndFilter<>(medicoDiaSemanaFilter,medicoHorarioFilter);
     }
 }

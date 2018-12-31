@@ -10,10 +10,10 @@ import java.util.Set;
 
 public class MedicoHorarioFilter implements FilterI<Medico>
 {
-    private LocalDate horaInicioFilter;
-    private LocalDate horaFimFilter;
+    private LocalTime horaInicioFilter;
+    private LocalTime horaFimFilter;
 
-    public MedicoHorarioFilter (LocalDate horaInicio,LocalDate horaFim)
+    public MedicoHorarioFilter (LocalTime horaInicio,LocalTime horaFim)
     {
         this.horaInicioFilter = horaInicio;
         this.horaFimFilter = horaFim;

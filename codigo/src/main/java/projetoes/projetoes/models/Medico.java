@@ -127,6 +127,11 @@ public class Medico extends Funcionario {
             }
         }
     }
+    public void cancelarConsulta(Consulta consulta,Paciente paciente) {
+                paciente.getConsultas().remove(consulta);
+                this.consultas.remove(consulta);
+            }
+
 
     public void alterarConsulta(Paciente paciente, LocalDateTime dataAnterior, LocalDateTime novaData) {
         for (Consulta consulta : this.consultas) {

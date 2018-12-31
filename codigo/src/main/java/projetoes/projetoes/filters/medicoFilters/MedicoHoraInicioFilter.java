@@ -10,9 +10,9 @@ import java.util.Set;
 
 public class MedicoHoraInicioFilter implements FilterI<Medico>
 {
-    private LocalDate horaInicioFilter;
+    private LocalTime horaInicioFilter;
 
-    public MedicoHoraInicioFilter (LocalDate horaInicio)
+    public MedicoHoraInicioFilter (LocalTime horaInicio)
     {
         this.horaInicioFilter = horaInicio;
     }
@@ -31,8 +31,9 @@ public class MedicoHoraInicioFilter implements FilterI<Medico>
             {
                 if((horario.getHoraInicio().isAfter(LocalTime.from(horaInicioFilter)) || horario.getHoraInicio().equals(horaInicioFilter)))
                 {
-                    novoMedico.addHorario(new Horario(horario));
-                    medicosFiltered.add(novoMedico);
+                 //   novoMedico.addHorario(new Horario(horario));
+                //    medicosFiltered.add(novoMedico);
+                    medicosFiltered.add(m);
                 }
             }
         }
