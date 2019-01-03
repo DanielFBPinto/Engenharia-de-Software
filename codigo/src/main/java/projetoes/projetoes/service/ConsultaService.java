@@ -19,8 +19,7 @@ public class ConsultaService {
     @Autowired
     private MedicoRepoI medicoRepo;
 
-    public Iterable<Consulta> getAllConsultas()
-    {
+    public Iterable<Consulta> getAllConsultas() {
         return consultaRepo.findAll();
     }
 
@@ -33,17 +32,17 @@ public class ConsultaService {
 
     public Consulta alterarConsulta(ConsultaJSON consultaJSON) {
 
-                if( this.cancelarConsulta(consultaJSON)!=null)
-                    return this.marcarConsulta(consultaJSON);
+        if (this.cancelarConsulta(consultaJSON) != null)
+            return this.marcarConsulta(consultaJSON);
 
         return null;
     }
 
     public Consulta marcarConsulta(ConsultaJSON consultaJSON) {
 
-        if (pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findByName(consultaJSON.getNomeMedico()).isPresent()) {
-            Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).get();
-            Medico medico = medicoRepo.findByName(consultaJSON.getNomeMedico()).get();
+        if (pacienteRepo.findById(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findById(consultaJSON.getNomeMedico()).isPresent()) {
+            Paciente paciente = pacienteRepo.findById(consultaJSON.getNomePaciente()).get();
+            Medico medico = medicoRepo.findById(consultaJSON.getNomeMedico()).get();
 
             if (medico.isPossible(consultaJSON.getNovaData())) {
                 Consulta consulta = new Consulta(consultaJSON.getNovaData(), medico, paciente);
@@ -54,20 +53,26 @@ public class ConsultaService {
     }
 
     public Consulta cancelarConsulta(ConsultaJSON consultaJSON) {
-        if (pacienteRepo.findByName(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findByName(consultaJSON.getNomeMedico()).isPresent()) {
-            Paciente paciente = pacienteRepo.findByName(consultaJSON.getNomePaciente()).get();
-            Medico medico = medicoRepo.findByName(consultaJSON.getNomeMedico()).get();
+        if (pacienteRepo.findById(consultaJSON.getNomePaciente()).isPresent() && medicoRepo.findById(consultaJSON.getNomeMedico()).isPresent()) {
+            Paciente paciente = pacienteRepo.findById(consultaJSON.getNomePaciente()).get();
+            Medico medico = medicoRepo.findById(consultaJSON.getNomeMedico()).get();
 
             Consulta fetch = medico.existeConsulta(paciente, consultaJSON.getDataAntiga());
-         if(fetch!=null){
-             medico.getConsultas().remove(fetch);
-             consultaRepo.delete(fetch);
-             return  fetch;
-         }
+            if (fetch != null) {
+                medico.getConsultas().remove(fetch);
+                consultaRepo.delete(fetch);
+                return fetch;
+            }
 
-         //   consultaRepo.deleteById(fetch.getId());
+            //   consultaRepo.deleteById(fetch.getId());
 
         }
         return null;
+    }
+
+    public Consulta cancelarConsulta(Consulta consulta, Medico medico) {
+        medico.getConsultas().remove(consulta);
+        consultaRepo.delete(consulta);
+        return consulta;
     }
 }

@@ -49,6 +49,6 @@ public class MedicoService {
     }
 
     public Set<Medico> getFilteredMedicos(FilterMedicoObject filterMedicoObject) {
-        return medicoFilterService.filterMedicos(getAllMedicos(),filterMedicoObject);
+        return medicoFilterService.filterMedicos(getAllMedicos(), filterMedicoObject);
     }
 }

@@ -15,12 +15,12 @@ import java.time.LocalDateTime;
 @ToString
 public class ConsultaJSON extends BaseModel
 {
-    private String nomePaciente;
-    private String nomeMedico;
+    private Long nomePaciente;
+    private Long nomeMedico;
     private LocalDateTime dataAntiga;
     private LocalDateTime novaData;
 
-    public ConsultaJSON(String nomePaciente,String nomeMedico,LocalDateTime dataAntiga,LocalDateTime novaData)
+    public ConsultaJSON(Long nomePaciente,Long nomeMedico,LocalDateTime dataAntiga,LocalDateTime novaData)
     {
         this.nomePaciente = nomePaciente;
         this.nomeMedico = nomeMedico;
@@ -28,13 +28,13 @@ public class ConsultaJSON extends BaseModel
         this.novaData = novaData;
     }
 
-    public ConsultaJSON(String nomePaciente,LocalDateTime dataAntiga)
+    public ConsultaJSON(Long nomePaciente,LocalDateTime dataAntiga)
     {
         this.dataAntiga = dataAntiga;
         this.nomePaciente = nomePaciente;
     }
 
-    public ConsultaJSON(String nomePaciente,String nomeMedico,LocalDateTime dataNova)
+    public ConsultaJSON(Long nomePaciente,Long nomeMedico,LocalDateTime dataNova)
     {
         this.nomePaciente = nomePaciente;
         this.nomeMedico = nomePaciente;

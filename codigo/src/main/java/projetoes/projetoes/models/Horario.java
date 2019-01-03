@@ -34,6 +34,7 @@ public class Horario extends BaseModel {
 
     }
 
+
     public void addMedico(Medico medico)
     {
         this.setMedico(medico);
