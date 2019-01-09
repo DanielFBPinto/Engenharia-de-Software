@@ -14,7 +14,7 @@ public class ExampleController{
     @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     Iterable getAll(){
-        String path="http://localhost:8090/especialidade";
+        String path="http://localhost:8090/medico";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> nullBodyRequest=new HttpEntity<>(null,headers);
         ResponseEntity<Iterable> responseEntity=makeRequest(path,HttpMethod.GET,nullBodyRequest,Iterable.class);
