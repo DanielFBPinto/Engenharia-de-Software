@@ -1,14 +1,16 @@
-package projetoes.projetoes.models;
-
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+package ws2.projetoes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -85,17 +87,10 @@ public class Medico extends Funcionario {
 
     private boolean temConsulta(LocalDateTime data) {
         for (Consulta consulta : this.consultas) {
-            System.out.println(consulta.getDia().getValue()+"?"+data.getDayOfWeek().getValue());
-            System.out.println(consulta.getData()+"?"+data);
-            System.out.println(consulta.getDatafim()+"?"+data);
-
 
             if (consulta.getDia().getValue()==data.getDayOfWeek().getValue()
-                    && ((consulta.getData().isBefore(data)
-                    && consulta.getDatafim().isAfter(data))
-                    || (consulta.getData().isEqual(data)
-                    || consulta.getDatafim().isEqual(data)))) {
-
+                    && consulta.getData().isAfter(data)
+                    && consulta.getDatafim().isBefore(data)) {
                 return true;
             }
         }
@@ -105,12 +100,11 @@ public class Medico extends Funcionario {
     public boolean isPossible(LocalDateTime data) {
         if (this.isWorking(data)) {
             if (!this.temConsulta(data)) {
-
-               System.out.println("is possible true");
+               // System.out.println("true");
                 return true;
             }
         }
-        System.out.println("is possible falso");
+        //System.out.println("falso");
         return false;
     }
 

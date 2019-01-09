@@ -1,14 +1,14 @@
-package projetoes.projetoes.service;
+package ws2.projetoes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import projetoes.projetoes.jsonfiles.ConsultaJSON;
-import projetoes.projetoes.models.Consulta;
-import projetoes.projetoes.models.Medico;
-import projetoes.projetoes.models.Paciente;
-import projetoes.projetoes.repositories.ConsultaRepo;
-import projetoes.projetoes.repositories.MedicoRepoI;
-import projetoes.projetoes.repositories.PacienteRepo;
+import ws2.projetoes.jsonfiles.ConsultaJSON;
+import ws2.projetoes.models.Consulta;
+import ws2.projetoes.models.Medico;
+import ws2.projetoes.models.Paciente;
+import ws2.projetoes.repositories.ConsultaRepo;
+import ws2.projetoes.repositories.MedicoRepoI;
+import ws2.projetoes.repositories.PacienteRepo;
 
 @Service
 public class ConsultaService {
@@ -44,7 +44,7 @@ public class ConsultaService {
             Paciente paciente = pacienteRepo.findById(consultaJSON.getNomePaciente()).get();
             Medico medico = medicoRepo.findById(consultaJSON.getNomeMedico()).get();
 
-            if (medico.isPossible(consultaJSON.getNovaData()) && medico.isPossible(consultaJSON.getNovaData().plusMinutes(15))) {
+            if (medico.isPossible(consultaJSON.getNovaData())) {
                 Consulta consulta = new Consulta(consultaJSON.getNovaData(), medico, paciente);
                 return consultaRepo.save(consulta);
             }

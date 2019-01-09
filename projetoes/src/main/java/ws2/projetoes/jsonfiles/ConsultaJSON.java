@@ -1,11 +1,10 @@
-package projetoes.projetoes.jsonfiles;
+package ws2.projetoes.jsonfiles;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import projetoes.projetoes.models.BaseModel;
-import projetoes.projetoes.models.Consulta;
+import ws2.projetoes.models.BaseModel;
 
 import java.time.LocalDateTime;
 
