@@ -1,12 +1,9 @@
-package projetoes.projetoes.service;
+package ws2.projetoes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import projetoes.projetoes.filters.FilterMedicoObject;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilter;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
-import projetoes.projetoes.models.Medico;
-import projetoes.projetoes.repositories.MedicoRepoI;
+import ws2.projetoes.models.Medico;
+import ws2.projetoes.repositories.MedicoRepoI;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,8 +13,7 @@ import java.util.Set;
 public class MedicoService {
     @Autowired
     private MedicoRepoI medicoRepo;
-    @Autowired
-    private MedicoFilterService medicoFilterService;
+
 
     public Set<Medico> getAllMedicos() {
         Set<Medico> medicos = new HashSet<>();
@@ -48,7 +44,4 @@ public class MedicoService {
         return null;
     }
 
-    public Set<Medico> getFilteredMedicos(FilterMedicoObject filterMedicoObject) {
-        return medicoFilterService.filterMedicos(getAllMedicos(), filterMedicoObject);
-    }
 }

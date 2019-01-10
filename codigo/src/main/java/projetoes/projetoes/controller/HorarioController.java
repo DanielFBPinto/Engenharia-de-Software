@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import projetoes.projetoes.jsonfiles.HorarioJSON;
 import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.repositories.HorarioRepo;
 import projetoes.projetoes.service.HorarioService;
@@ -31,5 +32,35 @@ public class HorarioController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(horario);
+    }
+
+    @RequestMapping(value = "/alterarhorario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Horario> alterarConsulta(@RequestBody HorarioJSON consultaJSON) {
+        Horario consulta = horarioService.alterarhorario(consultaJSON);
+        if (consulta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
+
+
+    }
+
+    @RequestMapping(value = "/marcarhorario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Horario> marcarHorario(@RequestBody HorarioJSON horarioJSON) {
+        Horario horario = horarioService.marcarHorario(horarioJSON);
+        if (horario == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(horario);
+    }
+
+
+    @RequestMapping(value = "/cancelarhorario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Horario> cancelarHorario(@RequestBody HorarioJSON horarioJSON) {
+        Horario consulta = horarioService.cancelarHorario(horarioJSON);
+        if (consulta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
     }
 }

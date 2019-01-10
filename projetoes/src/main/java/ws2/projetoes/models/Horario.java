@@ -1,11 +1,11 @@
-package projetoes.projetoes.models;
-
-import java.time.DayOfWeek;
-import java.time.LocalTime;
+package ws2.projetoes.models;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 
 @Entity
 @Getter

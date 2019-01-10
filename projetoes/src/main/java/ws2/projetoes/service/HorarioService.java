@@ -1,14 +1,14 @@
-package projetoes.projetoes.service;
+package ws2.projetoes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import projetoes.projetoes.jsonfiles.HorarioJSON;
-import projetoes.projetoes.models.Consulta;
-import projetoes.projetoes.models.Horario;
-import projetoes.projetoes.models.Medico;
-import projetoes.projetoes.repositories.ConsultaRepo;
-import projetoes.projetoes.repositories.HorarioRepo;
-import projetoes.projetoes.repositories.MedicoRepoI;
+import ws2.projetoes.jsonfiles.HorarioJSON;
+import ws2.projetoes.models.Consulta;
+import ws2.projetoes.models.Horario;
+import ws2.projetoes.models.Medico;
+import ws2.projetoes.repositories.ConsultaRepo;
+import ws2.projetoes.repositories.HorarioRepo;
+import ws2.projetoes.repositories.MedicoRepoI;
 
 @Service
 public class HorarioService {

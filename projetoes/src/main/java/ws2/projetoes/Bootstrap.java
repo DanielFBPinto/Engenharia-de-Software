@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import ws2.projetoes.models.Clinica;
 import ws2.projetoes.models.Especialidade;
 import ws2.projetoes.repositories.*;
 
@@ -24,23 +25,26 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 //    private HorarioRepo horarioService;
   private EspecialidadeRepo especialidadeService;
+  private ClinicaRepo clinicaRepo;
 //    private MedicoRepoI medicoService;
 //    private ConsultaRepo consultaService;
 //    private PacienteRepo pacienteService;
 //    private AdministrativoRepo administrativoRepo;
 
-    public Bootstrap(EspecialidadeRepo especialidadeService)
+    public Bootstrap(ClinicaRepo clinicaRepo)
     {
+          this.clinicaRepo=clinicaRepo;
 //        this.medicoService = medicoService;
 //        this.consultaService = consultaService;
 //        this.pacienteService = pacienteService;
 //        this.administrativoRepo = administrativoRepo;
 //        this.horarioService = horarioRepo;
-      this.especialidadeService= especialidadeService;
+     // this.especialidadeService= especialidadeService;
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+      Set<Clinica> clinicas= createClinicas();
           //Set<Especialidade> especialidades= ;
 //        Set<Medico> medicos = createMedicosFromFile(especialidades);
 //        Set<Horario> horarios = createHorarioFromFile(medicos);
@@ -53,6 +57,14 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         // medicoService.save(medico);
 
        // logger.debug(medicos.toString());
+    }
+    private Set<Clinica> createClinicas(){
+      Set<Clinica> clinicas = new HashSet<>();
+      Clinica clinica= new Clinica("Porto","8090");
+      clinicas.add(clinica);
+      clinicaRepo.save(clinica);
+      return clinicas;
+
     }
 //    private Set<Especialidade> createEspacialidadesFromFile() {
 //        Set<Especialidade> especialidades = new HashSet<>();
