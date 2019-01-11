@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import ws2.projetoes.models.Clinica;
-import ws2.projetoes.models.Consulta;
 import ws2.projetoes.models.Especialidade;
 import ws2.projetoes.service.ClinicaService;
-import ws2.projetoes.service.EspecialidadeService;
 
 @RestController
 @RequestMapping(value = "/especialidade")

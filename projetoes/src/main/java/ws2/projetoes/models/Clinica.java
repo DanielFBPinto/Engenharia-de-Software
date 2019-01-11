@@ -1,9 +1,15 @@
 package ws2.projetoes.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import ws2.projetoes.controller.ClinicaController;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,15 +22,24 @@ public class Clinica extends BaseModel
     private String localizacao;
     private String url;
 
-    /*@EqualsAndHashCode.Exclude
+    @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "especialidade")
-    private Set<Medico> medicos = new HashSet<>();*/
+    @JsonInclude
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Especialidade> especialidades= new HashSet<>();
+
+
+
 
     public Clinica(String localizacao,String url)
     {
         this.localizacao = localizacao;
         this.url = "http://localhost:".concat(url);
     }
+    public void adicionarEspecialidades(Especialidade especialidade){
+      this.especialidades.add(especialidade);
+       especialidade.adicionarClinica(this);
+    }
+
+
 }

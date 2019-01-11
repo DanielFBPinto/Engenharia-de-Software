@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor

@@ -1,9 +1,14 @@
 package ws2.projetoes.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,6 +21,12 @@ public class Especialidade
     @Id
     private String nomeEspecialidade;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonIgnore
+    @ManyToMany(mappedBy ="especialidades")
+    private Set<Clinica> clinicas= new HashSet<>();
+
     /*@EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
@@ -25,5 +36,11 @@ public class Especialidade
     public Especialidade(String especialidade)
     {
         this.nomeEspecialidade = especialidade;
+    }
+
+
+    public void adicionarClinica(Clinica clinica){
+        this.clinicas.add(clinica);
+
     }
 }

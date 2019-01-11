@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,6 +26,7 @@ public class Consulta extends BaseModel {
     @ToString.Exclude
     @ManyToOne
     private Paciente paciente;
+
 
     public Consulta(LocalDateTime data) {
         this.data = data;
