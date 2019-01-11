@@ -13,8 +13,6 @@ import javax.persistence.Id;
 @ToString
 public class Clinica extends BaseModel
 {
-
-   // private String nome;
     private String localizacao;
     private String url;
 
@@ -24,10 +22,9 @@ public class Clinica extends BaseModel
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "especialidade")
     private Set<Medico> medicos = new HashSet<>();*/
 
-    public Clinica( String localizacao,String url)
+    public Clinica(String localizacao,String url)
     {
-//        this.nome = nome;
-        this.localizacao=localizacao;
-        this.url= "http://localhost:".concat(url);
+        this.localizacao = localizacao;
+        this.url = "http://localhost:".concat(url);
     }
 }

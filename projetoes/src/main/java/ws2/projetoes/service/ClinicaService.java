@@ -8,16 +8,20 @@ import ws2.projetoes.repositories.AdministrativoRepo;
 import ws2.projetoes.repositories.ClinicaRepo;
 
 @Service
-public class ClinicaService {
+public class ClinicaService
+{
     @Autowired
     ClinicaRepo clinicaRepo;
 
-    public Iterable<Clinica> getAllClinicas() {
+    public Iterable<Clinica> getAllClinicas()
+    {
         return clinicaRepo.findAll();
     }
 
-    public Clinica findById(Long id) {
-        if (clinicaRepo.findById(id).isPresent()) {
+    public Clinica findById(Long id)
+    {
+        if (clinicaRepo.findById(id).isPresent())
+        {
             return clinicaRepo.findById(id).get();
         }
         return null;

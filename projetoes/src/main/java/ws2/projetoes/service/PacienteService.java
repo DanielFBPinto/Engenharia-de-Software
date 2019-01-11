@@ -6,11 +6,22 @@ import ws2.projetoes.models.Paciente;
 import ws2.projetoes.repositories.PacienteRepo;
 
 @Service
-public class PacienteService {
+public class PacienteService
+{
     @Autowired
     private PacienteRepo pacienteRepo;
 
-    public Iterable<Paciente> getAllPacientes() {
+    public Iterable<Paciente> getAllPacientes()
+    {
         return pacienteRepo.findAll();
+    }
+
+    public Paciente findById(Long id)
+    {
+        if(pacienteRepo.findById(id).isPresent())
+        {
+            return pacienteRepo.findById(id).get();
+        }
+        return null;
     }
 }

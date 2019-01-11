@@ -38,18 +38,20 @@ public class HorarioService {
      * @param horarioJSON
      * @return
      */
-    public Horario alterarhorario(HorarioJSON horarioJSON) {
+    public Horario alterarhorario(HorarioJSON horarioJSON)
+    {
         Medico medico = medicoRepo.findById(horarioJSON.getMedico()).get();
-        if (medico != null) {
-            Horario newHorario = new Horario(horarioJSON.getHoraInicio(), horarioJSON.getHoraFim(), horarioJSON.getDiaSemana());
-            Horario horario = existeHorario(medico, horarioJSON);
-            if (horario != null) {
-                this.manterConsultas(medico, newHorario);
-                this.cancelarHorario(horario, medico);
-                return this.marcarHorario(newHorario, medico);
+        if (medico != null)
+        {
+            Horario newHorario = new Horario(horarioJSON.getHoraInicio(),horarioJSON.getHoraFim(),horarioJSON.getDiaSemana());
+            Horario horario = existeHorario(medico,horarioJSON);
+            if (horario != null)
+            {
+                this.manterConsultas(medico,newHorario);
+                this.cancelarHorario(horario,medico);
+                return this.marcarHorario(newHorario,medico);
             }
-
-            return this.marcarHorario(newHorario, medico);
+            return this.marcarHorario(newHorario,medico);
         }
         return null;
     }
@@ -61,22 +63,27 @@ public class HorarioService {
      * @param medico
      * @param horario
      */
-    public void manterConsultas(Medico medico, Horario horario) {
-        for (Consulta consulta : medico.getConsultas()) {
-            if (consulta.getDia() == horario.getDiaSemana()) {
-                if (consulta.getData().toLocalTime().isBefore(horario.getHoraInicio()) ||
-                        consulta.getData().toLocalTime().isAfter(horario.getHoraFim())) {
+    public void manterConsultas(Medico medico, Horario horario)
+    {
+        for (Consulta consulta : medico.getConsultas())
+        {
+            if (consulta.getDia() == horario.getDiaSemana())
+            {
+                if (consulta.getData().toLocalTime().isBefore(horario.getHoraInicio()) || consulta.getData().toLocalTime().isAfter(horario.getHoraFim()))
+                {
                     medico.getConsultas().remove(consulta);
                     consultaRepo.delete(consulta);
                 }
-
             }
         }
     }
 
-    public Horario existeHorario(Medico medico, HorarioJSON horarioJSON) {
-        for (Horario horario : medico.getHorarios()) {
-            if (horario.getDiaSemana().equals(horarioJSON.getDiaSemana())) {
+    public Horario existeHorario(Medico medico, HorarioJSON horarioJSON)
+    {
+        for (Horario horario : medico.getHorarios())
+        {
+            if (horario.getDiaSemana().equals(horarioJSON.getDiaSemana()))
+            {
                 return horario;
             }
         }
@@ -89,13 +96,14 @@ public class HorarioService {
      * @param horarioJSON
      * @return
      */
-    public Horario marcarHorario(HorarioJSON horarioJSON) {
+    public Horario marcarHorario(HorarioJSON horarioJSON)
+    {
         Medico medico = medicoRepo.findById(horarioJSON.getMedico()).get();
-        Horario horario = existeHorario(medico, horarioJSON);
-        if (horario == null) {
-            Horario newhorario = new Horario(horarioJSON.getHoraInicio(), horarioJSON.getHoraFim(), horarioJSON.getDiaSemana());
-
-            return marcarHorario(newhorario, medico);
+        Horario horario = existeHorario(medico,horarioJSON);
+        if (horario == null)
+        {
+            Horario newhorario = new Horario(horarioJSON.getHoraInicio(),horarioJSON.getHoraFim(),horarioJSON.getDiaSemana());
+            return marcarHorario(newhorario,medico);
         }
         return null;
     }
@@ -107,7 +115,8 @@ public class HorarioService {
      * @param medico
      * @return
      */
-    public Horario marcarHorario(Horario horario, Medico medico) {
+    public Horario marcarHorario(Horario horario, Medico medico)
+    {
         medico.addHorario(horario);
         horarioRepo.save(horario);
         return horario;
@@ -120,15 +129,17 @@ public class HorarioService {
      * @param horarioJSON
      * @return
      */
-    public Horario cancelarHorario(HorarioJSON horarioJSON) {
+    public Horario cancelarHorario(HorarioJSON horarioJSON)
+    {
         Medico medico = medicoRepo.findById(horarioJSON.getMedico()).get();
-        if (medico != null) {
-            Horario horario = existeHorario(medico, horarioJSON);
-            if (horario != null) {
-                return cancelarHorarioRIPconsultas(horario, medico);
+        if (medico != null)
+        {
+            Horario horario = existeHorario(medico,horarioJSON);
+            if (horario != null)
+            {
+                return cancelarHorarioRIPconsultas(horario,medico);
             }
         }
-
         return null;
     }
 
@@ -141,9 +152,12 @@ public class HorarioService {
      * @param medico
      * @return
      */
-    public Horario cancelarHorarioRIPconsultas(Horario horario, Medico medico) {
-        for (Consulta consulta : medico.getConsultas()) {
-            if (consulta.getDia().equals(horario.getDiaSemana())) {
+    public Horario cancelarHorarioRIPconsultas(Horario horario, Medico medico)
+    {
+        for (Consulta consulta : medico.getConsultas())
+        {
+            if (consulta.getDia().equals(horario.getDiaSemana()))
+            {
                 medico.getConsultas().remove(consulta);
                 consultaRepo.delete(consulta);
             }
@@ -159,7 +173,8 @@ public class HorarioService {
      * @param medico
      * @return
      */
-    public Horario cancelarHorario(Horario horario, Medico medico) {
+    public Horario cancelarHorario(Horario horario, Medico medico)
+    {
         medico.getHorarios().remove(horario);
         horarioRepo.delete(horario);
         return horario;

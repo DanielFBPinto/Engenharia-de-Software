@@ -10,35 +10,44 @@ import java.util.Set;
 
 @Service
 
-public class MedicoService {
+public class MedicoService
+{
     @Autowired
     private MedicoRepoI medicoRepo;
 
 
-    public Set<Medico> getAllMedicos() {
+    public Set<Medico> getAllMedicos()
+    {
         Set<Medico> medicos = new HashSet<>();
-        for (Medico medico : medicoRepo.findAll()) {
+        for (Medico medico : medicoRepo.findAll())
+        {
             medicos.add(medico);
         }
         return medicos;
     }
 
-    public Medico findById(Long id) {
-        if (medicoRepo.findById(id).isPresent()) {
+    public Medico findById(Long id)
+    {
+        if (medicoRepo.findById(id).isPresent())
+        {
             return medicoRepo.findById(id).get();
         }
         return null;
     }
 
-    public Medico findByEspecialidade(String especialidade) {
-        if (medicoRepo.findByEspecialidade(especialidade).isPresent()) {
+    public Medico findByEspecialidade(String especialidade)
+    {
+        if (medicoRepo.findByEspecialidade(especialidade).isPresent())
+        {
             return medicoRepo.findByEspecialidade(especialidade).get();
         }
         return null;
     }
 
-    public Medico findByCedulaMedica(Integer cedulaMedica) {
-        if (medicoRepo.findByCedulaMedica(cedulaMedica).isPresent()) {
+    public Medico findByCedulaMedica(Integer cedulaMedica)
+    {
+        if (medicoRepo.findByCedulaMedica(cedulaMedica).isPresent())
+        {
             return medicoRepo.findByCedulaMedica(cedulaMedica).get();
         }
         return null;
