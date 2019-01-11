@@ -11,8 +11,7 @@ import projetoes.projetoes.service.AdministrativoService;
 
 @RestController
 @RequestMapping(value = "/administrativo")
-public class AdministrativoController
-{
+public class AdministrativoController {
     @Autowired
     private AdministrativoService administrativoService;
 
