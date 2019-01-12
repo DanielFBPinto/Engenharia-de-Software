@@ -2,6 +2,7 @@ package projetoes.projetoes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import projetoes.projetoes.jsonfiles.EspecialidadeJSON;
 import projetoes.projetoes.models.Especialidade;
 import projetoes.projetoes.repositories.EspecialidadeRepo;
 
@@ -22,5 +23,18 @@ public class EspecialidadeService {
             return especialidadeRepo.findById(id).get();
         }
         return null;
+    }
+    public Especialidade criarEspecialidade(EspecialidadeJSON especialidadeJSON){
+        Especialidade especialidade=new Especialidade(especialidadeJSON.getName());
+        if(especialidade==null)
+            return null;
+        return especialidadeRepo.save(especialidade);
+    }
+    public Especialidade eliminarEspecialidade(EspecialidadeJSON especialidadeJSON){
+        Especialidade especialidade=especialidadeRepo.findByName(especialidadeJSON.getName()).get();
+        if(especialidade==null)
+            return null;
+         especialidadeRepo.delete(especialidade);
+        return especialidade;
     }
 }

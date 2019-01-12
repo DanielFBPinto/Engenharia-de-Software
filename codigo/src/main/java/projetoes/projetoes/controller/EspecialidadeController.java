@@ -3,9 +3,11 @@ package projetoes.projetoes.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import projetoes.projetoes.jsonfiles.EspecialidadeJSON;
 import projetoes.projetoes.models.Especialidade;
 import projetoes.projetoes.service.EspecialidadeService;
 
@@ -26,4 +28,14 @@ public class EspecialidadeController
         }
         return ResponseEntity.ok(allEspecialidade);
     }
+    @RequestMapping(value = "/criarespecialidade", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Especialidade> marcarConsulta(@RequestBody EspecialidadeJSON especialidadeJSON) {
+        Especialidade consulta = especialidadeService.criarEspecialidade(especialidadeJSON);
+        if (consulta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
+    }
+
+
 }

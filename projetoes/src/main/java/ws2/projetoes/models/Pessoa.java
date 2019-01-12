@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Pessoa extends BaseModel
 {
     private String name;
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    //@JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime dataNascimento;
     private Integer numCC;
 

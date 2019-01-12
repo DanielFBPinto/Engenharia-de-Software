@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 
@@ -13,10 +14,13 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @ToString
+
 public class Pessoa extends BaseModel {
+
     private String name;
-    @JsonFormat(pattern = "dd/MM/yyyy")
+  //  @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime dataNascimento;
+
     private Integer numCC;
 
     public String getName() {

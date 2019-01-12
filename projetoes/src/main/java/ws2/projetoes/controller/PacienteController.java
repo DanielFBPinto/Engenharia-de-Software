@@ -2,11 +2,9 @@ package ws2.projetoes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import ws2.projetoes.jsonfiles.PacienteJSON;
 import ws2.projetoes.models.Clinica;
 import ws2.projetoes.models.Consulta;
 import ws2.projetoes.models.Paciente;
@@ -60,6 +58,53 @@ public class PacienteController
                 return ResponseEntity.notFound().build();
             }
         }
+        return ResponseEntity.notFound().build();
+    }
+    @RequestMapping(value = "/registarpaciente", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Paciente> registarPaciente(@RequestBody PacienteJSON pacienteJSON)
+    {
+        Clinica clinica = clinicaService.findById(pacienteJSON.getIdClinica());
+        if(clinica != null)
+        {
+            String path = clinica.getUrl().concat("paciente/registarpaciente");
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<PacienteJSON> body = new HttpEntity<>(pacienteJSON, headers);
+            ResponseEntity<Paciente> responseEntity = makeRequest(path, HttpMethod.POST, body, Paciente.class);
+            if (responseEntity.getStatusCodeValue() == 200)
+            {
+                return ResponseEntity.ok(responseEntity.getBody());
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @RequestMapping(value = "/alterarpaciente", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Paciente> alterarpaciente(@RequestBody PacienteJSON pacienteJSON)
+    {
+        System.out.println("1");
+        Clinica clinica = clinicaService.findById(pacienteJSON.getIdClinica());
+        if(clinica != null)
+        {
+            String path = clinica.getUrl().concat("paciente/alterarpaciente");
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<PacienteJSON> body = new HttpEntity<>(pacienteJSON, headers);
+            System.out.println("2");
+            ResponseEntity<Paciente> responseEntity = makeRequest(path, HttpMethod.POST, body, Paciente.class);
+            System.out.println("3");
+            if (responseEntity.getStatusCodeValue() == 200)
+            {
+                return ResponseEntity.ok(responseEntity.getBody());
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        System.out.println("4");
         return ResponseEntity.notFound().build();
     }
 

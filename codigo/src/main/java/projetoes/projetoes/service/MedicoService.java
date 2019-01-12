@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import projetoes.projetoes.filters.FilterMedicoObject;
 import projetoes.projetoes.filters.medicoFilters.MedicoFilter;
 import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
+import projetoes.projetoes.jsonfiles.MedicoJSON;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.repositories.MedicoRepoI;
 
@@ -50,5 +51,14 @@ public class MedicoService {
 
     public Set<Medico> getFilteredMedicos(FilterMedicoObject filterMedicoObject) {
         return medicoFilterService.filterMedicos(getAllMedicos(), filterMedicoObject);
+    }
+    public Medico criarMedico(MedicoJSON medicoJSON){
+        Medico medico= new Medico(medicoJSON.getNome());
+    }
+    public Medico alterarMedico(MedicoJSON medicoJSON){
+
+    }
+    public Medico removerMedico(MedicoJSON medicoJSON){
+
     }
 }

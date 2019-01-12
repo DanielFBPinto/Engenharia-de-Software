@@ -27,6 +27,16 @@ public class Paciente extends Pessoa
         super(name);
     }
 
+
+
+    public Paciente(String name, LocalDateTime dataNascimento, Integer numCC) {
+        super(name, dataNascimento, numCC);
+    }
+
+    public Paciente(String name, LocalDateTime dataNascimento) {
+        super(name, dataNascimento);
+    }
+
     public boolean isFree(LocalDateTime dataConsulta)
     {
         for (Consulta consulta : this.consultas)

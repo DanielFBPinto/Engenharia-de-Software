@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
+
 public class Paciente extends Pessoa {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
@@ -23,6 +24,10 @@ public class Paciente extends Pessoa {
 
     public Paciente(String name) {
         super(name);
+    }
+
+    public Paciente(String name, LocalDateTime dataNascimento, Integer numCC) {
+        super(name, dataNascimento, numCC);
     }
 
     public boolean isFree(LocalDateTime dataConsulta) {

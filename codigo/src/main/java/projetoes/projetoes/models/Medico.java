@@ -22,6 +22,7 @@ public class Medico extends Funcionario {
     @ManyToOne
     @JsonInclude
     private Especialidade especialidade;
+    private String estado;//a exercer funções, ferias, baixa, despedido etc....
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

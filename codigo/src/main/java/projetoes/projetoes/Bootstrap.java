@@ -189,9 +189,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 //                        consulta.addPaciente(paciente);
 //                }
 
-
-                pacientes.add(paciente);
-                pacienteService.save(paciente);
+                if(paciente!=null) {
+                    pacientes.add(paciente);
+                    pacienteService.save(paciente);
+                }
             }
 
         } catch (IOException e) {
