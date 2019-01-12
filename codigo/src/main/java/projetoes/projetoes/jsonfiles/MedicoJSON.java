@@ -22,7 +22,8 @@ public class MedicoJSON extends BaseModel
     private Long myid;
     private String especialidade;
 
-    public MedicoJSON(Integer cedulaMedica, LocalDateTime dataNascimento, Integer numCC, Long myid, String especialidade) {
+    public MedicoJSON(Integer cedulaMedica, LocalDateTime dataNascimento, Integer numCC, Long myid, String especialidade)
+    {
         this.cedulaMedica = cedulaMedica;
         this.dataNascimento = dataNascimento;
         this.numCC = numCC;
@@ -30,10 +31,18 @@ public class MedicoJSON extends BaseModel
         this.especialidade = especialidade;
     }
 
-    public MedicoJSON(Integer cedulaMedica, LocalDateTime dataNascimento, Integer numCC, String especialidade) {
+    public MedicoJSON(Integer cedulaMedica, LocalDateTime dataNascimento, Integer numCC, String especialidade)
+    {
         this.cedulaMedica = cedulaMedica;
         this.dataNascimento = dataNascimento;
         this.numCC = numCC;
         this.especialidade = especialidade;
+    }
+
+    public MedicoJSON(String nome,Integer numCC,Long myid)
+    {
+        this.nome = nome;
+        this.numCC = numCC;
+        this.myid = myid;
     }
 }

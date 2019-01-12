@@ -18,23 +18,33 @@ public class EspecialidadeService {
         return especialidadeRepo.findAll();
     }
 
-    public Especialidade findById(Long id) {
-        if (especialidadeRepo.findById(id).isPresent()) {
+    public Especialidade findById(Long id)
+    {
+        if (especialidadeRepo.findById(id).isPresent())
+        {
             return especialidadeRepo.findById(id).get();
         }
         return null;
     }
-    public Especialidade criarEspecialidade(EspecialidadeJSON especialidadeJSON){
-        Especialidade especialidade=new Especialidade(especialidadeJSON.getName());
-        if(especialidade==null)
+
+    public Especialidade criarEspecialidade(EspecialidadeJSON especialidadeJSON)
+    {
+        Especialidade especialidade = new Especialidade(especialidadeJSON.getName());
+        if(especialidade == null)
+        {
             return null;
+        }
         return especialidadeRepo.save(especialidade);
     }
-    public Especialidade eliminarEspecialidade(EspecialidadeJSON especialidadeJSON){
-        Especialidade especialidade=especialidadeRepo.findByName(especialidadeJSON.getName()).get();
-        if(especialidade==null)
+
+    public Especialidade eliminarEspecialidade(EspecialidadeJSON especialidadeJSON)
+    {
+        Especialidade especialidade = especialidadeRepo.findByName(especialidadeJSON.getName()).get();
+        if(especialidade.getNomeEspecialidade().isEmpty())
+        {
             return null;
-         especialidadeRepo.delete(especialidade);
+        }
+        especialidadeRepo.delete(especialidade);
         return especialidade;
     }
 }

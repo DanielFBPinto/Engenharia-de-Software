@@ -16,7 +16,8 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @ToString
-public class Medico extends Funcionario {
+public class Medico extends Funcionario
+{
     private Integer cedulaMedica;
 
     @ManyToOne
@@ -53,7 +54,9 @@ public class Medico extends Funcionario {
         this.cedulaMedica = cedulaMedica;
         this.especialidade = especialidade;
     }
-    public Medico(Integer cedulaMedica,String name) {
+
+    public Medico(Integer cedulaMedica,String name)
+    {
         super(name);
         this.cedulaMedica = cedulaMedica;
     }
@@ -63,51 +66,51 @@ public class Medico extends Funcionario {
         consulta.addMedico(this);
     }
 
-    public void addHorario(Horario horario) {
+    public void addHorario(Horario horario)
+    {
         this.horarios.add(horario);
         horario.addMedico(this);
     }
 
-    private boolean isWorking(LocalDateTime data) {
-        for (Horario horario : this.horarios) {
-           // System.out.println("H="+horario.getDiaSemana().getValue()+"  D="+data.getDayOfWeek().getValue());
-           // System.out.println("d "+horario.getDiaSemana()+"  d2 "+data.getDayOfWeek());
-            if(horario.getDiaSemana().getValue()== data.getDayOfWeek().getValue()
-               && horario.getHoraInicio().isBefore(data.toLocalTime())
-               && horario.getHoraFim().isAfter(data.toLocalTime()))
+    private boolean isWorking(LocalDateTime data)
+    {
+        for (Horario horario : this.horarios)
+        {
+            if(horario.getDiaSemana().getValue()== data.getDayOfWeek().getValue() && horario.getHoraInicio().isBefore(data.toLocalTime()) && horario.getHoraFim().isAfter(data.toLocalTime()))
             {
-               // System.out.println("tem horario");
                 return true;
             }
         }
-        //System.out.println("nao tem horario");
         return false;
     }
 
-    private boolean temConsulta(LocalDateTime data) {
-        for (Consulta consulta : this.consultas) {
+    private boolean temConsulta(LocalDateTime data)
+    {
+        for (Consulta consulta : this.consultas)
+        {
             System.out.println(consulta.getDia().getValue()+"?"+data.getDayOfWeek().getValue());
             System.out.println(consulta.getData()+"?"+data);
             System.out.println(consulta.getDatafim()+"?"+data);
-
 
             if (consulta.getDia().getValue()==data.getDayOfWeek().getValue()
                     && ((consulta.getData().isBefore(data)
                     && consulta.getDatafim().isAfter(data))
                     || (consulta.getData().isEqual(data)
-                    || consulta.getDatafim().isEqual(data)))) {
-
+                    || consulta.getDatafim().isEqual(data))))
+            {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isPossible(LocalDateTime data) {
-        if (this.isWorking(data)) {
-            if (!this.temConsulta(data)) {
-
-               System.out.println("is possible true");
+    public boolean isPossible(LocalDateTime data)
+    {
+        if (this.isWorking(data))
+        {
+            if (!this.temConsulta(data))
+            {
+                System.out.println("is possible true");
                 return true;
             }
         }
@@ -115,7 +118,8 @@ public class Medico extends Funcionario {
         return false;
     }
 
-    public boolean marcarConsulta(Paciente paciente, LocalDateTime dataConsulta) {
+    public boolean marcarConsulta(Paciente paciente, LocalDateTime dataConsulta)
+    {
         return this.marcarConsulta(paciente,new Consulta(dataConsulta));
         /*if (paciente.isFree(dataConsulta)) {
             if (this.isPossible(dataConsulta)) {

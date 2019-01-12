@@ -17,7 +17,8 @@ public class EspecialidadeJSON extends BaseModel
 {
     private String name;
 
-    public EspecialidadeJSON(String name) {
+    public EspecialidadeJSON(String name)
+    {
         this.name = name;
     }
 }

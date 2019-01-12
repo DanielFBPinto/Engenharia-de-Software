@@ -51,18 +51,22 @@ public class MedicoController {
     }
 
     @RequestMapping(value = "/editarmedico", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico> alterarConsulta(@RequestBody ConsultaJSON consultaJSON) {
+    public ResponseEntity<Medico> alterarConsulta(@RequestBody ConsultaJSON consultaJSON)
+    {
         Medico consulta = medicoService.alterarMedico(consultaJSON);
-        if (consulta == null) {
+        if (consulta == null)
+        {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(consulta);
     }
 
     @RequestMapping(value = "/removermedico", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico> removerMedico(@RequestBody ConsultaJSON consultaJSON) {
+    public ResponseEntity<Medico> removerMedico(@RequestBody ConsultaJSON consultaJSON)
+    {
         Medico consulta = medicoService.removerMedico(consultaJSON);
-        if (consulta == null) {
+        if (consulta == null)
+        {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(consulta);
