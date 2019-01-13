@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface EspecialidadeRepo extends CrudRepository<Especialidade, Long>
 {
-    Optional<Especialidade> findByName(String nomeEspecialidade);
+    Optional<Especialidade> findByNomeEspecialidade(String nomeEspecialidade);
 }

@@ -15,6 +15,7 @@ public class PacienteService {
         return pacienteRepo.findAll();
     }
     public Paciente registar(PacienteJSON pacienteJSON){
+
         Paciente paciente= new Paciente(pacienteJSON.getName(),pacienteJSON.getDataNascimento(),pacienteJSON.getNumCC());
         if(paciente!=null)
             return pacienteRepo.save(paciente);
@@ -22,11 +23,10 @@ public class PacienteService {
         return null;
     }
     public Paciente alterarPaciente(PacienteJSON pacienteJSON){
+        if(!pacienteRepo.findById(pacienteJSON.getMyid()).isPresent())
+            return null;
       Paciente  paciente =pacienteRepo.findById(pacienteJSON.getMyid()).get();
-    if(paciente==null){
-        System.out.println("ups");
-    return null;
-    }
+
         paciente.setName(pacienteJSON.getName());
         paciente.setDataNascimento(pacienteJSON.getDataNascimento());
         paciente.setNumCC(pacienteJSON.getNumCC());

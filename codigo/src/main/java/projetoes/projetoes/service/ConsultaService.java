@@ -69,6 +69,24 @@ public class ConsultaService {
         }
         return null;
     }
+//    public Consulta cancelarConsulta(Consulta consultaJSON) {
+//        if (pacienteRepo.findById(consultaJSON.getMedico()).isPresent() && medicoRepo.findById(consultaJSON.getMedico()).isPresent()) {
+//            Paciente paciente = consultaJSON.getPaciente();
+//            Medico medico = consultaJSON.getMedico();
+//
+//            Consulta fetch = medico.existeConsulta(paciente, consultaJSON.getData());
+//            if (fetch != null) {
+//                medico.getConsultas().remove(fetch);
+//                consultaRepo.delete(fetch);
+//                return fetch;
+//            }
+//
+//            //   consultaRepo.deleteById(fetch.getId());
+//
+//        }
+//        return null;
+   // }
+
 
     public Consulta cancelarConsulta(Consulta consulta, Medico medico) {
         medico.getConsultas().remove(consulta);

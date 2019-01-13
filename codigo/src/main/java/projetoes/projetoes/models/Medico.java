@@ -37,6 +37,45 @@ public class Medico extends Funcionario
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "medico")
     private Set<Horario> horarios = new HashSet<>();
 
+
+    public String getName()
+    {
+        return super.getName ();
+    }
+    ////////////////////
+
+//    public Medico(String name, Integer cedulaMedica, Especialidade especialidade) {
+//        super(name);
+//        this.cedulaMedica = cedulaMedica;
+//        this.especialidade = especialidade;
+//    }
+    public Medico(Integer cedulaMedica,Especialidade especialidade,String name) {
+        super(name);
+        this.cedulaMedica = cedulaMedica;
+        this.especialidade = especialidade;
+    }
+
+    public Medico(String name, LocalDateTime date, Integer cedulaMedica, Especialidade especialidade) {
+        super(name, date);
+        this.cedulaMedica = cedulaMedica;
+        this.especialidade = especialidade;
+    }
+
+    public Medico(String name, LocalDateTime date, Integer numCC, Integer cedulaMedica, Especialidade especialidade) {
+        super(name, date, numCC);
+        this.cedulaMedica = cedulaMedica;
+        this.especialidade = especialidade;
+    }
+
+
+
+    public Medico(Integer cedulaMedica,String name)
+    {
+        super(name);
+        this.cedulaMedica = cedulaMedica;
+    }
+
+    ////////////////////
     public Medico(Medico medico)
     {
         super(medico.getName(),medico.getDataNascimento(),medico.getNumCC());
@@ -44,22 +83,9 @@ public class Medico extends Funcionario
         this.cedulaMedica=medico.getCedulaMedica();
     }
 
-    public String getName()
-    {
-        return super.getName ();
-    }
 
-    public Medico(Integer cedulaMedica,Especialidade especialidade,String name) {
-        super(name);
-        this.cedulaMedica = cedulaMedica;
-        this.especialidade = especialidade;
-    }
 
-    public Medico(Integer cedulaMedica,String name)
-    {
-        super(name);
-        this.cedulaMedica = cedulaMedica;
-    }
+
 
     public void addConsulta(Consulta consulta) {
         this.consultas.add(consulta);

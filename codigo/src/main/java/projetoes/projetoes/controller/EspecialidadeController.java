@@ -29,8 +29,16 @@ public class EspecialidadeController
         return ResponseEntity.ok(allEspecialidade);
     }
     @RequestMapping(value = "/criarespecialidade", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Especialidade> marcarConsulta(@RequestBody EspecialidadeJSON especialidadeJSON) {
+    public ResponseEntity<Especialidade> criarEspecialidade(@RequestBody EspecialidadeJSON especialidadeJSON) {
         Especialidade consulta = especialidadeService.criarEspecialidade(especialidadeJSON);
+        if (consulta == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consulta);
+    }
+    @RequestMapping(value = "/removerespecialidade", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Especialidade> removerEspecialidade(@RequestBody EspecialidadeJSON especialidadeJSON) {
+        Especialidade consulta = especialidadeService.eliminarEspecialidade(especialidadeJSON);
         if (consulta == null) {
             return ResponseEntity.notFound().build();
         }

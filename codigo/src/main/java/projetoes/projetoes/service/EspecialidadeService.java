@@ -3,8 +3,15 @@ package projetoes.projetoes.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetoes.projetoes.jsonfiles.EspecialidadeJSON;
+import projetoes.projetoes.jsonfiles.MedicoJSON;
+import projetoes.projetoes.models.Consulta;
 import projetoes.projetoes.models.Especialidade;
+import projetoes.projetoes.models.Horario;
+import projetoes.projetoes.models.Medico;
+import projetoes.projetoes.repositories.ConsultaRepo;
 import projetoes.projetoes.repositories.EspecialidadeRepo;
+import projetoes.projetoes.repositories.HorarioRepo;
+import projetoes.projetoes.repositories.MedicoRepoI;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +19,15 @@ import java.util.Set;
 @Service
 public class EspecialidadeService {
     @Autowired
-    private EspecialidadeRepo especialidadeRepo;
+    protected EspecialidadeRepo especialidadeRepo;
+    @Autowired
+    MedicoService medicoService;
+    @Autowired
+    MedicoRepoI medicoRepoI;
+    @Autowired
+    ConsultaRepo consultaRepo;
+    @Autowired
+    HorarioRepo horarioRepo;
 
     public Iterable<Especialidade> getAllEspecialidades() {
         return especialidadeRepo.findAll();
@@ -39,12 +54,19 @@ public class EspecialidadeService {
 
     public Especialidade eliminarEspecialidade(EspecialidadeJSON especialidadeJSON)
     {
-        Especialidade especialidade = especialidadeRepo.findByName(especialidadeJSON.getName()).get();
-        if(especialidade.getNomeEspecialidade().isEmpty())
-        {
+        if(!especialidadeRepo.findByNomeEspecialidade(especialidadeJSON.getName()).isPresent())
             return null;
+        Especialidade especialidade = especialidadeRepo.findByNomeEspecialidade(especialidadeJSON.getName()).get();
+//        if(especialidade==null)
+//        {
+//            return null;
+//        }
+        for (Medico medico:especialidade.getMedicos()
+             ) {
+            medicoService.removerMedico(medico);
         }
         especialidadeRepo.delete(especialidade);
         return especialidade;
     }
+
 }

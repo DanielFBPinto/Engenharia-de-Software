@@ -38,11 +38,16 @@ public class MedicoJSON extends BaseModel
         this.numCC = numCC;
         this.especialidade = especialidade;
     }
-
-    public MedicoJSON(String nome,Integer numCC,Long myid)
+    public MedicoJSON(Long myid)
     {
-        this.nome = nome;
-        this.numCC = numCC;
+        
         this.myid = myid;
     }
+
+    public MedicoJSON(String nome,Integer numCC,Long myid)
+{
+    this.nome = nome;
+    this.numCC = numCC;
+    this.myid = myid;
+}
 }

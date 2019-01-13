@@ -2,11 +2,9 @@ package ws2.projetoes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import ws2.projetoes.filter.FilterMedicoObject;
 import ws2.projetoes.models.Clinica;
 import ws2.projetoes.models.Medico;
 import ws2.projetoes.service.ClinicaService;
@@ -17,8 +15,8 @@ public class MedicoController
 {
     @Autowired
     private ClinicaService clinicaService;
-
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+/**NAO eliminar
+   // @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Medico[]> getAllMedicos(@RequestParam("clinica") Long id)
     {
         Clinica clinica = clinicaService.findById(id);
@@ -28,6 +26,27 @@ public class MedicoController
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<Long> body = new HttpEntity<>(id,headers);
             ResponseEntity<Medico[]> responseEntity = makeRequest(path,HttpMethod.GET,body,Medico[].class);
+            if(responseEntity.getStatusCodeValue() == 200)
+            {
+                return ResponseEntity.ok(responseEntity.getBody());
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }**/
+@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Medico[]> getAllMedicos2(@RequestParam("id") Long id,@RequestBody FilterMedicoObject filterMedicoObject)
+    {
+        Clinica clinica = clinicaService.findById(id);
+        if(clinica != null)
+        {
+            String path = clinica.getUrl().concat("medico/getf");
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<FilterMedicoObject> body = new HttpEntity<>(filterMedicoObject,headers);
+            ResponseEntity<Medico[]> responseEntity = makeRequest(path,HttpMethod.POST,body,Medico[].class);
             if(responseEntity.getStatusCodeValue() == 200)
             {
                 return ResponseEntity.ok(responseEntity.getBody());
