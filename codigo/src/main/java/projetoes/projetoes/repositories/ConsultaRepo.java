@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface ConsultaRepo extends CrudRepository<Consulta, Long> {
     // @Override
     //Optional<Consulta> findById(Long aLong);
-    //Optional<Consulta> findByMyMedico(Long aLong);
+  //  Optional<Consulta> findByMyMedico(Long medico);
 }

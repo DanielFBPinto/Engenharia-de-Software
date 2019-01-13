@@ -9,6 +9,9 @@ import projetoes.projetoes.jsonfiles.ConsultaJSON;
 import projetoes.projetoes.models.Consulta;
 import projetoes.projetoes.service.ConsultaService;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {
