@@ -1,11 +1,7 @@
 package projetoes.projetoes.models;
 
 import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 
 @MappedSuperclass

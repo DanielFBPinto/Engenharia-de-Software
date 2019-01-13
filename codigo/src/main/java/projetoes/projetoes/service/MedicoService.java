@@ -3,9 +3,7 @@ package projetoes.projetoes.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetoes.projetoes.filters.FilterMedicoObject;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilter;
 import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
-import projetoes.projetoes.jsonfiles.EspecialidadeJSON;
 import projetoes.projetoes.jsonfiles.MedicoJSON;
 import projetoes.projetoes.models.Consulta;
 import projetoes.projetoes.models.Especialidade;
@@ -13,9 +11,7 @@ import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.repositories.EspecialidadeRepo;
 import projetoes.projetoes.repositories.MedicoRepoI;
-
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service

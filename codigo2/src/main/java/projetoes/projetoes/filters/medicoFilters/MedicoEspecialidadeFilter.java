@@ -1,10 +1,9 @@
 package projetoes.projetoes.filters.medicoFilters;
 
 import projetoes.projetoes.models.Medico;
-
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 
 public class MedicoEspecialidadeFilter implements MedicoFilter {
     private String especialidadeToFilter;

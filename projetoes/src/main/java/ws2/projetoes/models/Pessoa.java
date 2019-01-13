@@ -1,8 +1,6 @@
 package ws2.projetoes.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 

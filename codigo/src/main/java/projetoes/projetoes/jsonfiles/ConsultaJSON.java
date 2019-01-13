@@ -5,8 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import projetoes.projetoes.models.BaseModel;
-import projetoes.projetoes.models.Consulta;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -32,14 +30,14 @@ public class ConsultaJSON extends BaseModel
 
     public ConsultaJSON(Long idClinica,Long nomePaciente,LocalDateTime dataAntiga)
     {
-        this.idClinica=idClinica;
+        this.idClinica = idClinica;
         this.dataAntiga = dataAntiga;
         this.nomePaciente = nomePaciente;
     }
 
     public ConsultaJSON(Long idClinica,Long nomePaciente,Long nomeMedico,LocalDateTime dataNova)
     {
-        this.idClinica=idClinica;
+        this.idClinica = idClinica;
         this.nomePaciente = nomePaciente;
         this.nomeMedico = nomePaciente;
         this.novaData = dataNova;

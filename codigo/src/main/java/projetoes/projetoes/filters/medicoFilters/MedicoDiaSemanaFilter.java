@@ -26,7 +26,7 @@ public class MedicoDiaSemanaFilter implements FilterI<Medico>
         Set<Medico> medicosFiltered = new HashSet<>();
         for(Medico m : medicos)
         {
-            Medico novoMedico = new Medico(m);
+            //Medico novoMedico = new Medico(m);
             for(Horario horario : m.getHorarios())
             {
                 if(horario.getDiaSemana().equals(dayOfWeekFilter)) {

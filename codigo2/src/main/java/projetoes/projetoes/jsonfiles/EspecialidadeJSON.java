@@ -5,9 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import projetoes.projetoes.models.BaseModel;
-import projetoes.projetoes.models.Consulta;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter

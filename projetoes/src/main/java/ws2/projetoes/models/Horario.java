@@ -1,8 +1,6 @@
 package ws2.projetoes.models;
 
 import lombok.*;
-
-import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.time.DayOfWeek;
 import java.time.LocalTime;

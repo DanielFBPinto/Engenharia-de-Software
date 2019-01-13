@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import ws2.projetoes.jsonfiles.PacienteJSON;
 import ws2.projetoes.models.Clinica;
-import ws2.projetoes.models.Consulta;
 import ws2.projetoes.models.Paciente;
 import ws2.projetoes.service.ClinicaService;
+
 @RestController
 @RequestMapping(value = "/paciente")
 public class PacienteController

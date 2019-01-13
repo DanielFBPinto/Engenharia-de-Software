@@ -2,9 +2,7 @@ package ws2.projetoes.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.HashSet;

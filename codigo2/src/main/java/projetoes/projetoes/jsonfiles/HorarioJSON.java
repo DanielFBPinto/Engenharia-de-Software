@@ -5,11 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import projetoes.projetoes.models.BaseModel;
-import projetoes.projetoes.models.Horario;
-import projetoes.projetoes.models.Medico;
-
 import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Getter

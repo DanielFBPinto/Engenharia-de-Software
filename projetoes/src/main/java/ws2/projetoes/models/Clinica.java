@@ -2,11 +2,8 @@ package ws2.projetoes.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import ws2.projetoes.controller.ClinicaController;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Entity;;
 import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;

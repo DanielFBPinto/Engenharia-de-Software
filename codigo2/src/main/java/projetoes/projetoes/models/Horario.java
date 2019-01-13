@@ -2,9 +2,7 @@ package projetoes.projetoes.models;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
@@ -31,7 +29,10 @@ public class Horario extends BaseModel {
 
     public Horario(Horario horario)
     {
-
+        this.diaSemana = horario.getDiaSemana();
+        this.horaFim = horario.getHoraFim();
+        this.horaInicio = horario.getHoraInicio();
+        this.medico = horario.getMedico();
     }
 
 

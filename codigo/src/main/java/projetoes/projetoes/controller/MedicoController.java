@@ -5,24 +5,24 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projetoes.projetoes.filters.FilterMedicoObject;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilter;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
-import projetoes.projetoes.jsonfiles.ConsultaJSON;
 import projetoes.projetoes.jsonfiles.MedicoJSON;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.service.MedicoService;
 
 @RestController
 @RequestMapping("/medico")
-public class MedicoController {
+public class MedicoController
+{
     @Autowired
     private MedicoService medicoService;
+
 //NAO ELIMINAR
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Medico>> getAllMedicos(@ModelAttribute FilterMedicoObject filterMedicoObject) {
         Iterable<Medico> medicos = medicoService.getFilteredMedicos(filterMedicoObject);
         return (medicos == null) ? ResponseEntity.notFound().build() : ResponseEntity.ok(medicos);
     }
+
     @RequestMapping(value = "/getf",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Iterable<Medico>> getAllMedicos2(@RequestBody FilterMedicoObject filterMedicoObject)
     {
@@ -77,4 +77,19 @@ public class MedicoController {
         }
         return ResponseEntity.ok(consulta);
     }
+
+    @RequestMapping(value = "/getmedicos",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Iterable<Medico>> getAllMedicosByPost(@RequestBody FilterMedicoObject filterMedicoObject)
+    {
+        Iterable<Medico> medicos = medicoService.getFilteredMedicos(filterMedicoObject);
+        if(medicos == null)
+        {
+            return ResponseEntity.badRequest().body(null);
+        }
+        return ResponseEntity.ok(medicos);
+    }
+
+
+
+
 }
