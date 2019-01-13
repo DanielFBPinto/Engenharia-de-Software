@@ -59,7 +59,48 @@ public class ConsultaController
         }
         return ResponseEntity.notFound().build();
     }
-
+    @RequestMapping(value ="/bymedico" ,method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Consulta[]> getAllmedicos(@RequestParam("clinica") Long id,@RequestParam("id") Long id2)
+    {
+        Clinica clinica = clinicaService.findById(id);
+        if(clinica != null)
+        {
+            String path = clinica.getUrl().concat("consulta/medico/"+id2);
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<Long> body = new HttpEntity<>(id,headers);
+            ResponseEntity<Consulta[]> responseEntity = makeRequest(path,HttpMethod.GET,body,Consulta[].class);
+            if(responseEntity.getStatusCodeValue() == 200)
+            {
+                return ResponseEntity.ok(responseEntity.getBody());
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @RequestMapping(value ="/bypaciente", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Consulta[]> getAllpaciente(@RequestParam("clinica") Long id,@RequestParam("id") Long id2)
+    {
+        Clinica clinica = clinicaService.findById(id);
+        if(clinica != null)
+        {
+            String path = clinica.getUrl().concat("consulta/paciente/"+id2);
+            HttpHeaders headers = new HttpHeaders();
+            HttpEntity<Long> body = new HttpEntity<>(id,headers);
+            ResponseEntity<Consulta[]> responseEntity = makeRequest(path,HttpMethod.GET,body,Consulta[].class);
+            if(responseEntity.getStatusCodeValue() == 200)
+            {
+                return ResponseEntity.ok(responseEntity.getBody());
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
     @RequestMapping(value = "/marcarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Consulta> marcarConsulta(@RequestBody ConsultaJSON consultaJSON)
     {

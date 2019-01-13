@@ -8,6 +8,8 @@ import projetoes.projetoes.jsonfiles.ConsultaJSON;
 import projetoes.projetoes.models.Consulta;
 import projetoes.projetoes.service.ConsultaService;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {
@@ -31,7 +33,36 @@ public class ConsultaController {
         }
         return ResponseEntity.ok(consulta);
     }
+    @RequestMapping(value = "paciente/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<Consulta>> getallpacientes(@PathVariable("id") Long id) {
+        Iterable<Consulta> allConsultas = consultaService.getAllConsultas();
+        ArrayList<Consulta> consultas = new ArrayList<>();
 
+        for (Consulta consulta:allConsultas
+                ) {
+            if(id.equals(consulta.getPaciente().getId()))
+                consultas.add(consulta);
+        }
+        if (consultas.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consultas);
+    }
+    @RequestMapping(value = "medico/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ArrayList<Consulta>> getallmedicos(@PathVariable("id") Long id) {
+        Iterable<Consulta> allConsultas = consultaService.getAllConsultas();
+        ArrayList<Consulta> consultas = new ArrayList<>();
+
+        for (Consulta consulta:allConsultas
+                ) {
+            if(id.equals(consulta.getMedico().getId()))
+                consultas.add(consulta);
+        }
+        if (consultas.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(consultas);
+    }
     @RequestMapping(value = "/marcarconsulta", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Consulta> marcarConsulta(@RequestBody ConsultaJSON consultaJSON) {
         Consulta consulta = consultaService.marcarConsulta(consultaJSON);
