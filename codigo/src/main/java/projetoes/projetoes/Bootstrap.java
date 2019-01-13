@@ -5,12 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
 import projetoes.projetoes.models.*;
 import projetoes.projetoes.repositories.*;
-
-
-import javax.validation.constraints.Null;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +19,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>
+{
     private Logger logger = LoggerFactory.getLogger(Bootstrap.class);
     private HorarioRepo horarioService;
     private EspecialidadeRepo especialidadeService;
@@ -34,7 +31,6 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     public Bootstrap(MedicoRepoI medicoService, ConsultaRepo consultaService, PacienteRepo pacienteService,
                      AdministrativoRepo administrativoRepo, HorarioRepo horarioRepo,EspecialidadeRepo especialidadeService)
-
     {
         this.medicoService = medicoService;
         this.consultaService = consultaService;
@@ -50,7 +46,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Set<Medico> medicos = createMedicosFromFile(especialidades);
         Set<Horario> horarios = createHorarioFromFile(medicos);
         Set<Paciente> pacientes = createPacienteFromFile();
-        Set<Consulta> consultas = createConsultasFromFile(medicos, pacientes);
+        Set<Consulta> consultas = createConsultasFromFile(medicos,pacientes);
 
         Administrativo administrativo = new Administrativo("Zequinha", "chefe");
         administrativoRepo.save(administrativo);
@@ -145,7 +141,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
                 String attributes[] = line.split(",");
-                LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]), Integer.parseInt(attributes[4]));
+                LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(attributes[0]),
+                        Integer.parseInt(attributes[1]),
+                        Integer.parseInt(attributes[2]),
+                        Integer.parseInt(attributes[3]),
+                        Integer.parseInt(attributes[4]));
                 Consulta consulta = new Consulta(localDateTime);
                 Medico medico = getMById(Integer.parseInt(attributes[5]), medicos);
 //                if (medico != null)
@@ -159,11 +159,8 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                        consultas.add(consulta);
                        consultaService.save(consulta);
                    }
-
                 }
-
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

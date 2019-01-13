@@ -24,7 +24,8 @@ public class ClinicaService
         }
         return null;
     }
-    public Clinica saveClinica(Clinica clinica){
+    public Clinica saveClinica(Clinica clinica)
+    {
         return clinicaRepo.save(clinica);
     }
 }

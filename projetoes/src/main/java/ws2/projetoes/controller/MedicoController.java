@@ -15,14 +15,15 @@ public class MedicoController
 {
     @Autowired
     private ClinicaService clinicaService;
-/**NAO eliminar
-   // @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+
+//NAO eliminar
+   @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Medico[]> getAllMedicos(@RequestParam("clinica") Long id)
     {
         Clinica clinica = clinicaService.findById(id);
         if(clinica != null)
         {
-            String path = clinica.getUrl().concat("medico/");
+            String path = clinica.getUrl().concat("medico/getf");
             HttpHeaders headers = new HttpHeaders();
             HttpEntity<Long> body = new HttpEntity<>(id,headers);
             ResponseEntity<Medico[]> responseEntity = makeRequest(path,HttpMethod.GET,body,Medico[].class);
@@ -101,6 +102,4 @@ public ResponseEntity<Medico[]> getAllMedicos2(@RequestParam("id") Long id,@Requ
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.exchange(path,method,request,responseType);
     }
-
-
 }
