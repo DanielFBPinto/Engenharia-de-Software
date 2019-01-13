@@ -1,14 +1,11 @@
 package projetoes.projetoes.filters.medicoFilters;
 
-import lombok.Data;
+
 import org.springframework.stereotype.Service;
 import projetoes.projetoes.filters.AndFilter;
 import projetoes.projetoes.filters.FilterI;
 import projetoes.projetoes.filters.FilterMedicoObject;
-import projetoes.projetoes.models.Horario;
 import projetoes.projetoes.models.Medico;
-
-import java.nio.file.DirectoryStream;
 import java.util.Set;
 
 

@@ -1,6 +1,5 @@
 package projetoes.projetoes.controller;
 
-import com.sun.tracing.dtrace.ModuleAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

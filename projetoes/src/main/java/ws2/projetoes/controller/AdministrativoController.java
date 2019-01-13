@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import ws2.projetoes.models.Administrativo;
 import ws2.projetoes.models.Clinica;
-import ws2.projetoes.models.Horario;
 import ws2.projetoes.service.ClinicaService;
 
 @RestController

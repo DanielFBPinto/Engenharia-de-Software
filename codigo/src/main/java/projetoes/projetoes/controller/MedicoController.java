@@ -5,11 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projetoes.projetoes.filters.FilterMedicoObject;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilter;
-import projetoes.projetoes.filters.medicoFilters.MedicoFilterService;
-import projetoes.projetoes.jsonfiles.ConsultaJSON;
 import projetoes.projetoes.jsonfiles.MedicoJSON;
-import projetoes.projetoes.models.Clinica;
 import projetoes.projetoes.models.Medico;
 import projetoes.projetoes.service.MedicoService;
 

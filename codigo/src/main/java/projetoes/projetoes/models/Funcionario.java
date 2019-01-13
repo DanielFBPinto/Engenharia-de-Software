@@ -1,10 +1,7 @@
 package projetoes.projetoes.models;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 import lombok.*;
-
 import javax.persistence.*;
 
 @MappedSuperclass

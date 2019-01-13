@@ -1,10 +1,7 @@
 package projetoes.projetoes.models;
 
-import java.util.ArrayList;
 
 import lombok.*;
-import projetoes.projetoes.models.Funcionario;
-
 import javax.persistence.*;
 
 @Entity

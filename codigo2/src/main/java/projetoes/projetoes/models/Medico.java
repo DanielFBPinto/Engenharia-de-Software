@@ -3,11 +3,9 @@ package projetoes.projetoes.models;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
@@ -67,25 +65,18 @@ public class Medico extends Funcionario
         this.especialidade = especialidade;
     }
 
-
-
     public Medico(Integer cedulaMedica,String name)
     {
         super(name);
         this.cedulaMedica = cedulaMedica;
     }
 
-    ////////////////////
     public Medico(Medico medico)
     {
         super(medico.getName(),medico.getDataNascimento(),medico.getNumCC());
         this.especialidade = medico.getEspecialidade();
         this.cedulaMedica=medico.getCedulaMedica();
     }
-
-
-
-
 
     public void addConsulta(Consulta consulta) {
         this.consultas.add(consulta);

@@ -3,11 +3,9 @@ package projetoes.projetoes.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import projetoes.projetoes.jsonfiles.HorarioJSON;
 import projetoes.projetoes.models.Horario;
-import projetoes.projetoes.repositories.HorarioRepo;
 import projetoes.projetoes.service.HorarioService;
 
 @RestController
