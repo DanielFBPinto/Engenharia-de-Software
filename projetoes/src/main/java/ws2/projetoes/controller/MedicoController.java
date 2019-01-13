@@ -37,7 +37,8 @@ public class MedicoController
             }
         }
         return ResponseEntity.notFound().build();
-    }**/
+    }
+
 @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 public ResponseEntity<Medico[]> getAllMedicos2(@RequestParam("id") Long id,@RequestBody FilterMedicoObject filterMedicoObject)
 {
