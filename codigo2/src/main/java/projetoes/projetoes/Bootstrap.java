@@ -147,6 +147,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
                 String attributes[] = line.split(",");
                 LocalDateTime localDateTime = LocalDateTime.of(Integer.parseInt(attributes[0]), Integer.parseInt(attributes[1]), Integer.parseInt(attributes[2]), Integer.parseInt(attributes[3]), Integer.parseInt(attributes[4]));
                 Consulta consulta = new Consulta(localDateTime);
+
                 Medico medico = getMById(Integer.parseInt(attributes[5]), medicos);
 //                if (medico != null)
 //                    medico.addConsulta(consulta);

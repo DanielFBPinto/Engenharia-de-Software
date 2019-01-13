@@ -38,26 +38,19 @@ public class MedicoController
         return ResponseEntity.notFound().build();
     }**/
 @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Medico[]> getAllMedicos2(@RequestParam("id") Long id,@RequestBody FilterMedicoObject filterMedicoObject)
+public ResponseEntity<Medico[]> getAllMedicos2(@RequestParam("id") Long id,@RequestBody FilterMedicoObject filterMedicoObject)
+{
+    Clinica clinica = clinicaService.findById(id);
+    if(clinica != null)
     {
-        Clinica clinica = clinicaService.findById(id);
-        if(clinica != null)
-        {
-            String path = clinica.getUrl().concat("medico/getf");
-            HttpHeaders headers = new HttpHeaders();
-            HttpEntity<FilterMedicoObject> body = new HttpEntity<>(filterMedicoObject,headers);
-            ResponseEntity<Medico[]> responseEntity = makeRequest(path,HttpMethod.POST,body,Medico[].class);
-            if(responseEntity.getStatusCodeValue() == 200)
-            {
-                return ResponseEntity.ok(responseEntity.getBody());
-            }
-            else
-            {
-                return ResponseEntity.notFound().build();
-            }
-        }
-        return ResponseEntity.notFound().build();
+        String path = clinica.getUrl().concat("medico/getf");
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<FilterMedicoObject> body = new HttpEntity<>(filterMedicoObject,headers);
+        ResponseEntity<Medico[]> responseEntity = makeRequest(path,HttpMethod.POST,body,Medico[].class);
+        return responseEntity;
     }
+    return ResponseEntity.badRequest().body(null);
+}
 
     @RequestMapping(value="/byid",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Medico> getMedicoByID(@RequestParam("clinica") Long id,@RequestParam("idmedico") Long id2)

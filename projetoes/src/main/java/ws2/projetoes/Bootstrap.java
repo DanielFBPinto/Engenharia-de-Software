@@ -44,6 +44,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Clinica clinica = new Clinica("Porto", "8090");
         clinicas.add(clinica);
         clinicaRepo.save(clinica);
+        Clinica clinica2 = new Clinica("Braga", "8091");
+        clinicas.add(clinica2);
+        clinicaRepo.save(clinica2);
+
     }
 
 }
